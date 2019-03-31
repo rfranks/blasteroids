@@ -1,0 +1,47 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "plugins": ["plugins/markdown"],
+  "source": {
+    "includePattern": ".+\\.js(doc|x)?$",
+    "exclude": [
+      "./node_modules/",
+      "./js/public-lib/boxbox.js",
+      "./js/public-lib/box2dweb.min.js",
+      "./js/public-lib/boxbox.min.js",
+      "./js/public-lib/json2.min.js",
+      "./js/public-lib/jquery.min.js"
+    ],
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "templates": {
+    "logoFile": "../images/player/player.png",
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "dateFormat": "ddd MMM Do YYYY",
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "systemName": "Blasteroids",
+    "footer": "",
+    "copyright": "Blasteroids Copyright © 2017-present The contributors to the Blasteroids project.",
+    "navType": "vertical",
+    "theme": "paper",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": true,
+    "protocol": "html://",
+    "methodHeadingReturns": false
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  },
+  "opts": {
+        "template": "./", 
+        "encoding": "utf8",
+        "destination": "./doc/",
+        "recurse": true,//
+        "tutorials": "./tutorials/"
+    }
+}

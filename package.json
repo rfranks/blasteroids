@@ -1,0 +1,35 @@
+{
+  "name": "blasteroids",
+  "version": "0.0.1",
+  "decription": "A basic Asteroids clone that demonstrates the use of the Box2DWeb JS library.",
+  "license": "MIT",
+  "keywords": [
+    "asteroid",
+    "asteroids",
+    "blasteroids",
+    "game",
+    "arcade"
+  ],
+  "author": {
+    "email": "richardfranksjr@hotmail.com",
+    "name": "Richard A Franks Jr"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/http-server ./ -o \\ -c-1",
+    "build-doc": "npm install && rm -rf ./doc && ./node_modules/.bin/jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
+    "serve": "npm install && npm run build-doc && ./node_modules/.bin/http-server \"./\" -o \\"
+  },
+  "bugs": {
+    "url": "https://github.com/docstrap/docstrap/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/docstrap/docstrap.git"
+  },
+  "main": "./publish.js",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "ink-docstrap": "^1.3.2",
+    "jsdoc": "git://github.com/jsdoc3/jsdoc.git"
+  }
+}
