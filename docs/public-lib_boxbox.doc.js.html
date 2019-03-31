@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Blasteroids Source: public-lib/boxbox.doc.js</title>
+
+	<link type="text/css" rel="stylesheet" href="/css/animate.css">
+	<link type="text/css" rel="stylesheet" href="/css/balloon.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/site.paper.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/skin.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script src="/js/public-lib/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="animated lightSpeedIn navbar-brand" href="index.html"><img class="animated tada infinite branding-logo" src="../images/player/player.png"
+		alt="logo"/>Blasteroids</a>
+		<button class="animated zoomIn navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+        
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+        
+	</div>
+
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Namespaces<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Audio.html">Audio</a></li><li><a href="Blasteroids.html">Blasteroids</a></li><li><a href="boxbox.html">boxbox</a></li><li><a href="BoxBoxUtil.html">BoxBoxUtil</a></li><li><a href="Log.html">Log</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Classes<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Entity.html">Entity</a></li><li><a href="World.html">World</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Mixins<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Tutorials<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-CODE_OF_CONDUCT.html">Code of Conduct</a></li><li><a href="tutorial-CONTRIBUTING.html">How to Contribute</a></li><li><a href="tutorial-HOW_TO_PLAY.html">How to Play</a></li><li><a href="tutorial-LICENSE.html">License</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Global<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+
+</div>
+</div>
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	<!-- 
+	<div class="col-md-12">
+	
+	 -->	<div id="main">
+			
+
+		<h1 class="page-title">Source: public-lib/boxbox.doc.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * A point in space within the world.
+ * @typedef {Object} Point
+ * @property {number} x the point's x-coordinate
+ * @property {number} y the point's y-coordinate
+ */
+
+/**
+ * A quantity with both an x component and a y component.
+ * @typedef {Object} Vector
+ * @property {number} x the magnitude of the vector's x component
+ * @property {number} y the magnitude of the vector's y component
+ */
+
+//===============================================================================================================================
+
+/**
+ * @class Entity
+ * @classdesc An object within the game {@link World}.
+ * @hideconstructor
+ * @desc The following options can be passed when {@link World#createEntity creating an entity} within the game world.  Custom methods and parameters can also be supplied but must be prefixed with a `$`.
+ * @property {string} name name of this entity
+ * @property {number} [angle=0] the entity's angle of rotation
+ * @property {number} x starting x coordinate for the center of the new entity
+ * @property {number} y starting y coordinate for the center of the new entity
+ * @property {string} type `dynamic` or `static`. static objects do not move
+ * @property {string} shape `square` or `circle` or `polygon`
+ * @property {number} [height=1] height for `square`
+ * @property {number} [width=1] width for `square`
+ * @property {number} [radius=1] radius for `circle`
+ * @property {Point[]} points for `polygon` [{x,y}, {x,y}, {x,y}] must go clockwise, must be convex
+ * @property {number} [density=2] this entity's density
+ * @property {number} [friction=1] friction
+ * @property {number} [restitution=.2] restitution or bounciness
+ * @property {boolean} [active=true] active flag indicicating whether or not this entity participates in collisions and dynamics
+ * @property {number} [rotation=0] initial rotation in degrees
+ * @property {boolean} [fixedRotation=false] flag that, if true, prevents the entity from rotating
+ * @property {boolean} [bullet=false] flag, when true, performs expensive continuous collision detection
+ * @property {number} [maxVelocityX] the maximum left or right speed of this entity. prevents an entity from moving too fast either left or right
+ * @property {number} [maxVelocityY] the maximum up or down speed of this entity, prevents entity from moving too fast either up or down
+ * @property {string} [image] path to image file for rendering
+ * @property {number} [imageOffsetX=0] x direction offset for `image`
+ * @property {number} [imageOffsetY=0] y direction offset for `image`
+ * @property {boolean} [imageStretchToFit=false] flag indicating whether or not to strecth `image` to fit `shape`
+ * @property {boolean} [spriteSheet=false] flag indicating whether or not `image` is a sprite sheet
+ * @property {number} [spriteWidth=16] Width of `spriteSheet`
+ * @property {number} [spriteHeight=16] Height of `spriteSheet`
+ * @property {number} [spriteX=0] x for `spriteSheet`
+ * @property {number} [spriteY=0] y for `spriteSheet`
+ * @property {string} [color='gray'] CSS color for rendering if no `image` is given
+ * @property {string} [borderColor='black'] CSS color for rendering the `shape`'s border
+ * @property {number} [borderWidth=1] width of the border, border does not affect physics
+ * @property {function} [draw] provide a custom draw function, params are `context`, `x`, and `y`
+ * @property {function} [init] provide a custom function that is run when the entity is created
+ * @mixes boxbox.entityEvents
+ * @example &lt;caption>Creating a Simple Entity&lt;/caption>
+ * //create a simple disc
+ *     var player = world.createEntity({
+ *         name: 'player',
+ *         shape: 'circle',
+ *         radius: 2
+ *     });
+ * @example &lt;caption>Templates&lt;p>You can pass multiple options objects on creating allowing for the use of "templates" with reusable defaults. The options objects on the right take precedence.&lt;/p>&lt;/caption>
+ * //create red circles from a template
+ *      var redCircleTemplate = {color: 'red', shape: 'circle', radius: 3};
+ *      var redCircle = world.createEntity(redCircleTemplate, {x: 5, y: 5});
+ *      var anotherRedCircle = world.createEntity(redCircleTemplate, {x: 10, y: 5});
+ *
+ *      //redCircle.position().x === anotherRedCircle.position().x ===> false
+ *      //redCircle.position().y === anotherRedCircle.position().y ===> true
+ * @example &lt;caption>Dollar Properties &lt;p>You can provide custom methods and properties as options whose names start with a &lt;code>$&lt;/code>.  This allows you to provide your own custom functionality.&lt;/p>&lt;/caption>
+ * //create a customValue property
+ *      var ball = world.createEntity({color: 'red', $customValue: 15});
+ *      //ball.$customValue === 15 ===> true
+ * @example &lt;caption>Creating a blasteroid entity&lt;/caption>
+ * //creating a more complex entitys
+ *      var blasteroidEntityType = $.extend({}, BoxBoxUtil.angleImpulse, {
+ *               name: 'blasteroid',
+ *               shape: 'circle',
+ *               radius: 3,
+ *               image: 'images/meteorBig.png',
+ *               imageStretchToFit: true,
+ *               density: 4,
+ *               x: 15,
+ *               y: 15,
+ *               angle: 0,
+ *               maxVelocityX: 10,
+ *               maxVelocityY: 10,
+ *               impulse: 0,
+ *               bullet: true
+ *       });
+ */
+
+/**
+ * Destroys the entity, removing it from tbe world and, if applicable, the physics engine. This method
+ * &lt;b>SHOULD NOT&lt;/b> be called from within the `onRender` method as it can lead to unpredictable results.
+ *
+ * @method
+ * @name Entity#destroy
+ */
+
+/**
+ * Gets/sets the name of this entity.
+ *
+ * @method
+ * @name Entity#name
+ * @param {string} [name] the name for the entity
+ * @returns {string} the name of the entity
+ */
+
+/**
+ * Gets/sets the position of this entity.
+ *
+ * @method
+ * @name Entity#position
+ * @param {Point} [position] the new position for the entity
+ * @returns {Point} the entity's current position
+ */
+
+/**
+ * Gets/sets the path to the image file being used for rendering.
+ *
+ * @method
+ * @name Entity#image
+ * @param {string} [image] the image path to set
+ * @returns {number} the path to the entity's current image file
+ * @example &lt;caption>Switching Image Out Temporarily &lt;p>Different effects can be achieved simply by swapping images.&lt;/p>&lt;/caption>
+ *     //this.image() ===> 'images/player.png'
+ *     //bank ship left by changing image, temporarily...
+ *     this.image('images/playerLeft.png');
+ *
+ *     //return to previous/normal ship image in 225ms
+ *     setTimeout($.proxy(function(){
+ *         this.image('images/player.png');
+ *      }, this), 225);
+ */
+
+/**
+ * Gets/sets the degree of rotation for the entity.
+ *
+ * @method
+ * @name Entity#rotation
+ * @param {number} [degrees] the new angle of rotation for the entity
+ * @returns {number} the entity's current angle of rotation
+ */
+//=======================================================================================================================================
+/**
+ * @classdesc An object that represents the game world.  May also be referred to as the &lt;em>field of play&lt;/em>. Contains a single, self-contained, physics simulation.
+ * @class World
+ * @hideconstructor
+ * @property {number} level
+ * @property {string} name an identifying name for this entity
+ */
+
+/**
+ * Gets/sets the position of the camera with respect to the game world.
+ *
+ * @method
+ * @instance
+ * @name World#camera
+ * @param {Vector} [position] the new position for the camera
+ * @returns {Vector} the camera's current position
+ */
+
+/**
+ * Get the &lt;code>canvas&lt;/code> position for a corresponding &lt;em>world&lt;/em> position. Useful for custom rendering in &lt;code>onRender&lt;/code>.
+ * Respects both world scale and camera position.
+ *
+ * @method
+ * @instance
+ * @name World#canvasPositionAt
+ * @param {number} x the x-coordinate for the point within the world
+ * @param {number} y the y-coordinate for the point within the world
+ * @returns {Vector} the &lt;code>canvas&lt;/code> position that corresponds to the given world coordinates
+ */
+
+/**
+ * Creates an {@link Entity} within the game world. If applicable, the world will begin applying the physics engine to the new entity.
+ *
+ * @method
+ * @instance
+ * @name World#createEntity
+ * @param {...Entity} entity the options to use for entity creation
+ */
+
+/**
+ * (Experimental Joint Support) Creates a link between two entities within the game world.
+ * @see {@link http://box2d.org/ box2d documentation}
+ * @method
+ * @instance
+ * @name World#createJoint
+ * @param {Entity} entity1 the entity at one end of the joint
+ * @param {Entity} entity2 the entity at the opposite end of the joint
+ * @param {*} [options] additional options to pass for the joint
+ * @param {boolean} [options.allowCollisions=false] whether or not this joint is affected by collisions
+ * @param {boolean} [options.enableMotor=false] whether or not to enable the joint's motor
+ * @param {string} [options.type='distance'] the type of joint, can be one of &lt;code>'distance', 'revolute', 'gear', 'friction', 'prismatic', 'weld', 'pulley', 'mouse' or 'line'&lt;/code>
+ */
+
+/**
+ * Finds {@link Entity}s in the game world that are withen the given bounding rectangle.
+ *
+ * @method
+ * @instance
+ * @name World#find
+ * @param {number} x1 x-coordinate of the upper left of the bounding rectangle
+ * @param {number} y1 y-coordinate of the upper left of the bounding rectangle
+ * @param {number} x2 x-coordinate of the lower right of the bounding rectangle
+ * @param {number} y2 y-coordinate of the lower right of the bounding rectangle
+ * @returns {Entity[]} an array, possibly empty, of {@link Entity}s within a given bounding rectangle
+ */
+
+/**
+ * Gets/sets the gravity within the game world.
+ *
+ * @method
+ * @instance
+ * @name World#gravity
+ * @param {Vector} [gravity] the new value for gravity, can be horizontal, negative, etc
+ * @returns {Vector} the current gravity within the game world
+ */
+
+/**
+ * Gets/sets the scale (in &lt;code>px/m&lt;/code>) for rendering within the game world.
+ *
+ * @method
+ * @instance
+ * @name World#scale
+ * @param {number} [scale] the new value for scale
+ * @returns {number} the current scale (in &lt;code>px/m&lt;/code>) for rendering within the game world
+ */
+
+
+/**
+ * @namespace boxbox
+ */
+
+/**
+ * Creates a new game {@link World}.
+ *
+ * @constructs World
+ * @method
+ * @name boxbox#createWorld
+ * @param {Element} canvas the canvas element to render on
+ * @param {*} [options] options options to apply when creating the world
+ * @param {Vector} [options.gravity={x:0, y:10}] gravity for the game world, x and y component, can be horizontal, negative, etc
+ * @param {boolean} [options.allowSleep=true] flag indicating whether or not entities may "sleep" when they come to rest, meaning that the entity is no longer being simulated, which can improve performance
+ * @param {number} [options.scale=30] scale for rendering in the the game world (in &lt;code>pixels/meter&lt;/code> or &lt;code>px/m&lt;/code>)
+ * @param {number} [options.tickFrequency=50] the frequency at which &lt;code>onTick&lt;/code> events occur (in &lt;code>milliseconds&lt;/code>, or &lt;code>ms&lt;/code>)
+ * @param {boolean} [options.collisionOutlines=false] flag indicating whether or not to draw outlines around entities for collision detection (useful for debugging collisions)
+ * @returns {World} a new game world
+ * @example &lt;caption>Creating a world using the default options&lt;/caption>
+ * var canvasElem = document.getElementById("myCanvas");
+ * var world = boxbox.createWorld(canvasElem);
+ * @example &lt;caption>Creating a world &lt;em>&lt;u>overriding&lt;/u>&lt;/em> default options&lt;/caption>
+ * var canvasElem = document.getElementById("myCanvas");
+ * var world = boxbox.createWorld(canvasElem, {
+ *     gravity: {x: 0, y: 20},
+ *     scale: 60
+ * });
+ */
+
+/**
+ * @mixin boxbox.entityEvents
+ * @memberOf! boxbox
+ * @desc Mixes in standard event handlers for entities.
+ * @see {@link Entity}
+ */
+
+/**
+ * Handle keydown event for this entity.
+ * @method
+ * @name boxbox.entityEvents#onKeydown
+ * @this entity
+ * @param {Event} e the keydown event
+ */
+
+/**
+ * Handle keyup event for this entity.
+ * @method
+ * @name boxbox.entityEvents#onKeyup
+ * @this entity
+ * @param {Event} e the keyup event
+ */
+
+/**
+ * Handle start of contact with another entity.
+ * @method
+ * @name boxbox.entityEvents#onStartContact
+ * @this entity
+ * @param {Entity} entity the entity that contact started with
+ */
+
+/**
+ * Handle end of contact with another entity.
+ * @method
+ * @name boxbox.entityEvents#onFinishContact
+ * @this entity
+ * @param {Entity} entity the entity that contact ended with
+ */
+
+/**
+ * Handle impact with another entity.
+ * @method
+ * @name boxbox.entityEvents#onImpact
+ * @this entity
+ * @param {Entity} entity the entity that collided with us
+ * @param {number} normalForce force of the two entites colliding
+ * @param {number} tangentialForce force of the two entites "rubbing" up against each other
+ */
+
+/**
+ * Handle when this entity is rendered.
+ * @method
+ * @name boxbox.entityEvents#onRender
+ * @this entity
+ * @param {Element} &lt;code>canvas&lt;/code> context for rendering
+ */
+
+/**
+ * Handle a &lt;strong>tick&lt;/strong>.  &lt;strong>Ticks&lt;/strong> are periodic events that happen independant of rendering. You can use ticks as your "game loop". The default tick frequency is &lt;code>50 ms&lt;/code>, and it can be set as an option when creating the world.
+ * @method
+ * @name boxbox.entityEvents#onTick
+ * @this entity
+ */</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+		<footer>
+			
+			
+				<span class="copyright">
+					Blasteroids Copyright © 2017-present The contributors to the Blasteroids project.
+				</span>
+			
+			<span class="jsdoc-message">
+				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a>
+				
+					on Sun Mar 31st 2019
+				
+				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+			</span>
+		</footer>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<!--  -->
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<script src="/js/public-lib/docstrap.min.js"></script>
+<script src="/js/toc.js"></script>
+
+<div class="modal fade" id="blasteroidsGame">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Blasteroids</h4>
+          </div>
+          <div class="modal-body">
+          	<iframe src="/"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+	<script type="text/javascript" src="/js/public-lib/lunr.min.js"></script>
+    <script type="text/javascript" src="/js/lunr.search.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

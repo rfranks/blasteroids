@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Blasteroids Index</title>
+
+	<link type="text/css" rel="stylesheet" href="/css/animate.css">
+	<link type="text/css" rel="stylesheet" href="/css/balloon.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/site.paper.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/skin.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script src="/js/public-lib/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="animated lightSpeedIn navbar-brand" href="index.html"><img class="animated tada infinite branding-logo" src="../images/player/player.png"
+		alt="logo"/>Blasteroids</a>
+		<button class="animated zoomIn navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+        
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+        
+	</div>
+
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Namespaces<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Audio.html">Audio</a></li><li><a href="Blasteroids.html">Blasteroids</a></li><li><a href="boxbox.html">boxbox</a></li><li><a href="BoxBoxUtil.html">BoxBoxUtil</a></li><li><a href="Log.html">Log</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Classes<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Entity.html">Entity</a></li><li><a href="World.html">World</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Mixins<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Tutorials<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-CODE_OF_CONDUCT.html">Code of Conduct</a></li><li><a href="tutorial-CONTRIBUTING.html">How to Contribute</a></li><li><a href="tutorial-HOW_TO_PLAY.html">How to Play</a></li><li><a href="tutorial-LICENSE.html">License</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Global<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+
+</div>
+</div>
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	<!--  -->
+	<div class="col-md-12 col-lg-9">
+	<!-- 
+	 -->	<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><style type="text/css">
+	.delayed {
+		animation-delay: 1s;
+	}
+
+	.glyphicon {
+		font-size: 18px;
+
+	}
+</style>
+<p><a href="http://travis-ci.org/jsdoc3/jsdoc"><img src="https://travis-ci.org/jsdoc3/jsdoc.svg?branch=master" alt="Build Status"></a></p>
+<h2>About <code>Blasteroids</code></h2>
+<div class="well well-sm">
+	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> is an arcade space shooter released in November 1979 by <a href="https://en.wikipedia.org/wiki/Atari,_Inc.">Atari, Inc.</a> and designed by Lyle Rains, Ed Logg, and Dominic Walsh. The player controls a spaceship in an asteroid field which is periodically traversed by flying saucers.  The object is to shoot and destroy both asteroids and saucers alike, while avoiding each of them, as well as the flying saucers' counter-fire. The difficulty increases as the number of asteroids increases.
+</div>
+<p><img src="/images/doc/asteroids_1979.png" alt="Asteroids 1979 Gameplay" title="Asteroids 1979 Gameplay"></p>
+<div class="well well-sm">
+	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> was one of the first major hits of the golden age of arcade games.
+</div>
+<div class="well well-sm">
+	<code>Blasteroids</code> is an Asteroids clone built purely using HTML, CSS, and JavaScript.  <code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Its source code, its comments and its documentation are <strong><em><u>FREE</u></em></strong> to everyone.
+</div>
+<p><img src="/images/doc/gameplay.png" alt="Blasteroids Gameplay" title="Blasteroids Gameplay"></p>
+<h4>Objective</h4>
+<div class="well well-sm">The primary objectives of <code>Blasteroids</code> are... 
+	<ul class="list-group">
+		<li class="list-group-item">...to avoid blasteroids at all costs,</li>
+		<li class="list-group-item">...to avoid enemy ships at all costs,</li>
+		<li class="list-group-item">...to destroy as many blasteroids as possible,</li>
+		<li class="list-group-item">...to destroy enemy ships (only if they shoot first),</li>
+		<li class="list-group-item">...to reach the highest level possible,</li>
+		<li class="list-group-item">...and to earn the highest score.</li>
+	</ul>
+	<p>
+		The player must do all of this while traversing levels of increasingly difficulty. 
+	</p>		
+</div>
+<div class="well well-sm">
+	<p>
+		The player pilots a <em><u>state of the art</u></em>, computer generated, very pixelated ship that comes with zero guarantees.  It does however come with an infinite supply of laser blasts. The ship can also...
+	</p>
+	<ul class="list-group">
+		<li class="list-group-item"><span class="glyphicon glyphicon-arrow-left"></span>...rotate left,</li> 
+		<li class="list-group-item"><span class="glyphicon glyphicon-arrow-right"></span>...rotate right,</li>
+		<li class="list-group-item"><span class="glyphicon glyphicon-option-vertical"></span>...fire shots straight forward,</li>
+		<li class="list-group-item"><span class="glyphicon glyphicon-arrow-up"></span>...and thrust forward.</li>  
+	</ul>
+</div>
+<h4>Underpinnings</h4>
+<div class="well well-sm"><code>Blasteroids</code> is built using the following libraries:
+<ul class="list-group">
+	<li class="list-group-item"><a href="https://github.com/hecht-software/box2dweb">Box2dWeb</a> - a JavaScript physics engine</li>
+	<li class="list-group-item"><a href="http://incompl.github.com/boxbox/">boxbox</a> - a wrapper framework for the Box2d / Box2dweb physics engine</li>
+	<li class="list-group-item"><a href="https://jquery.com/">jQuery</a> - a fast, small, and feature-rich JavaScript library</li>
+	<li class="list-group-item"><a href="https://github.com/daneden/animate.css">Animate.css</a> - a cross-browser library of CSS animations</li>	
+</ul>
+<p>plus, its own custom libraries:</p>
+<ul class="list-group">
+	<li class="list-group-item"><a href="Audio.html">Audio</a></li>
+	<li class="list-group-item"><a href="Log.html">Log</a></li>
+</ul>
+<p>and some utility methods in:</p>
+<ul class="list-group">
+	<li class="list-group-item"><a href="BoxBoxUtil.html">BoxBoxUtil</a></li>
+</ul>
+</div>
+<h4>Legal Stuff</h4>
+<div class="well well-sm">This version of <code>Blasteroids</code> is in no way related to or derived from Ed Rotberg's Blasteroids of 1987.</div>
+<div class="well well-sm">
+	<p>
+		<code>Blasteroids</code> is designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>.  Its source code and documentation are <strong><em><u>FREE</u></em></strong> to everyone, forever, in perpetuity, until the end of the universe.
+	</p>
+	<p>
+		<code>Blasteroids</code> is distributed under a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.  <code>Blasteroids</code> is <strong>free</strong> software, licensed under the MIT License(the "License"). Commercial and non-commercial use are permitted in compliance with the License.
+	</p>
+</div>
+<div class="well well-sm" style="font-family: monospace;">Copyright (c) 2017-present by Richard Franks Jr richardfranksjr@hotmail.com and the contributors to Blasteroids. All rights reserved.</div>
+<h4>Contributing</h4>
+<div class="well well-sm">Want to contribute to <code>Blasteroids</code>? Please read <a href="tutorial-CONTRIBUTING.html">How to Contribute</a>.</div>
+<h2>Installation and Usage</h2>
+<h4>Prerequisites</h4>
+<div class="well well-sm">
+	Running <code>Blasteroids</code> requires both <a href="https://nodejs.org/">NodeJS</a> and <a href="https://www.npmjs.com/">npm</a>.
+</div>
+<h4>Running</h4>
+<div class="well well-sm">
+	<code>Blasteroids</code> comes ready to run, out of the box, no building required.
+	To rebuild the documentation, in case you have made changes, and start the server, run
+</div>
+<pre><code>npm run serve
+</code></pre>
+<div class="well well-sm">You should see something similar to the following.</div>
+<pre><code>Richards-MacBook-Pro:blasteroids rfranks$ npm run serve
+
+&gt; blasteroids@0.0.1 serve /Users/rfranks/Developer/Code/blasteroids
+&gt; npm install &amp;&amp; ./build-doc.sh &amp;&amp; ./node_modules/.bin/http-server
+
+audited 100 packages in 1.101s
+found 0 vulnerabilities
+
+Removing Documentation Directory[./doc]...
+Building Documentation using jsDoc...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/conf/options.config.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/conf/powerups.config.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/conf/weaponUpgrades.config.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/game/entities.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/game/game.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/lib/audio.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/lib/boxbox-util.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/lib/log4.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/lunr.search.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/public-lib/boxbox.doc.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/public-lib/docstrap.min.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/public-lib/lunr.min.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/sunlight.js ...
+Parsing /Users/rfranks/Developer/Code/blasteroids/js/toc.js ...
+Generating output files...
+Finished running in 1.84 seconds.
+...Done!
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8080
+  http://10.0.0.182:8080
+Hit CTRL-C to stop the server
+</code></pre>
+<div class="well well-sm">Press <code>CTRL-C</code> to stop the server when you have finished running <code>Blasteroids</code>.</div>	
+<div class="well well-sm">Browse to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> to start playing!
+or click&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#blasteroids_modal__game">Launch!</button>
+</div>
+<div class="modal fade" id="blasteroids_modal__game" tabindex="-1" role="dialog" aria-labelledby="blasteroids_modal__title">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="blasteroids_modal__title">Blasteroids</h4>
+			</div>
+			<div class="modal-body" style="padding: 0;"></div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		<button id="blasteroids_modal__refresh" type="button" class="btn btn-success">Reset</button>
+      		</div>
+    	</div>
+  	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var initBlasteroidsIframe = function() {
+			$('#blasteroids_modal__game.modal .modal-dialog .modal-content .modal-body')
+				.empty()
+				.html($('<iframe>', {
+				   src: '/index.html',
+				   id:  'blasteroids_modal__iframe',
+				   height: 700, 
+				   width: 1380,
+				   frameborder: 0,
+				   scrolling: 'no'
+		   		}));
+		};
+
+		$('button[data-target="#blasteroids_modal__game"]').click(initBlasteroidsIframe);
+		$('#blasteroids_modal__refresh').click(initBlasteroidsIframe);
+	});
+</script>
+<h4>Project Structure</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="label label-primary" data-balloon="The amount of space this folder's contents takes up.">Approx Size</span></th>
+<th><span class="label label-primary" data-balloon="The name of this folder.">Folder</span></th>
+<th style="text-align:center"><span class="label label-primary" data-balloon="The folder contents' file type.">File Type</span></th>
+<th><span class="label label-primary" data-balloon="What this folder contains.">Contents</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">220K</td>
+<td><code>./blasteroids/css/doc</code></td>
+<td style="text-align:center">css</td>
+<td>css stylesheets specific to the game's documentation</td>
+</tr>
+<tr>
+<td style="text-align:center">320K</td>
+<td><code>./blasteroids/css</code></td>
+<td style="text-align:center">css</td>
+<td>core css stylesheets</td>
+</tr>
+<tr>
+<td style="text-align:center">44K</td>
+<td><code>./blasteroids/images/background</code></td>
+<td style="text-align:center">image/png</td>
+<td>background images for the game's canvas</td>
+</tr>
+<tr>
+<td style="text-align:center">756K</td>
+<td><code>./blasteroids/images/doc</code></td>
+<td style="text-align:center">image/png</td>
+<td>images used in the game's documentation</td>
+</tr>
+<tr>
+<td style="text-align:center">1.5M</td>
+<td><code>./blasteroids/images</code></td>
+<td style="text-align:center">image/png</td>
+<td>images used in the game or the game's documentation</td>
+</tr>
+<tr>
+<td style="text-align:center">800K</td>
+<td><code>./blasteroids/js/public-lib</code></td>
+<td style="text-align:center">js</td>
+<td>3rd party JavaScript libraries used by the game or the game's documentation (like jQuery, DocStrap or boxbox)</td>
+</tr>
+<tr>
+<td style="text-align:center">68K</td>
+<td><code>./blasteroids/js/game</code></td>
+<td style="text-align:center">js</td>
+<td>javascript files used in the game (like the entities within the game)</td>
+</tr>
+<tr>
+<td style="text-align:center">48K</td>
+<td><code>./blasteroids/js/lib</code></td>
+<td style="text-align:center">js</td>
+<td>core utility libraries used by the game or the game's documentation</td>
+</tr>
+<tr>
+<td style="text-align:center">20K</td>
+<td><code>./blasteroids/js/conf</code></td>
+<td style="text-align:center">js</td>
+<td>configuration js files</td>
+</tr>
+<tr>
+<td style="text-align:center">992K</td>
+<td><code>./blasteroids/js</code></td>
+<td style="text-align:center">js</td>
+<td>javascript files used in the game or the game's documentation</td>
+</tr>
+<tr>
+<td style="text-align:center">3.0M</td>
+<td><code>./blasteroids/sounds</code></td>
+<td style="text-align:center">wav</td>
+<td>sounds used within the game</td>
+</tr>
+<tr>
+<td style="text-align:center">8.0K</td>
+<td><code>./blasteroids/static</code></td>
+<td style="text-align:center">-</td>
+<td>just that, noise... can we remove?  required by jsdoc?</td>
+</tr>
+<tr>
+<td style="text-align:center">100K</td>
+<td><code>./blasteroids/templates</code></td>
+<td style="text-align:center">tmpl</td>
+<td>template files for the documentation ui (used during the JSDoc publish action)</td>
+</tr>
+<tr>
+<td style="text-align:center">32K</td>
+<td><code>./blasteroids/tutorials</code></td>
+<td style="text-align:center">markdown</td>
+<td>markdown documents that correspond to  the tutorials in the game's documentation,  such as How To Play, or even the Code of Conduct</td>
+</tr>
+<tr>
+<td style="text-align:center">220K</td>
+<td><code>./blasteroids/fonts</code></td>
+<td style="text-align:center">eot/svg/ttf/woff/woff2</td>
+<td>fonts used by the game or the game's documentation</td>
+</tr>
+<tr>
+<td style="text-align:center">6.2M (total)</td>
+<td><code>./blasteroids</code></td>
+<td style="text-align:center">*</td>
+<td>all of the games files</td>
+</tr>
+</tbody>
+</table>
+<h2>How to Play</h2>
+<div class="well well-sm">For details on how to play <code>Blasteroids</code>, see <a href="tutorial-HOW_TO_PLAY.html">How to Play</a>.</div>
+<h2>Development and design</h2>
+<div class="well well-sm">This version of <code>Blasteroids</code> is in no way related to or derived from Ed Rotberg's 1987's Blasteroids.</div>
+<div class="well well-sm"><code>Blasteroids</code> uses raster graphics instead of vectors.</div>
+<div class="well well-sm"><code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Both its source code and documentation are <u>FREE</u> to everyone.</div>
+<h5>Reception</h5>
+<div class="well well-sm">To be determined. ;-)</div>
+<h2>Attributions</h2>
+<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="NoiseForFun.com">NoiseForFun.com</a>. Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux">Space Shooter Redux</a> assets library from <a href="www.kenney.nl">Kenney.nl</a>.  Please visit and donate! :-)</div>
+<h2>For More Information</h2>
+<ul>
+<li>TODO.</li>
+<li>TODO.</li>
+<li>Post questions tagged <code>blasteroids</code> to <a href="http://stackoverflow.com/questions/tagged/blasteroids">Stack<br>
+Overflow</a>.</li>
+</ul>
+<h2>License</h2>
+<div class="well well-sm"><code>Blasteroids</code> is <strong>free</strong> software, licensed under the MIT License(the "License"). Commercial and non-commercial use are permitted in compliance with the License.</div>
+<div class="well well-sm" style="font-family: monospace;">Copyright (c) 2017-present by Richard Franks Jr richardfranksjr@hotmail.com and the contributors to Blasteroids. All rights reserved.</div>
+<p>The source code for <code>Blasteroids</code> is available at <a href="https://github.com/rfranks/blasteroids">GitHub</a>.</p>
+<p><code>Blasteroids</code> is distributed under a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Permissions</th>
+<th style="text-align:left">Conditions</th>
+<th style="text-align:left">Limitations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><span class="label label-success" data-balloon="This software and derivatives may be used for commercial purposes.">Commercial use</span></td>
+<td style="text-align:left"><span class="label label-primary" data-balloon="A copy of the license and copyright notice must be included with the software.">License and copyright notice</span></td>
+<td style="text-align:left"><span class="label label-danger" data-balloon="This license includes a limitation of liability.">Liability</span></td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="label label-success" data-balloon="This software may be distributed.">Distribution</span></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><span class="label label-danger" data-balloon="The license explicitly states that it does NOT provide any warranty.">Warranty</span></td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="label label-success" data-balloon="This software may be modified.">Modification</span></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="label label-success" data-balloon="This software may be used and modified in private.">Private use</span></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"> </td>
+</tr>
+</tbody>
+</table>
+<h3>MIT License</h3>
+<div class="well well-sm" style="font-family: monospace;">
+	<p>
+		Copyright (c) 2017-present Richard Franks Jr richardfranksjr@hotmail.com
+	</p>
+	<p>
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+	</p>
+	<p>
+		The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
+	</p>
+	<p>
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		SOFTWARE.
+	</p>
+</div>
+<h2>Code of Conduct</h2>
+<div class="well well-sm">
+	Please note that this project is released with a Contributor <a href="tutorial-CODE_OF_CONDUCT.html">Code of Conduct</a>.  
+	By participating in this project you agree to abide by its terms.
+</div></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+		<footer>
+			
+			
+				<span class="copyright">
+					Blasteroids Copyright © 2017-present The contributors to the Blasteroids project.
+				</span>
+			
+			<span class="jsdoc-message">
+				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a>
+				
+					on Sun Mar 31st 2019
+				
+				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+			</span>
+		</footer>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<!--  -->
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	<!--  -->
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<script src="/js/public-lib/docstrap.min.js"></script>
+<script src="/js/toc.js"></script>
+
+<div class="modal fade" id="blasteroidsGame">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Blasteroids</h4>
+          </div>
+          <div class="modal-body">
+          	<iframe src="/"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+	<script type="text/javascript" src="/js/public-lib/lunr.min.js"></script>
+    <script type="text/javascript" src="/js/lunr.search.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

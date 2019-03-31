@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Blasteroids Source: game/entities.js</title>
+
+	<link type="text/css" rel="stylesheet" href="/css/animate.css">
+	<link type="text/css" rel="stylesheet" href="/css/balloon.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/site.paper.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/skin.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script src="/js/public-lib/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="animated lightSpeedIn navbar-brand" href="index.html"><img class="animated tada infinite branding-logo" src="../images/player/player.png"
+		alt="logo"/>Blasteroids</a>
+		<button class="animated zoomIn navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+        
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+        
+	</div>
+
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Namespaces<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Audio.html">Audio</a></li><li><a href="Blasteroids.html">Blasteroids</a></li><li><a href="boxbox.html">boxbox</a></li><li><a href="BoxBoxUtil.html">BoxBoxUtil</a></li><li><a href="Log.html">Log</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Classes<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Entity.html">Entity</a></li><li><a href="World.html">World</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Mixins<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Tutorials<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-CODE_OF_CONDUCT.html">Code of Conduct</a></li><li><a href="tutorial-CONTRIBUTING.html">How to Contribute</a></li><li><a href="tutorial-HOW_TO_PLAY.html">How to Play</a></li><li><a href="tutorial-LICENSE.html">License</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Global<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+
+</div>
+</div>
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	<!-- 
+	<div class="col-md-12">
+	
+	 -->	<div id="main">
+			
+
+		<h1 class="page-title">Source: game/entities.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">Blasteroids.initEntities = function () {
+    //get the origin, which is used for placing entities
+    var origin = Blasteroids.world.center();
+
+    /**
+     * @mixin Blasteroids.blast
+     * @mixes boxbox.entityEvents
+     * @see {@link Entity} for further information
+     * @desc A mixin that bestows the characteristics of a ship's laser blast to an {@link Entity}.
+     * @mixes BoxBoxUtil.angleImpulse
+     * @property {string} name &lt;code>'blast'&lt;/code>
+     * @property {string} shape &lt;code>'square'&lt;/code>
+     * @property {boolean} destroyed &lt;code>false&lt;/code>
+     * @property {boolean} bullet &lt;code>true&lt;/code>
+     * @property {string} image &lt;code>'images/lasers/laserBlue01.png'&lt;/code>
+     * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+     * @property {string} soundEffect &lt;code>'sounds/NFF-laser.wav'&lt;/code>
+     * @property {number} width &lt;code>0.25&lt;/code>
+     * @property {number} height &lt;code>1&lt;/code>
+     * @property {number} restitution &lt;code>0&lt;/code>
+     * @property {boolean} fixedRotation &lt;code>true&lt;/code>
+     * @property {string} $sourceName &lt;code>undefined&lt;/code>
+     */
+    Blasteroids.blast = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'blast',
+            shape: 'square',
+            bullet: true,
+            image: 'images/lasers/laserBlue01.png',
+            imageStretchToFit: true,
+            soundEffect: 'sounds/NFF-laser.wav',
+            width: 0.25,
+            height: 1,
+            restitution: 0,
+            fixedRotation: true,
+
+            $sourceName: undefined,
+
+            /**
+             * Handle when this laser blast is impacted by another laser blast coming from an &lt;u>enemy&lt;/u> ship, or the &lt;u>player's&lt;/u> ship.
+             * @memberOf! Blasteroids.blast
+             * @this blast
+             * @param {Entity} blast the blast that impacted us
+             */
+            $onBlastImpact: function (blast) {
+                this.destroyed = blast.destroyed = true;
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onImpact}
+             * @memberOf! Blasteroids.blast
+             * @instance
+             */
+            onImpact: function (entity, normalForce, tangentialForce) {
+                Log.info(this.name().toUpperCase() + ' collided with ' + entity.name().toUpperCase() + '!');
+                this.destroyed = true;
+                entity.$onBlastImpact &amp;&amp; entity.$onBlastImpact(this);
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.blast
+             * @instance
+             */
+            onTick: function () {
+                if (this.destroyed) {
+                    this._ops.width = 1;
+                    this._ops.height = 1;
+
+                    //show a laser blast impact strike quickly and then destroy
+                    this.image('./images/lasers/' + Blasteroids.options.laserImpacts[Blasteroids.laserIndex || 0]);
+                    this._ops.active = false;
+
+                    setTimeout($.proxy(function () {
+                        this.destroy();
+                    }, this), 30);
+                } else if (BoxBoxUtil.isOffCanvas(this, Blasteroids.world)) {
+                    this.destroy();
+                }
+            }
+        });
+
+    /**
+     * @mixin Blasteroids.blasteroid
+     * @mixes boxbox.entityEvents
+     * @desc A mixin that bestows the characteristics of a blasteroid to an {@link Entity entity}.
+     * @see {@link Entity} for further information
+     * @mixes BoxBoxUtil.angleImpulse
+     * @property {string} name &lt;code>'blasteroid'&lt;/code>
+     * @property {string} shape &lt;code>'circle'&lt;/code>
+     * @property {number} radius &lt;code>3&lt;/code>
+     * @property {string} image &lt;code>'images/meteorBig.png'&lt;/code>
+     * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+     * @property {number} density &lt;code>4&lt;/code>
+     * @property {number} x &lt;code>15&lt;/code>
+     * @property {number} y &lt;code>15&lt;/code>
+     * @property {number} angle &lt;code>0&lt;/code>
+     * @property {number} maxVelocityX &lt;code>10&lt;/code>
+     * @property {number} maxVelocityY &lt;code>10&lt;/code>
+     * @property {number} impulse &lt;code>0&lt;/code>
+     * @property {boolean} bullet &lt;code>true&lt;/code>
+     */
+    Blasteroids.blasteroid = $.extend({}, BoxBoxUtil.angleImpulse, {
+        name: 'blasteroid',
+        shape: 'circle',
+        radius: 3,
+        image: 'images/meteors/meteorBig.png',
+        imageStretchToFit: true,
+        density: 4,
+        x: 15,
+        y: 15,
+        angle: 0,
+        maxVelocityX: 10,
+        maxVelocityY: 10,
+        impulse: 0,
+        bullet: true,
+
+        /**
+         * Event handler called when this blasteroid is impacted by a laser blast.  The laser blast may be coming from
+         * an &lt;u>enemy&lt;/u> ship, or the &lt;u>player's&lt;/u> ship.
+         * @memberOf! Blasteroids.blasteroid
+         * @this blasteroid
+         * @param {Entity} blast the blast that impacted us
+         */
+        $onBlastImpact: function (blast) {
+            blast.destroyed = this.destroyed = true;
+        },
+
+        /**
+         * Splits or destroys this blasteroid.  Larger blasteroids are split into two, while smaller ones are destroyed.
+         * @this blasteroid
+         * @memberOf! Blasteroids.blasteroid
+         */
+        $splitOrDestroy: function (radius) {
+            radius = radius || this._ops.radius || 0;
+
+            var i = 0,
+                blasteroidCount = 2,
+                newRadius = radius - 1,
+                radiiDistance = radius + (newRadius * 1.5),
+                currentAngle = this.$angle(),
+                currentPosition = this.position(),
+                angles = [currentAngle - 45, currentAngle + 45];
+
+            if (blasteroidCount &amp;&amp; (newRadius > 0)) {
+                for (; i &lt; blasteroidCount; i++) {
+                    var newAngle = angles[i],
+                        rads = BoxBoxUtil.angleRads(newAngle),
+                        offsetX = radiiDistance * Math.cos(rads),
+                        offsetY = radiiDistance * Math.sin(rads);
+
+                    var newBlasteroid = Blasteroids.world.createEntity(Blasteroids.blasteroid, {
+                        image: 'images/meteors/' + Blasteroids.options.meteors[this.meteorIndex || 0],
+                        radius: newRadius,
+                        x: (currentPosition.x + offsetX),
+                        y: (currentPosition.y - offsetY),
+                        angle: newAngle
+                    });
+
+                    //keep same meteor image for child blasteroids
+                    newBlasteroid.meteorIndex = this.meteorIndex;
+
+                    //initialize the difficulty level via number of shots to destroy
+                    newBlasteroid.shotsToDestroy = Blasteroids.options.blasteroidShotsToDestroy;
+
+
+                    Blasteroids.blasteroidsRemaining += 1;
+
+                    Log.info('BLASTEROID size #' + newRadius + ' initialized. ' + Blasteroids.blasteroidsRemaining + ' remaining...');
+                }
+            }
+        },
+
+        /**
+         * @see {@link boxbox.entityEvents#onImpact}
+         * @memberOf! Blasteroids.blasteroid
+         * @instance
+         */
+        onImpact: function (entity, normalForce, tangentialForce) {
+            var entityName = entity.name(),
+                sourceName = entity.$sourceName;
+
+            if (entityName === 'player') {
+                entity.$onBlasteroidImpact(this);
+            } else if (entityName === 'enemy') {
+                entity.$onBlasteroidImpact(this);
+            } else if (entityName === 'blast') {
+                this.shotsToDestroy -= 1;
+
+                if (this.shotsToDestroy > 0) {
+                    Audio.play('sounds/NFF-ping.wav');
+                    if (sourceName === 'player') {
+                        Blasteroids.addScore(50);
+                    }
+                } else {
+                    this.destroyedByBlast = entity;
+                    this.forceDestroy = true;
+                    this.$onBlastImpact(entity);
+                }
+            } else if (entityName === 'blasteroid') {
+                Audio.play('sounds/NFF-ping.wav');
+            }
+
+            Log.info(this.name().toUpperCase() + ' collided with ' + entityName.toUpperCase() + '!');
+        },
+
+        /**
+         * @see {@link boxbox.entityEvents#onTick}
+         * @memberOf! Blasteroids.blasteroid
+         * @instance
+         */
+        onTick: function () {
+            if (this.destroyed &amp;&amp; !this.exploded &amp;&amp; (this.forceDestroy || !this.shotsToDestroy)) {
+                var previousRadius = this._ops.radius; //show a blasteroid explosion quickly and then destroy
+                this.image('./images/effects/smokecloud.png');
+                this._ops.radius = 1.5;
+                this._ops.active = false;
+                this.exploded = true;
+
+                setTimeout($.proxy(function () {
+                    this.destroy();
+                }, this), 225);
+
+                if (this.destroyedByBlast) {
+                    Audio.play('sounds/NFF-smash.wav');
+
+                    //split if we are large enough, otherwise destroy ourselves
+                    this.$splitOrDestroy(previousRadius);
+
+                    //if player shot us, then award points
+                    if (this.destroyedByBlast.$sourceName === 'player') {
+                        //add more points for higher level and for smaller blasteroids
+                        Blasteroids.addScore(Blasteroids.level *
+                            Blasteroids.options.blasteroidShotsToDestroy *
+                            Math.round((Blasteroids.options.maxBlasteroidScore / Math.max(this._ops.radius, 1)) / 10));
+                    }
+                }
+
+                Blasteroids.blasteroidsRemaining -= 1;
+                Log.info('BLASTEROID destroyed! ' + Blasteroids.blasteroidsRemaining + ' remaining...');
+
+                //if no more blasteroids, and we were destroyed by blast, then start a new level
+                Blasteroids.blasteroidsRemaining &lt;= 0 &amp;&amp; this.destroyedByBlast &amp;&amp; Blasteroids.newLevel();
+            }
+        },
+
+        /**
+         * @see {@link boxbox.entityEvents#onRender}
+         * @memberOf! Blasteroids.blasteroid
+         * @instance
+         */
+        onRender: function () {
+            if (!this.impulsed) {
+                this.$impulse(Blasteroids.options.maxBlasteroidImpulse);
+                this.impulsed = true;
+            }
+
+            BoxBoxUtil.wrapPosition(this, Blasteroids.world);
+        }
+    });
+
+
+    /**
+     * @mixin Blasteroids.enemy
+     * @mixes boxbox.entityEvents
+     * @desc A mixin that bestows the characteristics of an &lt;u>enemy&lt;/u> ship to an {@link Entity entity}.
+     * @extends Entity
+     * @mixes BoxBoxUtil.angleImpulse
+     * @property {string} name &lt;code>'enemy'&lt;/code>
+     * @property {string} shape &lt;code>'circle'&lt;/code>
+     * @property {number} radius &lt;code>Blasteroids.options.shipRadius&lt;/code>
+     * @property {number} rotation &lt;code>180&lt;/code>
+     * @property {string} image &lt;code>'images/enemyBlack1.png'&lt;/code>
+     * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+     * @property {number} density &lt;code>4&lt;/code>
+     * @property {number} angle &lt;code>0&lt;/code>
+     * @property {number} impulse &lt;code>0&lt;/code>
+     * @property {number} restitution &lt;code>0&lt;/code>
+     * @property {boolean} fixedRotation &lt;code>true&lt;/code>
+     * @property {boolean} bullet &lt;code>true&lt;/code>
+     */
+    Blasteroids.enemy = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'enemy',
+            shape: 'circle',
+            radius: Blasteroids.options.shipRadius,
+            rotation: 180,
+            image: 'images/enemies/enemyBlack1.png',
+            imageStretchToFit: true,
+            density: 4,
+            angle: 0,
+            impulse: 0,
+            restitution: 0,
+            fixedRotation: true,
+            bullet: true,
+
+            /**
+             * Fires this enemy ship's laser.
+             * @memberOf! Blasteroids.enemy
+             * @instance
+             */
+            $fireBlast: function () {
+                if (this.destroyed) {
+                    return;
+                }
+
+                var position = this.position(),
+                    rads = this.$polarRadians(),
+                    blast = Blasteroids.world.createEntity(Blasteroids.blast, {
+                        image: 'images/lasers/' + Blasteroids.options.lasers[Blasteroids.laserIndex || 0],
+                        $sourceName: this.name()
+                    }),
+                    blastHeightOffset = blast._ops.height * .75,
+                    shipAngle = this.$angle();
+
+                var blastOffsetX = (this._ops.radius + blastHeightOffset) * Math.cos(rads),
+                    blastOffsetY = (this._ops.radius + blastHeightOffset) * Math.sin(rads);
+
+                if (Log.isDebugEnabled()) {
+                    Log.trace('blastOffsetX: ' + blastOffsetX + ", blastOffsetY: " + blastOffsetY + ", polar angle: " + this.$polarAngle() + ", angle: " + this.$angle());
+                    Log.trace('playerX: ' + position.x + ", playerY: " + position.y);
+                    Log.trace('blastX: ' + (position.x + blastOffsetX) + ", blastY: " + (position.y + blastOffsetY));
+                }
+
+                blast.position({
+                    x: (position.x - blastOffsetX),
+                    y: (position.y + blastOffsetY)
+                });
+
+
+                var blastAngle = Math.floor(BoxBoxUtil.randomInterval(shipAngle - 60, shipAngle + 60)) - 180;
+                blast.$angle(blastAngle);
+                blast.$impulse(Blasteroids.options.blastImpulse);
+
+                Audio.play('sounds/NFF-laser.wav');
+
+                //randomly fire enemy blast again
+                Blasteroids.enemyShip.blastTimeout = setTimeout($.proxy(function () {
+                    !this.destroyed &amp;&amp; this.$fireBlast();
+                }, this), Math.floor(Math.random() * 1000) + 1000);
+            },
+
+            /**
+             * Event handler for when this enemy ship impacts a blast entity.
+             * @param {Entity} blast the blast being impacted
+             * @memberOf! Blasteroids.enemy
+             * @instance
+             */
+            $onBlastImpact: function (blast) {
+                if (!this.exploded &amp;&amp; !this.destroyed) {
+                    if (blast.$sourceName !== this.name()) {
+                        this.destroyed = blast.destroyed = true;
+
+                        Blasteroids.enemyShip.blastTimeout &amp;&amp; clearTimeout(Blasteroids.enemyShip.blastTimeout);
+
+                        blast.$sourceName === 'player' &amp;&amp; Blasteroids.addScore(Blasteroids.options.enemyShipBonus);
+                    } else {
+                        blast.destroyed = true;
+                    }
+                }
+            },
+
+
+            /**
+             * Event handler for when this enemy ship impacts a blasteroid entity.
+             * @param {Entity} blasteroid the blasteroid being impacted
+             * @memberOf! Blasteroids.enemy
+             * @instance
+             */
+            $onBlasteroidImpact: function (blasteroid) {
+                this.destroyed = true;
+
+                Blasteroids.enemyShip.blastTimeout &amp;&amp; clearTimeout(Blasteroids.enemyShip.blastTimeout);
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onImpact}
+             * @memberOf! Blasteroids.enemy
+             * @instance
+             */
+            onImpact: function (entity, force) {
+                var entityName = entity.name();
+
+                if (entityName === 'player') {
+                    !entity.shielded &amp;&amp; (entity.destroyed = true);
+                    this.destroyed = true;
+                } else if (entityName === 'blast') {
+                    this.$onBlastImpact(entity);
+                } else if (entityName === 'blasteroid') {
+                    this.$onBlasteroidImpact(entity);
+                } else {
+                    this.destroyed = true;
+                }
+
+                Log.info(this.name().toUpperCase() + ' collided with ' + entityName.toUpperCase() + '!');
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.enemy
+             * @instance
+             */
+            onTick: function () {
+                if (this.destroyed &amp;&amp; !this.exploded) {
+                    //show a ship explosion quickly and then destroy
+                    this.image('./images/effects/ex2.png');
+                    this._ops.radius = 2.5;
+                    this._ops.active = false;
+                    this.exploded = true;
+
+                    setTimeout($.proxy(function () {
+                        this.destroy();
+                    }, this), 225);
+
+                    Audio.play('sounds/NFF-enemydeath.wav');
+
+                    //respawn enemy ship at random time between 20 - 40secs
+                    setTimeout($.proxy(function () {
+                        Blasteroids.spawnEnemyShip();
+                    }, this), Math.floor(Math.random() * 20000) + 20000);
+
+
+                    Log.info('ENEMY ship destroyed!');
+                }
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onRender}
+             * @memberOf! Blasteroids.enemy
+             * @instance
+             */
+            onRender: function () {
+                BoxBoxUtil.wrapPosition(this, Blasteroids.world);
+            }
+        });
+
+    /**
+     * @mixin Blasteroids.powerup
+     * @mixes boxbox.entityEvents
+     * @desc A mixin that bestows the characteristics of a powerup to an {@link Entity entity}.
+     * @property {string} name &lt;code>'powerup'&lt;/code>
+     * @property {string} shape &lt;code>'square'&lt;/code>
+     * @property {string} type &lt;code>'static'&lt;/code>
+     * @property {boolean} active &lt;code>false&lt;/code>
+     * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+     * @property {number} height &lt;code>1.5&lt;/code>
+     * @property {number} width &lt;code>1.5&lt;/code>
+     */
+    Blasteroids.powerup = $.extend({},
+        {
+            name: 'powerup',
+            shape: 'square',
+            type: 'static',
+            active: false,
+            imageStretchToFit: true,
+            height: 1.5,
+            width: 1.5,
+
+            /**
+             * Called when the powerup is "collected."  Default behavior is a &lt;code>no-op&lt;/code>.
+             * @function $onCollect
+             * @memberOf! Blasteroids.powerup
+             * @instance
+             * @param {Entity} entity the entity that is doing the "collecting"
+             */
+            $onCollect: $.noop,
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.powerup
+             * @instance
+             */
+            onTick: function () {
+                if (!this.destroyed) {
+                    var i = 0,
+                        heightOffset = this._ops.height / 2.0,
+                        widthOffset = this._ops.width / 2.0,
+                        position = this.position(),
+                        positionEntities = Blasteroids.world.find(position.x - widthOffset, position.y - heightOffset, position.x + widthOffset, position.y + heightOffset);
+
+                    //did someone touch us?
+                    if (positionEntities.length > 0) {
+                        for (; i &lt; positionEntities.length; i++) {
+                            var entity = positionEntities[i];
+
+                            if (entity.name() === 'player') {
+                                //play an alert sound
+                                Audio.play('sounds/NFF-powerup.wav');
+
+                                this.$onCollect &amp;&amp; this.$onCollect(entity);
+
+                                this.destroyed = true;
+
+                                //spawn powerup at random time between 20 - 40secs
+                                setTimeout(function () {
+                                    Blasteroids.spawnPowerup();
+                                }, Math.floor(Math.random() * 20000) + 20000);
+                            }
+                        }
+                    }
+                }
+
+                (this.destroyed || BoxBoxUtil.isOffCanvas(this, Blasteroids.world)) &amp;&amp; this.destroy();
+            }
+        });
+
+    /**
+     * @mixin Blasteroids.ship
+     * @mixes boxbox.entityEvents
+     * @desc A mixin that bestows the characteristics of a player's ship to an {@link Entity entity}.
+     * @property {string} name &lt;code>'player'&lt;/code>
+     * @property {string} shape &lt;code>'circle'&lt;/code>
+     * @property {number} radius &lt;code>Blasteroids.options.shipRadius&lt;/code>
+     * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+     * @property {number} density &lt;code>4&lt;/code>
+     * @property {number} x &lt;code>origin.x&lt;/code>
+     * @property {number} y &lt;code>origin.y&lt;/code>
+     * @property {number} angle &lt;code>0&lt;/code>
+     * @property {number} impulse &lt;code>0&lt;/code>
+     * @property {number} restitution &lt;code>0&lt;/code>
+     * @property {boolean} fixedRotation &lt;code>true&lt;/code>
+     * @property {boolean} bullet &lt;code>true&lt;/code>
+     * @property {boolean} shielded &lt;code>false&lt;/code>
+     */
+    Blasteroids.ship = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'player',
+            shape: 'circle',
+            radius: Blasteroids.options.shipRadius,
+            image: 'images/player/player.png',
+            imageStretchToFit: true,
+            density: 4,
+            x: origin.x,
+            y: origin.y,
+            angle: 0,
+            impulse: 0,
+            restitution: 0,
+            fixedRotation: true,
+            bullet: true,
+
+            /**
+             * Gets/sets the number of blasts that are fired upon each trigger press (max of 3).
+             * @param {number} [numOfBlasts] the number of blasts to fire each time
+             * @memberOf! Blasteroids.ship
+             */
+            $blastsToFire: function (numOfBlasts) {
+                //default to 1
+                this.blastsToFire == undefined &amp;&amp; (this.blastsToFire = 1);
+
+                //update, if necessary, restricting to 3 or less
+                numOfBlasts != undefined &amp;&amp; (this.blastsToFire = Math.min(3, numOfBlasts));
+
+                return this.blastsToFire;
+            },
+
+            /**
+             * Fires this ship's laser, if it is able to be fired.
+             * @param {boolean} [ignoreRateLimits] flag indicating whether or not to remove firing limits (enabled by default)
+             * @memberOf! Blasteroids.ship
+             */
+            $fireBlast: function () {
+                if (this.canFireBlast) {
+                    var position = this.position(),
+                        rads = this.$polarRadians(),
+                        blast = Blasteroids.world.createEntity(Blasteroids.blast, {
+                            image: 'images/lasers/' + Blasteroids.options.lasers[Blasteroids.laserIndex || 0],
+                            $sourceName: this.name()
+                        }),
+                        blastHeightOffset = blast._ops.height * .75;
+
+                    var blastOffsetX = (this._ops.radius + blastHeightOffset) * Math.cos(rads),
+                        blastOffsetY = (this._ops.radius + blastHeightOffset) * Math.sin(rads);
+
+                    blast.position({
+                        x: (position.x + blastOffsetX),
+                        y: (position.y - blastOffsetY)
+                    });
+
+                    blast.$angle(this.$angle());
+                    blast.$impulse(Blasteroids.options.blastImpulse);
+
+                    Audio.play('sounds/NFF-laser.wav');
+                }
+            },
+
+
+            /**
+             * Fires the ship's thruster and increases the ship's velocity by &lt;code>Blasteroids.options.velocityStep&lt;/code>.
+             * @memberOf! Blasteroids.ship
+             */
+            $fireThrust: function () {
+                this.$force(this.$force() + Blasteroids.options.velocityStep);
+                setTimeout($.proxy(function () {
+                    //remove the force being applied to the ship
+                    this.$force(0);
+                }, this), 350);
+
+                Log.isDebugEnabled() &amp;&amp; Log.debug('Ship Force: ' + this.$force());
+
+                var position = this.position(),
+                    rads = this.$polarRadians(),
+                    shipThrust = Blasteroids.world.createEntity(Blasteroids.shipThrust, {$sourceName: this.name()}),
+                    heightOffset = shipThrust._ops.height * .75,
+                    offsetX = (this._ops.radius + heightOffset) * Math.cos(rads),
+                    offsetY = (this._ops.radius + heightOffset) * Math.sin(rads);
+
+                this.shipThrust = shipThrust;
+
+                if (Log.isDebugEnabled()) {
+                    Log.trace('offsetX: ' + offsetX + ", offsetY: " + offsetY + ", polar angle: " + this.$polarAngle() + ", angle: " + this.$angle());
+                    Log.trace('playerX: ' + position.x + ", playerY: " + position.y);
+                    Log.trace('thrustX: ' + (position.x + offsetX) + ", thrustY: " + (position.y + offsetY));
+                }
+
+
+                shipThrust.position({
+                    x: (position.x - offsetX),
+                    y: (position.y + offsetY)
+                });
+
+                shipThrust.$angle(this.$angle() - 180);
+                shipThrust.$impulse(this.$impulse());
+
+                setTimeout($.proxy(function () {
+                    this.$stopThrust();
+                }, this), 225);
+
+                Audio.play('sounds/NFF-thrust-3.wav');
+            },
+
+            /**
+             * Destroys the currently firing ship thrust entity.
+             * @memberOf! Blasteroids.ship
+             */
+            $stopThrust: function () {
+                this.shipThrust &amp;&amp; (this.shipThrust.destroyed = true);
+            },
+
+            /**
+             * Event handler for when this ship impacts a blast entity.
+             * @param {Entity} blast the blast being impacted
+             * @memberOf! Blasteroids.ship
+             */
+            $onBlastImpact: function (blast) {
+                if (blast.$sourceName !== this.name()) {
+                    !this.shielded &amp;&amp; (this.destroyed = true);
+                } else {
+                    blast.destroyed = true;
+                }
+            },
+
+            /**
+             * Event handler for when this ship impacts a blasteroid entity.
+             * @param {Entity} blasteroid the blasteroid being impacted
+             * @this ship
+             * @memberOf! Blasteroids.ship
+             */
+            $onBlasteroidImpact: function (blasteroid) {
+                !this.shielded &amp;&amp; (this.destroyed = true);
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onKeyDown}
+             * @memberOf! Blasteroids.ship
+             * @instance
+             */
+            onKeyDown: function (e) {
+                if (!this.exploded) {
+                    this.$stopThrust();
+
+                    if (e.keyCode == 38) {
+                        //up - fire ship thruster
+                        this.$fireThrust();
+                    } else if (e.keyCode == 37) {
+                        this.$angle(this.$angle() - Blasteroids.options.angleStep);
+
+                        if (!Blasteroids.shipIndex) {
+                            this.image('images/player/playerLeft.png');
+
+                            setTimeout($.proxy(function () {
+                                !this.exploded &amp;&amp; this.image('images/player/player.png');
+                            }, this), 375);
+                        }
+                    } else if (e.keyCode == 39) {
+                        this.$angle(this.$angle() + Blasteroids.options.angleStep);
+
+                        if (!Blasteroids.shipIndex) {
+                            this.image('images/player/playerRight.png');
+
+                            setTimeout($.proxy(function () {
+                                !this.exploded &amp;&amp; this.image('images/player/player.png');
+                            }, this), 375);
+                        }
+                    } else if (e.keyCode == 32) {
+                        //space - fire modified blast
+                        var ship = this;
+
+                        for (var i = 0; i &lt; this.$blastsToFire(); i++) {
+                            var setBlastTimeout = (i === (ship.$blastsToFire() - 1));
+
+                            //timeout so that there is a delay between each blast
+                            setTimeout(function () {
+                                ship.$fireBlast();
+
+                                setBlastTimeout &amp;&amp; (ship.canFireBlast = false);
+                            }, 100 * i);
+
+                            setBlastTimeout &amp;&amp;
+                            (ship.canFireBlastTO = setTimeout(function () {
+                                ship.canFireBlast = true;
+                            }, (100 * i) + ship.fireRate));
+                        }
+                    } else if (e.keyCode == 68) {
+                        var position = this.position();
+                        if (Log.isDebugEnabled()) {
+                            Log.trace('playerX: ' + position.x + ", playerY: " + position.y);
+                            Log.trace('player polar angle: ' + this.$polarAngle() + ', player angle: ' + this.$angle());
+                            Log.trace('player impulse: ' + this.$impulse());
+                        }
+                    }
+                }
+
+                e.preventDefault();
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.ship
+             * @instance
+             */
+            onTick: function () {
+                if (this.shipThrust &amp;&amp; (this.destroyed || this.shipThrust.destroyed)) {
+                    this.shipThrust.destroy();
+                    this.shipThrust = null;
+                }
+
+                if (this.destroyed &amp;&amp; !this.exploded) {
+                    //show a ship explosion quickly and then destroy
+                    this.image('./images/effects/ex2.png');
+                    this._ops.radius = 2.5;
+                    this._ops.active = false;
+                    this.exploded = true;
+
+                    setTimeout($.proxy(function () {
+                        this.destroy();
+                    }, this), 225);
+
+                    Audio.play('sounds/NFF-player-death-2.wav');
+
+                    Blasteroids.takeLife();
+
+                    Log.info('PLAYER ship destroyed!');
+                }
+            },
+
+            /**
+             * @see {@link boxbox.entityEvents#onRender}
+             * @memberOf! Blasteroids.ship
+             * @instance
+             */
+            onRender: function () {
+                BoxBoxUtil.wrapPosition(this, Blasteroids.world);
+            }
+        });
+
+    Blasteroids.shipThrust = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'shipThrust',
+            shape: 'square',
+            image: 'images/effects/thrust.png',
+            active: false,
+            imageStretchToFit: true,
+            width: .5,
+            height: 2,
+            fixedRotation: true,
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.shipThrust
+             * @instance
+             */
+            onTick: function () {
+                if (this.destroyed || BoxBoxUtil.isOffCanvas(this, Blasteroids.world)) {
+                    this.destroy();
+                }
+            }
+        });
+
+    /**
+     * @mixin Blasteroids.weaponUpgrade
+     * @mixes boxbox.entityEvents
+     * @desc A mixin that bestows the characteristics of a weapon upgrade to an {@link Entity entity}.
+     * @property {string} name &lt;code>'weaponUpgrade'&lt;/code>
+     * @property {string} shape &lt;code>'square'&lt;/code>
+     * @property {string} type &lt;code>'static'&lt;/code>
+     * @property {boolean} active &lt;code>false&lt;/code>
+     * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+     * @property {number} height &lt;code>1.5&lt;/code>
+     * @property {number} width &lt;code>1.5&lt;/code>
+     */
+    Blasteroids.weaponUpgrade = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'weaponUpgrade',
+            shape: 'square',
+            type: 'static',
+            active: false,
+            imageStretchToFit: true,
+            height: 1.5,
+            width: 1.5,
+
+            /**
+             * Called when the powerup is "collected."  Default behavior is a &lt;code>no-op&lt;/code>.
+             * @function $onCollect
+             * @memberOf! Blasteroids.powerup
+             * @instance
+             * @param {Entity} entity the entity that is doing the "collecting"
+             */
+            $onCollect: $.noop,
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.powerup
+             * @instance
+             */
+            onTick: function () {
+                //rotate us
+                this.$angle((this.$angle() + 5) % 360);
+
+                if (!this.destroyed) {
+                    var i = 0,
+                        heightOffset = this._ops.height / 2.0,
+                        widthOffset = this._ops.width / 2.0,
+                        position = this.position(),
+                        positionEntities = Blasteroids.world.find(
+                            position.x - widthOffset,
+                            position.y - heightOffset,
+                            position.x + widthOffset,
+                            position.y + heightOffset
+                        );
+
+                    //did someone touch us?
+                    if (positionEntities.length > 0) {
+                        for (; i &lt; positionEntities.length; i++) {
+                            var entity = positionEntities[i];
+
+                            if (entity.name() === 'player') {
+                                //play an alert sound
+                                Audio.play('sounds/NFF-weapon-upgrade.wav');
+
+                                //collect the power up
+                                this.$onCollect &amp;&amp; this.$onCollect(entity);
+
+                                //destroy the powerup
+                                this.destroyed = true;
+
+                                //spawn powerup at random time between 20 - 40secs
+                                setTimeout(function () {
+                                    Blasteroids.spawnWeaponUpgrade();
+                                }, Math.floor(Math.random() * 20000) + 40000);
+                            }
+                        }
+                    }
+                }
+
+                (this.destroyed || BoxBoxUtil.isOffCanvas(this, Blasteroids.world)) &amp;&amp; this.destroy();
+            }
+        });
+
+};
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+		<footer>
+			
+			
+				<span class="copyright">
+					Blasteroids Copyright © 2017-present The contributors to the Blasteroids project.
+				</span>
+			
+			<span class="jsdoc-message">
+				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a>
+				
+					on Sun Mar 31st 2019
+				
+				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+			</span>
+		</footer>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<!--  -->
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<script src="/js/public-lib/docstrap.min.js"></script>
+<script src="/js/toc.js"></script>
+
+<div class="modal fade" id="blasteroidsGame">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Blasteroids</h4>
+          </div>
+          <div class="modal-body">
+          	<iframe src="/"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+	<script type="text/javascript" src="/js/public-lib/lunr.min.js"></script>
+    <script type="text/javascript" src="/js/lunr.search.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

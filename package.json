@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/http-server ./ -o \\ -c-1",
-    "build-doc": "npm install && rm -rf ./doc && ./node_modules/.bin/jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
+    "build-doc": "npm install && rm -rf ./docs && ./node_modules/.bin/jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
     "serve": "npm install && npm run build-doc && ./node_modules/.bin/http-server \"./\" -o \\"
   },
   "bugs": {

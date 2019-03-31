@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Blasteroids Source: conf/options.config.js</title>
+
+	<link type="text/css" rel="stylesheet" href="/css/animate.css">
+	<link type="text/css" rel="stylesheet" href="/css/balloon.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/site.paper.css">
+
+	<link type="text/css" rel="stylesheet" href="/css/doc/skin.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script src="/js/public-lib/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="animated lightSpeedIn navbar-brand" href="index.html"><img class="animated tada infinite branding-logo" src="../images/player/player.png"
+		alt="logo"/>Blasteroids</a>
+		<button class="animated zoomIn navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+        
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+        
+	</div>
+
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Namespaces<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Audio.html">Audio</a></li><li><a href="Blasteroids.html">Blasteroids</a></li><li><a href="boxbox.html">boxbox</a></li><li><a href="BoxBoxUtil.html">BoxBoxUtil</a></li><li><a href="Log.html">Log</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Classes<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Entity.html">Entity</a></li><li><a href="World.html">World</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Mixins<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Tutorials<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-CODE_OF_CONDUCT.html">Code of Conduct</a></li><li><a href="tutorial-CONTRIBUTING.html">How to Contribute</a></li><li><a href="tutorial-HOW_TO_PLAY.html">How to Play</a></li><li><a href="tutorial-LICENSE.html">License</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Global<b class="caret"></b></span>
+				</a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+
+</div>
+</div>
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	<!-- 
+	<div class="col-md-12">
+	
+	 -->	<div id="main">
+			
+
+		<h1 class="page-title">Source: conf/options.config.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/** @property {*} defaultOptions the default set of options for the Blasteroids game
+ *   @property {number} defaultOptions.angleStep the step increment (in degrees) for player ship rotation when rotating left or right&lt;br/>Default: &lt;code>10&lt;/code>
+ *   @property {number} defaultOptions.velocityStep the step increment (in ?) for each firing of the player ship's thruster&lt;br/>Default: &lt;code>50&lt;/code>
+ *   @property {number} defaultOptions.blastImpulse the impulse of laser blasts (applies to &lt;em>both&lt;/em> &lt;u>enemy&lt;/u> and &lt;u>player&lt;/u> ships&lt;br/>Default: &lt;code>20&lt;/code>
+ *   @property {number} defaultOptions.blasteroidShotsToDestroy the number of laser blasts it takes to crack or destroy a blasteroid&lt;br/>Default: &lt;code>2&lt;/code>
+
+ *   @property {number} defaultOptions.minBlasteroids the number of blasteroids to start the first level with&lt;br/>Default: &lt;code>1&lt;/code>
+
+ *   @property {number} defaultOptions.startingLives the number of starting lives given to the player&lt;br/>Default: &lt;code>3&lt;/code>
+ *   @property {number} defaultOptions.startingLevel the game's starting level, higher levels mean more Blasteroids and higher difficulty&lt;br/>Default: &lt;code>1&lt;/code>
+ *   @property {number} defaultOptions.levelWaitPeriod the number of milliseconds to wait between levels&lt;br/>Default: &lt;code>3000&lt;/code>
+ *   @property {number} defaultOptions.shipFireRate the number of milliseconds the player's ship must wait before it can fire and fire again&lt;br/>Default: &lt;code>750&lt;/code>
+ *   @property {number} defaultOptions.shipRadius the radius of the player's ship&lt;br/>Default: &lt;code>0.75&lt;/code>
+ *   @property {boolean} defaultOptions.soundOn turn sounds on/off at the start of the game&lt;br/>Default: &lt;code>true&lt;/code>
+ *   @property {string[]} defaultOptions.backgrounds list of CSS classes that can be used to control the background on the game's canvas element
+ *   @property {string[]} defaultOptions.enemies list of image filenames in &lt;code>/images/&lt;/code> folder to use for enemy ships
+ *   @property {string[]} defaultOptions.lasers list of image filenames in &lt;code>/images/&lt;/code> folder to use for laser blasts
+ *   @property {string[]} defaultOptions.meteors list of image filenames in &lt;code>/images/&lt;/code> folder to use for blasteroids
+ *   @property {string[]} defaultOptions.ships list of image filenames in &lt;code>/images/&lt;/code> folder to use for player ships
+ *   @property {number} defaultOptions.enemyShipBonus number of bonus points awarded when an enemy ship is destroyed by the player&lt;br/>Default: &lt;code>1500&lt;/code>
+ *   @property {number} defaultOptions.extraLifeScore number of points required to earn an extra life/ship&lt;br/>Default: &lt;code>5000&lt;/code>
+ *   @property {number} defaultOptions.playerBlastsToFire the number of blasts the player ship fires each time the spacebar is pressed (max of 3)&lt;br/>Default: &lt;code>1&lt;/code>
+ *   @property {Vector} defaultOptions.gravity x and y components of the force of gravity within the game world&lt;br/>Default: &lt;code>{ x: 0, y: 0 }&lt;/code>
+ *   @property {boolean} defaultOptions.collisionOutlines flag indicating whether or not to show the outlines used during collision detection which can be useful for debugging&lt;br/>Default: &lt;code>false&lt;/code>
+ *   @property {string} defaultOptions.el CSS selector for the main game &lt;code>canvas&lt;/code> DOM element&lt;br/>Default: &lt;code>'#game'&lt;/code>
+ *   @property {string} defaultOptions.scoreEl CSS selector for the DOM element for the player's current score amount&lt;br/>Default: &lt;code>'#score .amount'&lt;/code>
+ *   @property {string} defaultOptions.newLevelEl CSS selector for the DOM element that is the new level "splash" screen&lt;br/>Default: &lt;code>'#newlevel'&lt;/code>
+ *   @property {string} defaultOptions.levelEl CSS selector for the DOM element that contains the current level number&lt;br/>Default: &lt;code>'#newlevel .level'&lt;/code>
+ *   @property {string} defaultOptions.livesEl CSS selector for the DOM element that contains the avatars for the player's remaining lives&lt;br/>Default: &lt;code>'#lives'&lt;/code>
+ *   @property {string} defaultOptions.gameoverEl CSS selector for the DOM element that is the game over "splash" screen&lt;br/>Default: &lt;code>'#gameover'&lt;/code>
+ *   @property {string} defaultOptions.hiscoreEl CSS selector for the DOM element that is the hi scores "splash" screen&lt;br/>Default: &lt;code>'#hiscore'&lt;/code>
+ */
+Blasteroids.defaultOptions = {
+    angleStep: 10,
+    velocityStep: 50,
+
+    blastImpulse: 20,
+    blasteroidShotsToDestroy: 2,
+    blasteroidImpulseStep: 100,
+    maxBlasteroidImpulse: 1000,
+
+    maxEnemyImpulse: 100,
+
+    minBlasteroids: 1,
+    maxBlasteroidScore: 1000,
+
+    startingLives: 3,
+    startingLevel: 1,
+
+    levelWaitPeriod: 3000,
+
+    shipFireRate: 750,
+    shipRadius: 0.75,
+
+    soundOn: true,
+
+    backgrounds: [
+        'black-background',
+        'blue-background',
+        'dark-purple-background',
+        'purple-background'
+    ],
+
+    enemies: [
+        'enemyBlack1.png',
+        'enemyBlack2.png',
+        'enemyBlack3.png',
+        'enemyBlack4.png',
+        'enemyBlack5.png',
+        'enemyBlue1.png',
+        'enemyBlue2.png',
+        'enemyBlue3.png',
+        'enemyBlue4.png',
+        'enemyBlue5.png',
+        'enemyGreen1.png',
+        'enemyGreen2.png',
+        'enemyGreen3.png',
+        'enemyGreen4.png',
+        'enemyGreen5.png',
+        'enemyRed1.png',
+        'enemyRed2.png',
+        'enemyRed3.png',
+        'enemyRed4.png',
+        'enemyRed5.png'
+    ],
+
+    lasers: [
+        'laserBlue01.png',
+        'laserGreen.png',
+        'laserRed.png',
+        'laserRed16.png',
+        'laserRedShot.png'
+    ],
+
+    laserImpacts: [
+        'laserBlueShot.png',
+        'laserGreenShot.png',
+        'laserRedShot.png',
+        'laserRedShot.png'
+    ],
+
+    meteors: [
+        'meteorBrown_big1.png',
+        'meteorGrey_big1.png',
+        'meteorBrown_big2.png',
+        'meteorGrey_big2.png',
+        'meteorBrown_big3.png',
+        'meteorGrey_big3.png',
+        'meteorBrown_big4.png',
+        'meteorGrey_big4.png'
+    ],
+
+    ships: [
+        'player.png',
+        'playerShip1_blue.png',
+        'playerShip1_green.png',
+        'playerShip1_orange.png',
+        'playerShip1_red.png',
+        'playerShip2_blue.png',
+        'playerShip2_green.png',
+        'playerShip2_orange.png',
+        'playerShip2_red.png',
+        'playerShip3_blue.png',
+        'playerShip3_green.png',
+        'playerShip3_orange.png',
+        'playerShip3_red.png'
+    ],
+
+    enemyShipBonus: 1500,
+    extraLifeScore: 5000,
+    playerBlastsToFire: 1,
+
+    gravity: {x: 0, y: 0},
+    collisionOutlines: false,
+
+    el: '#game',
+    scoreEl: '#score .amount',
+    pointsAddedEl: '#score .points-added',
+    newLevelEl: '#newlevel',
+    levelEl: '#newlevel .level',
+    livesEl: '#lives',
+    gameoverEl: '#gameover',
+    hiscoreEl: '#hiscore'
+};</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+		<footer>
+			
+			
+				<span class="copyright">
+					Blasteroids Copyright © 2017-present The contributors to the Blasteroids project.
+				</span>
+			
+			<span class="jsdoc-message">
+				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a>
+				
+					on Sun Mar 31st 2019
+				
+				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+			</span>
+		</footer>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<!--  -->
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<script src="/js/public-lib/docstrap.min.js"></script>
+<script src="/js/toc.js"></script>
+
+<div class="modal fade" id="blasteroidsGame">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Blasteroids</h4>
+          </div>
+          <div class="modal-body">
+          	<iframe src="/"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+	<script type="text/javascript" src="/js/public-lib/lunr.min.js"></script>
+    <script type="text/javascript" src="/js/lunr.search.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

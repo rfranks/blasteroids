@@ -40,7 +40,7 @@
   "opts": {
         "template": "./", 
         "encoding": "utf8",
-        "destination": "./doc/",
+        "destination": "./docs/",
         "recurse": true,//
         "tutorials": "./tutorials/"
     }
