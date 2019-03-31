@@ -1,0 +1,14 @@
+ {
+     "CODE_OF_CONDUCT": {
+         "title": "Code of Conduct"
+     },
+	"CONTRIBUTING": {
+     	 "title": "How to Contribute"
+     },
+     "HOW_TO_PLAY": {
+     	 "title": "How to Play"
+     },
+     "LICENSE": {
+     	"title": "License"
+     }
+ }

@@ -1,0 +1,335 @@
+#### Entities
+<div class="panel panel-warning">
+  <div class="panel-heading"><strong><i class="glyphicon glyphicon-asterisk"></i>&nbsp;&nbsp;Blasteroids!</strong>Made for blasting!  Hurt if you hit them or they hit you.</div>
+  <div class="panel-body">
+    <img class="animated slow tada zoomIn infinite" src="/images/meteors/meteorGrey_big2.png"/>
+    <p>
+	    A blasteroid is a hunk of material floating aimlessly in space.  The one key thing, they are worth <strong>points</strong>!
+	</p>
+	<p>
+	    As our fearless hero blasts and shoots away at blasteroids, they break into smaller blasteroids. Depending on the number of shots configued, larger blasteroids are split in two medium ones, while medium ones are split into two smaller asteroids which are destroyed the next time they are shot.
+	</p>
+	<p>
+	    <strong>Smaller blasteroids...</strong>
+	    <ul class="list-group">
+	    	<li class="list-group-item list-group-item-danger"><em>...move considerably faster!</em></li>
+	    	<li class="list-group-item list-group-item-danger">...are far <em>harder to hit!</em></li>
+	    	<li class="list-group-item list-group-item-success">...but are worth <em><strong>way more points!</strong></em></li>
+	    </ul>
+    </p>
+  </div>
+  <div class="panel-footer"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;A collision with a blasteroid will destroy an enemy or player ship!</div>
+</div>
+
+<div class="panel panel-danger">
+	<div class="panel-heading"><strong><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;ALERT!</strong>Be on the lookout for <em><u>enemy ships</u></em>!</div>
+	<div class="panel-body">
+		<img class="animated slow tada zoomIn infinite" src="/images/enemies/enemyBlue1.png"/>
+  		 <p>
+  		 	Random enemy ships will periodically spawn during game play.  The first generation of enemy AI is not very intelligent and is simply programmed to shoot randomly in a 360 degree arc around it.  Shots from enemy ships are hazardous not only to blasteroids, but your ship's hull as well (unless you currenly have the shield powerup active).  The amount of bonus awarded is configurable via the `enemyShipBonus` option and defaults to `1500` points.
+  		 </p>
+	</div>
+	<div class="panel panel-footer">
+		<div class="panel panel-danger">
+		  <div class="panel-heading"><strong><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;WARNING!</strong>Other sited enemies</div>
+		  	<div class="panel-body" style="padding: 15px 0;">
+		  		 <p>Should be considered <strong>armed and extremely dangerous!</strong></p>
+		  		 <img class="animated tada infinite" src="/images/enemies/enemyBlack5.png"/>
+		  		 <img class="animated tada slow infinite" src="/images/enemies/enemyBlue4.png"/>
+		  		 <img class="animated infinite tada" src="/images/enemies/enemyRed3.png"/>
+		  		 <img class="animated tada slow infinite" src="/images/enemies/enemyGreen2.png"/>
+		  		 <img class="animated tada infinite" src="/images/enemies/enemyBlack1.png"/>
+		  		 <img class="animated tada slow infinite" src="/images/enemies/enemyRed2.png"/>
+		  		 <img class="animated tada infinite" src="/images/enemies/enemyBlue1.png"/>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading"><strong><i class="glyphicon glyphicon-flash"></i>&nbsp;&nbsp;Powerups!</strong>Make you stronger, they will.</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+			  	<th>Powerup</th>
+			  	<th>Effect</th>
+			  </tr>
+		  	</thead>
+		  	<tbody>
+			  	<tr>
+			  		<td><img class="animated slow tada infinite" src="/images/powerups/powerupYellow_star.png"/></td>
+			  		<td>Awards <strong>MEGA POINTS!</strong></td>
+			  	</tr>
+			  	<tr>
+			  		<td><img class="animated slow tada infinite" src="/images/powerups/powerupYellow_shield.png"/></td>
+			  		<td>Upgrades the player ship's hull for a short period of time.  During that time the player's ship is immune to <em><u>blasteroid</u></em> impacts and <em><u>enemy ships</u></em>.</td>
+			  	</tr>
+			  	<tr>
+			  		<td><img class="animated slow tada infinite" src="/images/powerups/powerupYellow_bolt.png"/></td>
+			  		<td>Increases the cooling system for the player's ship's lasers.  Grants rapid fire ability for a short period of time.</td>
+			  	</tr>
+		  	</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading"><strong><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;WARNING!</strong>Objects wrap around screen edges!</div>
+  	<div class="panel-body">
+  		 <img src="/images/meteors/meteorBig.png"/>
+  		 <p>
+  		 	For example, blasteroids may drift off the edge of the screen and reappear at the opposite edge and continue moving in the same direction.
+  		 	The player's ship may reach the bottom of the screen and reappear at the top.  This affect enemy ships as well.
+  		 </p>
+  		 <p>
+  		 	What it does not affect are <u><em>laser blasts</em></u>.  <u><em>Laser blasts</em></u> are destroyed once they leave the screen.
+  		 </p>
+	</div>
+</div>
+
+#### Ship Controls
+| Rotate Left   | Accelerate    | Rotate Right |
+|:-------------:|:-------------:| ------------:|
+| | <i class="glyphicon glyphicon-arrow-up"></i> | |
+| <i class="glyphicon glyphicon-arrow-left"></i> | <div class="player-ship-img" data-rotation="0" ><img class="slideInUp player-laser-blast-img " src="../images/lasers/laserBlue01.png" alt="player"/><img src="../images/player/player.png" alt="player"/><img class="player-ship-thrust-img slideInDown" src="../images/effects/thrust.png" style="display: none;" /></div> | <i class="glyphicon glyphicon-arrow-right"></i> |
+| | <strong>Fire</strong> | |
+| | <span class="player-ctrl-space fadeOutUp">spacebar</span> | &nbsp; |
+
+<style type="text/css">
+	.player-laser-blast-img { 
+		position: absolute;
+    	left: 50%;
+	    top: -125%;
+	    display: none;
+	}
+
+	.player-laser-blast-img.animated {
+		display: block;
+	}
+
+	.player-ship-thrust-img {
+		position: absolute;
+    	transform: rotate(180deg);
+    	height: 100%;
+    	left: 46%;
+    }
+</style>
+
+<script type="text/javascript">
+	setTimeout(function() {
+	(function($) {
+	  $(document).ready(function(){
+	  	/**
+ * Returns rotation in degrees when obtaining transform-styles using javascript
+ * http://stackoverflow.com/questions/8270612/get-element-moz-transformrotate-value-in-jquery
+ */
+var getRotationDegrees = function(obj) {
+    var matrix = obj.css("-webkit-transform") ||
+    obj.css("-moz-transform")    ||
+    obj.css("-ms-transform")     ||
+    obj.css("-o-transform")      ||
+    obj.css("transform");
+    if(matrix !== 'none') {
+        var values = matrix.split('(')[1].split(')')[0].split(',');
+        var a = values[0];
+        var b = values[1];
+        var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+    } else { var angle = 0; }
+    return angle;
+}
+	  		$(document).on('keydown', function(e) {
+	  			var $playerShipImg = $('.player-ship-img'),
+	  				$laserBlastImg = $('.player-laser-blast-img'),
+	  				$playerCtrlSpacebar = $('.player-ctrl-space'),
+	  				$playerShipThrustImg = $('.player-ship-thrust-img'),
+	  				hasPlayerShipImg = $playerShipImg && $playerShipImg.length,
+  					rotation = hasPlayerShipImg && getRotationDegrees($playerShipImg),
+  					key = event.which || event.keyCode;
+
+				e.stopPropagation();
+
+				$('.glyphicon').css({
+					'font-size': '18px',
+					'font-weight': 'normal'
+				});
+
+				if (key === 37) {
+					rotation -= 10;
+					
+					$('.glyphicon-arrow-left').css({
+						'font-size': '32px',
+						'font-weight': '900'
+					});
+
+					e.preventDefault();
+
+					setTimeout(function() {
+						$('.glyphicon-arrow-left').css({
+							'font-size': '18px',
+							'font-weight': 'normal'
+						});
+					}, 1000);
+				} else if (key === 39) {
+					rotation += 10;
+					
+					$('.glyphicon-arrow-right').css({
+						'font-size': '32px',
+						'font-weight': '900'
+					});
+
+					e.preventDefault();
+
+					setTimeout(function() {
+						$('.glyphicon-arrow-right').css({
+							'font-size': '18px',
+							'font-weight': 'normal'
+						});
+					}, 1000);
+				} else if (key === 38) {
+					$('.glyphicon-arrow-up').css({
+						'font-size': '32px',
+						'font-weight': '900'
+					});
+
+					$playerShipThrustImg.show();
+
+					setTimeout(function() {
+						$playerShipThrustImg.hide();
+
+						$('.glyphicon-arrow-up').css({
+							'font-size': '18px',
+							'font-weight': 'normal'
+						});
+					}, 1000);
+				} else if (key === 32) {
+					e.preventDefault();
+
+					$playerCtrlSpacebar.addClass('animated');
+					
+					$laserBlastImg.addClass('animated');
+
+					setTimeout(function() { 
+						$playerCtrlSpacebar.removeClass('animated');
+
+						$laserBlastImg.removeClass('animated'); 
+					}, 1000);
+				}
+
+				$playerShipImg.css({
+					'transform': 'rotate(' + rotation + 'deg)'	
+				})
+			});
+		}); 
+	})(jQuery);
+}, 150);
+</script>
+
+#### Other Controls
+<table class="table table-condensed table-striped">
+  <thead>
+	  <tr>
+	  	<th>Key</th>
+	  	<th>Effect</th>
+	  </tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+	  		<td>Number Keys `1` thru `5`</td>
+	  		<td>Sets the number of shots needed to destroy a blasteroid.  Applies to the next blasteroid spawned.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`B`</td>
+	  		<td>Add a blasteroid to the field of play.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`E`</td>
+	  		<td>Add an enemy to the field of play.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`N`</td>
+	  		<td>Starts a new game, if the player has no lives remaining.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`L`</td>
+	  		<td>Change the style of the player's ship's laser blast.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`M`</td>
+	  		<td>Change the type of blasteroid being spawned.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`P`</td>
+	  		<td>Change the style of the player's ship.</td>
+	  	</tr>
+		<tr>	
+	  		<td>`R`</td>
+	  		<td>Alter the player ship's radius thanks the to the PYM particle. Very experimental!</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`S`</td>
+	  		<td>Toggle the game's sound <strong>ON</strong> / <strong>OFF</strong>.</td>
+	  	</tr>
+	  	<tr>
+	  		<td>`W`</td>
+	  		<td>Toggle the game world's background.</td>
+	  	</tr>
+  	</tbody>
+</table>
+
+#### Start
+
+<div class="panel panel-success">
+  <div class="panel-heading"><strong><i class="glyphicon glyphicon-menu-right"></i>&nbsp;&nbsp;A long time ago, in a galaxy far, far away!</strong></div>
+  <div class="panel-body">
+    <p>
+	    Our fearless heros find themselves stuck navigating a field of blasteroids to evade capture.  They must survive by shooting and blasting away <em><u>blasteroids</u></em> and defending themseleves against <em><u>enemy ships</u></em>.
+	    <ul class="list-group">
+	    	<li class="list-group-item list-group-item-success">start the game in a provided loaner ship (to be returned in good standing),</li>
+	    	<li class="list-group-item list-group-item-success">be given a generously <u>finite number</u> of ships, or lives, remaining left in reserves--<em>typically 3</em></li>
+	    	<li class="list-group-item list-group-item-danger">--after these are used up--<strong>that's it</strong>--<strong>Gameover!</strong></li>
+  			<li class="list-group-item list-group-item-success">oh, unless you score enough points to earn more!</li>
+	    </ul>
+    </p>
+  </div>
+  <div class="panel-footer"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;The game gets considerably harder as the number of blasteroids increases!</div>
+</div>
+
+#### Each Level
+
+<div class="panel panel-success">
+	<div class="panel-heading"><strong><i class="glyphicon glyphicon-menu-right"></i>&nbsp;&nbsp;Meanwhile, stuck in a blasteroid field, making their own odds...</strong></div>
+	<div class="panel-body">
+		<p>
+			Every level,
+			<ul class="list-group">
+				<li class="list-group-item">the player starts surrounded by one, or more blasteroids, depending on the current level of play,</li>
+		  		<li class="list-group-item list-group-item-danger">a higher level of play means a higher difficulty and more blasteroids,</li>
+		  		<li class="list-group-item">blasteroids typically take one or two shots to split or destroy,</li>
+		  		<li class="list-group-item list-group-item-danger">enemy ships will randomly spawn and randomly shoot in all directions, taking out <em>blasteroids and player ships</em> alike,</li>
+		  		<li class="list-group-item">enemy ships <strong>CON</strong> their LASER BEAMS hurt....a lot. <strong>PRO</strong> Destroying them earns big <strong>BONUS</strong> points!!!,</li>
+		  		<li class="list-group-item">enemy ships destroyed by colliding with blasteroids do not reward any points at all</li>		
+			</ul>
+		</p>
+	</div>
+</div>
+
+#### Completing a Level
+
+<div class="panel panel-success">
+<div class="panel-heading"><strong><i class="glyphicon glyphicon-asterisk"></i>&nbsp;&nbsp;Finishing a Level</strong></div>
+  <div class="panel-body">
+    Once the screen has been cleared of all blasteroids and enemy ships, a new set of large blasteroids appears, thus starting the next level.
+    The number of lives that the player starts with is configuurable via the `startingLives` options, and defaults to `3` lives after the game is started.
+    The player can gain extra lives for every `extraLifeScore` points earned.  `extraLifeScore` defaults to `5,000` points.
+  </div>
+  <div class="panel-footer"><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;The game gets considerably harder as the number of blasteroids increases!</div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading"><strong><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;GAME OVER!</strong></div>
+	<div class="panel-body">
+		<p>When the player loses all their lives, the game ends. Pressing `N` will start a new game.</p>
+		<img class="img-responsive" src="/images/doc/gameover.png"/>
+	</div>
+</div>

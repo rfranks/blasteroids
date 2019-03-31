@@ -1,0 +1,30 @@
+<?js
+var data = obj;
+var self = this;
+?>
+<dt class="name" id="<?js= id ?>">
+    <h4 class="float-left" id="<?js= id ?>"><?js= data.attribs + name + (data.signature ? data.signature : '') ?>
+        <?js if (data && data.type && data.type.names) {?>
+            <div class="float-right member-type">
+                <?js= self.partial('type.tmpl', data.type.names) ?>
+            </div>
+        <?js } ?>
+    </h4>
+    <?js if (data.summary) { ?>
+    <p class="summary"><?js= summary ?></p>
+    <?js } ?>
+</dt>
+<dd>
+    <?js if (data && data.description) { ?>
+    <div class="description">
+        <?js= data.description ?>
+    </div>
+    <?js } ?>
+
+    <?js= this.partial('details.tmpl', data) ?>
+
+    <?js if (data.examples && examples.length) { ?>
+        <h5 class="method-subtitle"><i class="glyphicon glyphicon-wrench"></i>Examples</h5>
+        <?js= this.partial('examples.tmpl', examples) ?>
+    <?js } ?>
+</dd>

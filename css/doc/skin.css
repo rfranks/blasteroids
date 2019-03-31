@@ -1,0 +1,400 @@
+body {
+    background-color: rgba(127, 92, 148, 0.3);
+    background-image: url(/images/background/background_purple.png);
+    font-size: 14px;
+}
+
+[data-balloon]:after {
+    left: 0;
+    top: -100%;
+}
+
+li + br,
+br + br {
+    display: none;
+}
+
+a {
+    color: #c7254e;
+    opacity: 0.8;
+}
+
+a:hover {
+    color: #c7254e;
+    opacity: 1.0;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.6);
+    font-family: monospace;
+    padding-bottom: 8px;
+}
+
+h1, .h1,
+h5, .h5 {
+    border-bottom: none;
+}
+
+/*section header h2 {
+    font-size: 24px;
+}*/
+
+img {
+    max-width: 100%;
+}
+
+#main {
+    margin-top: 134px;
+}
+
+section.readme-section article br + br {
+    display: none;
+}
+
+.navbar.navbar-default.navbar-fixed-top.navbar-inverse {
+    box-shadow: none !important;
+}
+
+.navbar-form[role="search"] {
+    background: none;
+    background-color: rgba(214, 206, 221, 1.0);
+    border: 2px solid yellow;
+    border-radius: 25px;
+    float: right;
+    margin: 15px;
+    padding: 0 15px;
+}
+
+.navbar-form[role="search"] #search-input {
+    border-bottom: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #444;
+}
+
+.navbar-form[role="search"] #search-input:-webkit-autofill {
+    background-color: rgba(214, 206, 221, 1.0);
+}
+
+.navbar-inverse .navbar-form[role="search"] input[type=text]::placeholder {
+    color: #444 !important;
+}
+
+.navbar-form[role="search"] #search-submit {
+    background-color: rgba(214, 206, 221, 1.0);
+    box-shadow: none;
+}
+
+.navbar-form[role="search"] #search-submit:focus {
+    outline: none;
+}
+
+.navbar .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar-header {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: yellow;
+}
+
+.navbar.navbar-default.navbar-fixed-top.navbar-inverse {
+    background-image: url('/images/background/background_purple.png');
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: #5A4168;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #D7CEDE;
+    color: #5A4168;
+}
+
+.navbar-brand {
+    color: yellow !important;
+    font-family: monospace;
+    font-style: italic;
+    font-size: 48px !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: yellow;
+    color: black;
+}
+
+@media (max-width: 767px) {
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: yellow;
+    }
+}
+
+@media (min-width: 1200px) {
+    #topNavigation {
+        margin-right: -100%;
+    }
+}
+
+.navbar-inverse .navbar-nav > .open > a > span {
+    animation-duration: 1s;
+    animation-name: tada;
+    animation-iteration-count: infinite;
+    display: inline-block;
+}
+
+#topNavigation {
+    border: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    clear: both;
+}
+
+#toc {
+    background-color: #fff;
+    max-height: calc(100% - 134px);
+    min-height: calc(100% - 134px);
+    padding: 0;
+    top: 134px;
+}
+
+#toc-content.container .row {
+    background-color: #D7CEDE;
+}
+
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+    background-color: rgba(90, 65, 104, 1.0);
+    border-color: rgba(90, 65, 104, 1.0);
+    color: yellow;
+    font-size: 20px;
+    font-family: monospace;
+    opacity: 1.0;
+}
+
+.list-group-item.active:hover {
+    opacity: 0.8;
+}
+
+.page-title {
+    color: rgba(90, 65, 104, 1.0);
+    font-size: 200%;
+    font-style: italic;
+    text-align: right;
+}
+
+.page-title ~ section {
+    margin-top: -28px;
+}
+
+.container-overview {
+    background-color: #fff;
+    padding: 15px;
+}
+
+.params.table th {
+    padding-bottom: 0;
+}
+
+.param-type,
+.default {
+    font-family: monospace;
+}
+
+.member-type {
+    float: right;
+    font-family: monospace;
+    font-size: 16px;
+    margin-top: 8px;
+    font-weight: 900;
+}
+
+.code-caption {
+    margin: 0;
+}
+
+.sunlight-container {
+    margin-top: 0 !important;
+}
+
+div.description,
+.param-desc {
+    padding: 0 15px;
+}
+
+@media only screen and (max-width: 450px) {
+    .navbar-form[role="search"] {
+        max-width: calc(100% - 94px);
+    }
+}
+
+.attributes,
+.method-signature {
+    color: rgba(90, 65, 104, 1.0);
+}
+
+.method-signature {
+    font-size: 18px;
+}
+
+.tag-see {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.type-signature {
+    color: rgba(90, 65, 104, 1.0);
+    font-size: 14px;
+}
+
+dl {
+    background-color: #fff;
+    padding: 15px;
+}
+
+dl.details,
+dl dl {
+    margin-bottom: 0;
+}
+
+.method-subtitle ~ dl {
+    padding-top: 0;
+}
+
+.method-subtitle {
+    box-sizing: border-box;
+    color: rgb(102, 102, 102);
+    display: inline-block;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    height: 25px;
+    letter-spacing: 0.1px;
+    line-height: 25.844px;
+    margin-right: 15px;
+    margin-top: 0;
+    text-size-adjust: 100%;
+}
+
+.method-subtitle .glyphicon {
+    margin-right: 8px;
+}
+
+.details .method-subtitle {
+    margin-left: -15px;
+}
+
+.subsection-title .glyphicon {
+    margin-right: 30px;
+    top: 8px;
+}
+
+.table > thead > tr > th {
+    font-weight: 400;
+}
+
+.copyright,
+.jsdoc-message {
+    color: #444;
+}
+
+a[href="http://sunlightjs.com/"] {
+    display: none;
+}
+
+.panel .panel-heading {
+    font-style: italic;
+    float: left;
+    margin-bottom: 15px;
+    text-align: right;
+    width: 100%;
+}
+
+.panel .panel-heading strong {
+    float: left;
+    font-style: normal;
+    text-align: left;
+    width: 100%;
+}
+
+.panel br {
+    display: none;
+}
+
+.panel .panel-body img {
+    float: left;
+    margin-right: 16px;
+}
+
+.panel .panel-body .list-group .list-group-item {
+    background-color: #fff;
+    padding: 5px;
+}
+
+.slow {
+    animation-duration: 2s;
+}
+
+/*div {
+    animation: spin 4s infinite linear;
+}
+*/
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+}
+
+table {
+    background-color: #fff !important;
+}
+
+.label {
+    font-size: 1em !important;
+}
+
+.code-caption {
+    font-weight: bold;
+}
+
+.code-caption + p {
+    border-top: 1px solid;
+    padding: 8px 16px;
+}
+
+#topNavigation {
+    background-color: #fff;
+    color: #5A4168;
+}
+
+.tutorial-section {
+    padding: 8px 16px;
+}
