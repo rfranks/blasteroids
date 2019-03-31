@@ -239,10 +239,8 @@ For More Information
 
 + TODO.
 + TODO.
-+ [Join JSDoc's Slack channel](https://jsdoc-slack.appspot.com/).
-+ Ask for help on the [JSDoc Users mailing list](http://groups.google.com/group/jsdoc-users).
-+ Post questions tagged `jsdoc` to [Stack
-Overflow](http://stackoverflow.com/questions/tagged/jsdoc).
++ Post questions tagged `blasteroids` to [Stack
+Overflow](http://stackoverflow.com/questions/tagged/blasteroids).
 
 License
 -------
@@ -251,7 +249,7 @@ License
 
 <div class="well well-sm" style="font-family: monospace;">Copyright (c) 2017-present by Richard Franks Jr richardfranksjr@hotmail.com and the contributors to Blasteroids. All rights reserved.</div>
 
-The source code for <code>Blasteroids</code> is available at: https://github.com/
+The source code for <code>Blasteroids</code> is available at [GitHub](https://github.com/rfranks/blasteroids).
 
 <code>Blasteroids</code> is distributed under a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
