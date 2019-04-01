@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>Blasteroids</title>
-    
+
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link href="css/animate.css" rel="stylesheet"/>
@@ -18,132 +18,147 @@
 
 
     <style type="text/css">
-      :root {
-          --mdc-theme-primary: #5A4168;
-          --mdc-theme-secondary: #D7CEDE;
-          --mdc-theme-background: yellow;
-          --mdc-theme-surface: #fff;
-          --mdc-theme-error: #b00020;
-          --mdc-theme-on-primary: yellow;
-          --mdc-theme-on-secondary: #5A4168;
-          --mdc-theme-on-surface: #000;
-          --mdc-theme-on-error: #fff;
-          --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
-          --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
-          --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
-          --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
-          --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
-          --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
-          --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
-          --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
-          --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
-          --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
-          --mdc-theme-text-primary-on-dark: white;
-          --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
-          --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
-          --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
-          --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
-      } 
+        :root {
+            --mdc-theme-primary: #5A4168;
+            --mdc-theme-secondary: #D7CEDE;
+            --mdc-theme-background: yellow;
+            --mdc-theme-surface: #fff;
+            --mdc-theme-error: #b00020;
+            --mdc-theme-on-primary: yellow;
+            --mdc-theme-on-secondary: #5A4168;
+            --mdc-theme-on-surface: #000;
+            --mdc-theme-on-error: #fff;
+            --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+            --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
+            --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
+            --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
+            --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+            --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
+            --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
+            --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
+            --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
+            --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
+            --mdc-theme-text-primary-on-dark: white;
+            --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
+            --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
+            --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
+            --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
+        }
     </style>
-  </head>
-  <body>
-    <div class="mdc-tab-bar" role="tablist">
-      <div class="mdc-tab-scroller">
+</head>
+<body>
+<div class="mdc-tab-bar" role="tablist">
+    <div class="mdc-tab-scroller">
         <div class="mdc-tab-scroller__scroll-area">
-          <div class="mdc-tab-scroller__scroll-content">
-            <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0" data-tab-contents="#tab__game">
+            <div class="mdc-tab-scroller__scroll-content">
+                <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0"
+                        data-tab-contents="#tab__game">
               <span class="mdc-tab__content">
                 <span class="mdc-tab__icon material-icons" aria-hidden="true">videogame_asset</span>
                 <span class="mdc-tab__text-label">Play the Game</span>
               </span>
-              <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                    <span class="mdc-tab-indicator mdc-tab-indicator--active">
                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
               </span>
-              <span class="mdc-tab__ripple"></span>
-            </button>
-            <button class="mdc-tab" role="tab" tabindex="1" data-tab-contents="#tab__how-to-play">
+                    <span class="mdc-tab__ripple"></span>
+                </button>
+                <button class="mdc-tab" role="tab" tabindex="1" data-tab-contents="#tab__how-to-play">
               <span class="mdc-tab__content">
                 <span class="mdc-tab__icon material-icons" aria-hidden="true">gamepad</span>
                 <span class="mdc-tab__text-label">How To Play</span>
               </span>
-              <span class="mdc-tab-indicator">
+                    <span class="mdc-tab-indicator">
                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
               </span>
-              <span class="mdc-tab__ripple"></span>
-            </button>
-            <button class="mdc-tab" role="tab" tabindex="2" data-tab-contents="#tab__doc">
+                    <span class="mdc-tab__ripple"></span>
+                </button>
+                <button class="mdc-tab" role="tab" tabindex="2" data-tab-contents="#tab__doc">
               <span class="mdc-tab__content">
                 <span class="mdc-tab__icon material-icons" aria-hidden="true">local_library</span>
                 <span class="mdc-tab__text-label">Documentation</span>
               </span>
-              <span class="mdc-tab-indicator">
+                    <span class="mdc-tab-indicator">
                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
               </span>
-              <span class="mdc-tab__ripple"></span>
-            </button>
-          </div>
+                    <span class="mdc-tab__ripple"></span>
+                </button>
+                <button class="mdc-tab" role="tab" tabindex="2" data-tab-contents="#tab__source-code">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__icon material-icons" aria-hidden="true">code</span>
+                <span class="mdc-tab__text-label">Source Code</span>
+              </span>
+                    <span class="mdc-tab-indicator">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+                    <span class="mdc-tab__ripple"></span>
+                </button>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="mdc-tab-wrapper">
-      <div id="tab__game"  class="animated fadeIn mdc-tab__tab-contents">
-          <div id="score">
+</div>
+<div class="mdc-tab-wrapper">
+    <div id="tab__game" class="animated fadeIn mdc-tab__tab-contents">
+        <div id="score">
             <span class="label">Score // </span>
             <span class="amount">0</span>
             <div class="points-added animated slower"></div>
-          </div>
-          
-          <ul id="lives"></ul>
-          
-          <div id="newlevel">
+        </div>
+
+        <ul id="lives"></ul>
+
+        <div id="newlevel">
             <span>Level</span><br/>
-            <span class="level"></span>      
-          </div>
-          
-          <div id="gameover">
+            <span class="level"></span>
+        </div>
+
+        <div id="gameover">
             <span class="label">GAME OVER</span><br/>
-            <span class="instructions">Press N to start a <span style="text-decoration: underline;">N</span>ew Game</span>      
-          </div>
-          
-          <ul id="hiscore">
+            <span class="instructions">Press N to start a <span
+                    style="text-decoration: underline;">N</span>ew Game</span>
+        </div>
+
+        <ul id="hiscore">
             <li>J.I.M. - 50000</li>
             <li>R.I.K. - 25000</li>
             <li>N.I.C. - 10000</li>
-          </ul>
+        </ul>
 
-          <canvas id="game" width="1380" height="700">
+        <canvas id="game" width="1380" height="700">
             Your browser does not support canvas :(
-          </canvas>
+        </canvas>
 
-          <div id="log4js"></div>
-      </div>
-      <div id="tab__doc" class="animated mdc-tab__tab-contents" data-tab-src="./docs/"></div>
-      <div id="tab__how-to-play" class="animated mdc-tab__tab-contents" data-tab-src="./docs/tutorial-HOW_TO_PLAY.html"></div>
+        <div id="log4js"></div>
     </div>
+    <div id="tab__doc" class="animated mdc-tab__tab-contents" data-tab-src="./docs/"></div>
+    <div id="tab__how-to-play" class="animated mdc-tab__tab-contents"
+         data-tab-src="./docs/tutorial-HOW_TO_PLAY.html"></div>
+    <div id="tab__source-code" class="animated mdc-tab__tab-contents"
+         data-tab-src="https://github.com/rfranks/blasteroids"></div>
+</div>
 
-    <script src="js/public-lib/box2dweb.min.js"></script>
-    <script src="js/public-lib/boxbox.js"></script>
-    <script src="js/public-lib/json2.min.js"></script>
-    <script src="js/public-lib/jquery.min.js"></script>
-    
-    <script src="js/lib/audio.js"></script>
-    <script src="js/lib/log4.js"></script>
-    <script src="js/lib/boxbox-util.js"></script>    
-    
-    <script src="js/game/game.js"></script>
-    <script src="js/game/entities.js"></script>
-    
-    <script src="js/conf/powerups.config.js"></script>
-    <script src="js/conf/weaponUpgrades.config.js"></script>
-    <script src="js/conf/options.config.js"></script>
+<script src="js/public-lib/box2dweb.min.js"></script>
+<script src="js/public-lib/boxbox.js"></script>
+<script src="js/public-lib/json2.min.js"></script>
+<script src="js/public-lib/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/mwc.js"></script>
-    
-    <script type="text/javascript">
-      //Start the game!
-      Blasteroids.start({
+<script src="js/lib/audio.js"></script>
+<script src="js/lib/log4.js"></script>
+<script src="js/lib/boxbox-util.js"></script>
+
+<script src="js/game/game.js"></script>
+<script src="js/game/entities.js"></script>
+
+<script src="js/conf/powerups.config.js"></script>
+<script src="js/conf/weaponUpgrades.config.js"></script>
+<script src="js/conf/options.config.js"></script>
+
+<script type="text/javascript" src="js/mwc.js"></script>
+
+<script type="text/javascript">
+    //Start the game!
+    Blasteroids.start({
         collisionOutlines: false
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
