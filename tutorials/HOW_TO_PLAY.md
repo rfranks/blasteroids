@@ -2,7 +2,7 @@
 <div class="panel panel-warning">
   <div class="panel-heading"><strong><i class="glyphicon glyphicon-asterisk"></i>&nbsp;&nbsp;Blasteroids!</strong>Made for blasting!  Hurt if you hit them or they hit you.</div>
   <div class="panel-body">
-    <img class="animated slow tada zoomIn infinite" src="/images/meteors/meteorGrey_big2.png"/>
+    <img class="animated slow tada zoomIn infinite" src="../images/meteors/meteorGrey_big2.png"/>
     <p>
 	    A blasteroid is a hunk of material floating aimlessly in space.  The one key thing, they are worth <strong>points</strong>!
 	</p>
@@ -24,7 +24,7 @@
 <div class="panel panel-danger">
 	<div class="panel-heading"><strong><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;ALERT!</strong>Be on the lookout for <em><u>enemy ships</u></em>!</div>
 	<div class="panel-body">
-		<img class="animated slow tada zoomIn infinite" src="/images/enemies/enemyBlue1.png"/>
+		<img class="animated slow tada zoomIn infinite" src="../images/enemies/enemyBlue1.png"/>
   		 <p>
   		 	Random enemy ships will periodically spawn during game play.  The first generation of enemy AI is not very intelligent and is simply programmed to shoot randomly in a 360 degree arc around it.  Shots from enemy ships are hazardous not only to blasteroids, but your ship's hull as well (unless you currenly have the shield powerup active).  The amount of bonus awarded is configurable via the `enemyShipBonus` option and defaults to `1500` points.
   		 </p>
@@ -34,13 +34,13 @@
 		  <div class="panel-heading"><strong><i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;&nbsp;WARNING!</strong>Other sited enemies</div>
 		  	<div class="panel-body" style="padding: 15px 0;">
 		  		 <p>Should be considered <strong>armed and extremely dangerous!</strong></p>
-		  		 <img class="animated tada infinite" src="/images/enemies/enemyBlack5.png"/>
-		  		 <img class="animated tada slow infinite" src="/images/enemies/enemyBlue4.png"/>
-		  		 <img class="animated infinite tada" src="/images/enemies/enemyRed3.png"/>
-		  		 <img class="animated tada slow infinite" src="/images/enemies/enemyGreen2.png"/>
-		  		 <img class="animated tada infinite" src="/images/enemies/enemyBlack1.png"/>
-		  		 <img class="animated tada slow infinite" src="/images/enemies/enemyRed2.png"/>
-		  		 <img class="animated tada infinite" src="/images/enemies/enemyBlue1.png"/>
+		  		 <img class="animated tada infinite" src="../images/enemies/enemyBlack5.png"/>
+		  		 <img class="animated tada slow infinite" src="../images/enemies/enemyBlue4.png"/>
+		  		 <img class="animated infinite tada" src="../images/enemies/enemyRed3.png"/>
+		  		 <img class="animated tada slow infinite" src="../images/enemies/enemyGreen2.png"/>
+		  		 <img class="animated tada infinite" src="../images/enemies/enemyBlack1.png"/>
+		  		 <img class="animated tada slow infinite" src="../images/enemies/enemyRed2.png"/>
+		  		 <img class="animated tada infinite" src="../images/enemies/enemyBlue1.png"/>
 			</div>
 		</div>
 	</div>
@@ -58,15 +58,15 @@
 		  	</thead>
 		  	<tbody>
 			  	<tr>
-			  		<td><img class="animated slow tada infinite" src="/images/powerups/powerupYellow_star.png"/></td>
+			  		<td><img class="animated slow tada infinite" src="../images/powerups/powerupYellow_star.png"/></td>
 			  		<td>Awards <strong>MEGA POINTS!</strong></td>
 			  	</tr>
 			  	<tr>
-			  		<td><img class="animated slow tada infinite" src="/images/powerups/powerupYellow_shield.png"/></td>
+			  		<td><img class="animated slow tada infinite" src="../images/powerups/powerupYellow_shield.png"/></td>
 			  		<td>Upgrades the player ship's hull for a short period of time.  During that time the player's ship is immune to <em><u>blasteroid</u></em> impacts and <em><u>enemy ships</u></em>.</td>
 			  	</tr>
 			  	<tr>
-			  		<td><img class="animated slow tada infinite" src="/images/powerups/powerupYellow_bolt.png"/></td>
+			  		<td><img class="animated slow tada infinite" src="../images/powerups/powerupYellow_bolt.png"/></td>
 			  		<td>Increases the cooling system for the player's ship's lasers.  Grants rapid fire ability for a short period of time.</td>
 			  	</tr>
 		  	</tbody>
@@ -77,7 +77,7 @@
 <div class="panel panel-danger">
   <div class="panel-heading"><strong><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;WARNING!</strong>Objects wrap around screen edges!</div>
   	<div class="panel-body">
-  		 <img src="/images/meteors/meteorBig.png"/>
+  		 <img src="../images/meteors/meteorBig.png"/>
   		 <p>
   		 	For example, blasteroids may drift off the edge of the screen and reappear at the opposite edge and continue moving in the same direction.
   		 	The player's ship may reach the bottom of the screen and reappear at the top.  This affect enemy ships as well.
@@ -330,6 +330,6 @@ var getRotationDegrees = function(obj) {
   <div class="panel-heading"><strong><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;GAME OVER!</strong></div>
 	<div class="panel-body">
 		<p>When the player loses all their lives, the game ends. Pressing `N` will start a new game.</p>
-		<img class="img-responsive" src="/images/doc/gameover.png"/>
+		<img class="img-responsive" src="../images/doc/gameover.png"/>
 	</div>
 </div>

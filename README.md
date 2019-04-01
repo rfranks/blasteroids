@@ -17,7 +17,7 @@ About `Blasteroids`
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> is an arcade space shooter released in November 1979 by <a href="https://en.wikipedia.org/wiki/Atari,_Inc.">Atari, Inc.</a> and designed by Lyle Rains, Ed Logg, and Dominic Walsh. The player controls a spaceship in an asteroid field which is periodically traversed by flying saucers.  The object is to shoot and destroy both asteroids and saucers alike, while avoiding each of them, as well as the flying saucers' counter-fire. The difficulty increases as the number of asteroids increases.
 </div>
 
-![Asteroids 1979 Gameplay](/images/doc/asteroids_1979.png "Asteroids 1979 Gameplay")
+![Asteroids 1979 Gameplay](./images/doc/asteroids_1979.png "Asteroids 1979 Gameplay")
 
 <div class="well well-sm">
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> was one of the first major hits of the golden age of arcade games.
@@ -27,7 +27,7 @@ About `Blasteroids`
 	<code>Blasteroids</code> is an Asteroids clone built purely using HTML, CSS, and JavaScript.  <code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Its source code, its comments and its documentation are <strong><em><u>FREE</u></em></strong> to everyone.
 </div>
 
-![Blasteroids Gameplay](/images/doc/gameplay.png "Blasteroids Gameplay")
+![Blasteroids Gameplay](./images/doc/gameplay.png "Blasteroids Gameplay")
 
 #### Objective
 <div class="well well-sm">The primary objectives of <code>Blasteroids</code> are... 
@@ -179,7 +179,7 @@ or click&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg" d
 			$('#blasteroids_modal__game.modal .modal-dialog .modal-content .modal-body')
 				.empty()
 				.html($('<iframe>', {
-				   src: '/index.html',
+				   src: '../index.html',
 				   id:  'blasteroids_modal__iframe',
 				   height: 700, 
 				   width: 1380,
