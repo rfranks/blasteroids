@@ -15,9 +15,20 @@
     "name": "Richard A Franks Jr"
   },
   "scripts": {
-    "start": "./node_modules/.bin/http-server ./ -o \\ -c-1",
-    "build-doc": "npm install && rm -rf ./docs && ./node_modules/.bin/jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
-    "serve": "npm install && npm run build-doc && ./node_modules/.bin/http-server \"./\" -o \\"
+    "clean-doc": "npm run clean-doc-win",
+    "clean-doc-macosx": "rm -rf ./docs",
+    "clean-doc-win": "clean_jsdoc.bat",
+    "build-doc": "npm run build-doc-win",
+    "build-doc-macosx": "npm install && npm run clean-doc-macosx && ./node_modules/.bin/jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
+    "build-doc-win": "npm install && clean_jsdoc.bat && .\\node_modules\\.bin\\jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
+    "lint-win": "echo \"Error: no lint configured\" && exit 1",
+    "serve": "npm run serve-win",
+    "serve-macosx": "npm run build-doc-macosx && ./node_modules/.bin/http-server ./ -o \\ -c-1",
+    "serve-win": "npm run build-doc-win && start .\\node_modules\\.bin\\http-server ./ -o \\ -c-1",
+    "test-win": "echo \"Error: no tests implemented\" && exit 1",
+    "start": "npm run start-win",
+    "start-macosx": "./node_modules/.bin/http-server ./ -o \\ -c-1",
+    "start-win": ".\\node_modules\\.bin\\http-server ./ -o \\ -c-1"
   },
   "bugs": {
     "url": "https://github.com/rfranks/blasteroids/issues"
