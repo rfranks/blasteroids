@@ -153,45 +153,9 @@ Installation and Usage
 
 <div class="well well-sm">Press <code>CTRL-C</code> to stop the server when you have finished running <code>Blasteroids</code>.</div>	
 
-<div class="well well-sm">Browse to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> to start playing!
-or click&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#blasteroids_modal__game">Launch!</button>
+<div class="well well-sm">
+    Browse to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> to start playing!
 </div>
-
-<div class="modal fade" id="blasteroids_modal__game" tabindex="-1" role="dialog" aria-labelledby="blasteroids_modal__title">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="blasteroids_modal__title">Blasteroids</h4>
-			</div>
-			<div class="modal-body" style="padding: 0;"></div>
-      		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		<button id="blasteroids_modal__refresh" type="button" class="btn btn-success">Reset</button>
-      		</div>
-    	</div>
-  	</div>
-</div>
-
-<script type="text/javascript">
-	$(function(){
-		var initBlasteroidsIframe = function() {
-			$('#blasteroids_modal__game.modal .modal-dialog .modal-content .modal-body')
-				.empty()
-				.html($('<iframe>', {
-				   src: '../index.html',
-				   id:  'blasteroids_modal__iframe',
-				   height: 700, 
-				   width: 1380,
-				   frameborder: 0,
-				   scrolling: 'no'
-		   		}));
-		};
-
-		$('button[data-target="#blasteroids_modal__game"]').click(initBlasteroidsIframe);
-		$('#blasteroids_modal__refresh').click(initBlasteroidsIframe);
-	});
-</script>
 
 #### Project Structure
 |  <span class="label label-primary" data-balloon="The amount of space this folder's contents takes up.">Approx Size</span> | <span class="label label-primary" data-balloon="The name of this folder.">Folder</span>                            |        <span class="label label-primary" data-balloon="The folder contents' file type.">File Type</span>        | <span class="label label-primary" data-balloon="What this folder contains.">Contents</span>                                                                                                                            |
@@ -230,9 +194,9 @@ Development and design
 
 Attributions
 ------------
-<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="NoiseForFun.com">NoiseForFun.com</a>. Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="https://www.NoiseForFun.com">NoiseForFun.com</a>. Please visit and donate! :-)</div>
 
-<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux">Space Shooter Redux</a> assets library from <a href="www.kenney.nl">Kenney.nl</a>.  Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux">Space Shooter Redux</a> assets library from <a href="https://www.kenney.nl">Kenney.nl</a>.  Please visit and donate! :-)</div>
 
 For More Information
 --------------------

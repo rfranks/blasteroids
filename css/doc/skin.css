@@ -32,6 +32,10 @@ h1, h2, h3, h4, h5, h6,
     padding-bottom: 8px;
 }
 
+h4 {
+    text-align: right;
+}
+
 h1, .h1,
 h5, .h5 {
     border-bottom: none;

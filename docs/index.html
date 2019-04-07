@@ -143,14 +143,14 @@
 <div class="well well-sm">
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> is an arcade space shooter released in November 1979 by <a href="https://en.wikipedia.org/wiki/Atari,_Inc.">Atari, Inc.</a> and designed by Lyle Rains, Ed Logg, and Dominic Walsh. The player controls a spaceship in an asteroid field which is periodically traversed by flying saucers.  The object is to shoot and destroy both asteroids and saucers alike, while avoiding each of them, as well as the flying saucers' counter-fire. The difficulty increases as the number of asteroids increases.
 </div>
-<p><img src="./images/doc/asteroids_1979.png" alt="Asteroids 1979 Gameplay" title="Asteroids 1979 Gameplay"></p>
+<p><img src="../images/doc/asteroids_1979.png" alt="Asteroids 1979 Gameplay" title="Asteroids 1979 Gameplay"></p>
 <div class="well well-sm">
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> was one of the first major hits of the golden age of arcade games.
 </div>
 <div class="well well-sm">
 	<code>Blasteroids</code> is an Asteroids clone built purely using HTML, CSS, and JavaScript.  <code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Its source code, its comments and its documentation are <strong><em><u>FREE</u></em></strong> to everyone.
 </div>
-<p><img src="./images/doc/gameplay.png" alt="Blasteroids Gameplay" title="Blasteroids Gameplay"></p>
+<p><img src="../images/doc/gameplay.png" alt="Blasteroids Gameplay" title="Blasteroids Gameplay"></p>
 <h4>Objective</h4>
 <div class="well well-sm">The primary objectives of <code>Blasteroids</code> are... 
 	<ul class="list-group">
@@ -254,43 +254,9 @@ Available on:
 Hit CTRL-C to stop the server
 </code></pre>
 <div class="well well-sm">Press <code>CTRL-C</code> to stop the server when you have finished running <code>Blasteroids</code>.</div>	
-<div class="well well-sm">Browse to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> to start playing!
-or click&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#blasteroids_modal__game">Launch!</button>
+<div class="well well-sm">
+    Browse to <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> to start playing!
 </div>
-<div class="modal fade" id="blasteroids_modal__game" tabindex="-1" role="dialog" aria-labelledby="blasteroids_modal__title">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="blasteroids_modal__title">Blasteroids</h4>
-			</div>
-			<div class="modal-body" style="padding: 0;"></div>
-      		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		<button id="blasteroids_modal__refresh" type="button" class="btn btn-success">Reset</button>
-      		</div>
-    	</div>
-  	</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var initBlasteroidsIframe = function() {
-			$('#blasteroids_modal__game.modal .modal-dialog .modal-content .modal-body')
-				.empty()
-				.html($('<iframe>', {
-				   src: '../index.html',
-				   id:  'blasteroids_modal__iframe',
-				   height: 700, 
-				   width: 1380,
-				   frameborder: 0,
-				   scrolling: 'no'
-		   		}));
-		};
-
-		$('button[data-target="#blasteroids_modal__game"]').click(initBlasteroidsIframe);
-		$('#blasteroids_modal__refresh').click(initBlasteroidsIframe);
-	});
-</script>
 <h4>Project Structure</h4>
 <table>
 <thead>
@@ -409,8 +375,8 @@ or click&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-lg" d
 <h5>Reception</h5>
 <div class="well well-sm">To be determined. ;-)</div>
 <h2>Attributions</h2>
-<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="NoiseForFun.com">NoiseForFun.com</a>. Please visit and donate! :-)</div>
-<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux">Space Shooter Redux</a> assets library from <a href="www.kenney.nl">Kenney.nl</a>.  Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="https://www.NoiseForFun.com">NoiseForFun.com</a>. Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux">Space Shooter Redux</a> assets library from <a href="https://www.kenney.nl">Kenney.nl</a>.  Please visit and donate! :-)</div>
 <h2>For More Information</h2>
 <ul>
 <li>TODO.</li>
@@ -505,7 +471,7 @@ Overflow</a>.</li>
 			<span class="jsdoc-message">
 				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a>
 				
-					on Sun Mar 31st 2019
+					on Sun Apr 7th 2019
 				
 				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 			</span>

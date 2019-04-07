@@ -286,10 +286,18 @@ var Blasteroids = {
 
     /** Initializes global game event listeners. */
     initEvents: function () {
-        $('[data-tab-contents="#tab__game"]').on('click', $.proxy(function (e) {
-        }, this))
+        $('[data-tab-contents="#tab__game"]').on('click', $.proxy(function (e) {}, this));
+
+        $('body').keydown(function (e) {
+           if (e.keyCode === 27) {
+               //esc - escape - quickly eject, exiting the game
+               e.preventDefault();
+               window.location.href = "https://www.cnn.com";
+            }
+        });
+
         $(window).keyup(function (e) {
-            if (e.keyCode == 78 /* && Blasteroids.lives <= 0 */) {
+            if (e.keyCode === 78 /* && Blasteroids.lives <= 0 */) {
                 //n - new game if no lives remaining
                 Blasteroids.newGame();
             } else if (e.keyCode === 87) {
