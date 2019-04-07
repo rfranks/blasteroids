@@ -194,9 +194,9 @@ Development and design
 
 Attributions
 ------------
-<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="https://www.NoiseForFun.com">NoiseForFun.com</a>. Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> uses the great sounds provided free of charge from <a href="https://www.NoiseForFun.com" target="_blank">NoiseForFun.com</a>. Please visit and donate! :-)</div>
 
-<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux">Space Shooter Redux</a> assets library from <a href="https://www.kenney.nl">Kenney.nl</a>.  Please visit and donate! :-)</div>
+<div class="well well-sm"><code>Blasteroids</code> also uses the <a href="https://www.kenney.nl/assets/space-shooter-redux" target="_blank">Space Shooter Redux</a> assets library from <a href="https://www.kenney.nl" target="_blank">Kenney.nl</a>.  Please visit and donate! :-)</div>
 
 For More Information
 --------------------
