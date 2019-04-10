@@ -128,17 +128,7 @@
 
 
     <section class="readme-section">
-        <article><style type="text/css">
-	.delayed {
-		animation-delay: 1s;
-	}
-
-	.glyphicon {
-		font-size: 18px;
-
-	}
-</style>
-<p><a href="http://travis-ci.org/jsdoc3/jsdoc"><img src="https://travis-ci.org/jsdoc3/jsdoc.svg?branch=master" alt="Build Status"></a></p>
+        <article><p><a href="http://travis-ci.org/jsdoc3/jsdoc"><img src="https://travis-ci.org/jsdoc3/jsdoc.svg?branch=master" alt="Build Status"></a></p>
 <h2>About <code>Blasteroids</code></h2>
 <div class="well well-sm">
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> is an arcade space shooter released in November 1979 by <a href="https://en.wikipedia.org/wiki/Atari,_Inc.">Atari, Inc.</a> and designed by Lyle Rains, Ed Logg, and Dominic Walsh. The player controls a spaceship in an asteroid field which is periodically traversed by flying saucers.  The object is to shoot and destroy both asteroids and saucers alike, while avoiding each of them, as well as the flying saucers' counter-fire. The difficulty increases as the number of asteroids increases.
@@ -149,18 +139,27 @@
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> was one of the first major hits of the golden age of arcade games.
 </div>
 <div class="well well-lg">
-    [Blasteroids](https://en.wikipedia.org/wiki/Blasteroids) is the third official sequel to the 1979 shoot 'em up video game Asteroids. It was developed by Atari Games and released as a coin-operated game in 1987. Unlike the previous games, Blasteroids uses raster graphics, not vector graphics.  Various computer ports of Blasteroids were released by Image Works.
+    <a href="https://en.wikipedia.org/wiki/Blasteroids">Blasteroids</a> is the third official sequel to the 1979 shoot 'em up video game Asteroids. It was developed by Atari Games and released as a coin-operated game in 1987. Unlike the previous games, Blasteroids uses raster graphics, not vector graphics.  Various computer ports of Blasteroids were released by Image Works.
 </div>
 <p><img src="../images/doc/blasteroids_title.png" alt="Blasteroids Title" title="Blasteroids Title Screen"><br>
 <img src="./images/doc/blasteroids_title.png" alt="Blasteroids Title" title="Blasteroids Title Screen"></p>
 <h3>Blasteroids Game Play</h3>
 <div class="well well-lg">
-    The gameplay for Blasteroids is basically the same as for the original; the player controls a spaceship viewed from "above" in a 2D representation of space, by rotating the ship, and using thrust to give the ship momentum. To slow down or completely stop moving, the player has to rotate the ship to face the direction it came from, and generate the right amount of thrust to nullify its momentum. The ship has a limited amount of fuel to generate thrust with. This fuel comes in the form of "Energy" that is also used for the ship's Shields which protect it against collisions and enemy fire. Once all Energy is gone, the player's ship is destroyed. The ship can shoot to destroy asteroids and enemy ships. The ship can also be transformed at will into 3 different versions, namely the "Speeder", the fastest version, the "Fighter", which has the most firepower, and the "Warrior", which has extra armour.
+    The gameplay for Blasteroids is basically the same as for the original; the player controls a spaceship viewed from "above" in a 2D representation of space, by rotating the ship, and using thrust to give the ship momentum. To slow down or completely stop moving, the player has to rotate the ship to face the direction it came from, and generate the right amount of thrust to nullify its momentum. 
 </div>
-Levels
+<div class="well well-lg">
+    The ship has a limited amount of fuel to generate thrust with. This fuel comes in the form of "Energy" that is also used for the ship's Shields which protect it against collisions and enemy fire. Once all Energy is gone, the player's ship is destroyed.
+</div>
+<div class="well well-lg">
+    The ship can shoot to destroy asteroids and enemy ships. The ship can also be transformed at will into 3 different versions, namely the "Speeder", the fastest version, the "Fighter", which has the most firepower, and the "Warrior", which has extra armour.
+</div>
 <h3>Blasteroids Objective</h3>
 <div class="well well-lg">
-    The object of the game is to destroy all the asteroids which have a set speed at which they fly through the Sector. Asteroids come in varying sizes, and when shot, larger asteroids break into multiple smaller ones. Only shooting the smallest ones will actually remove them from the Sector. Asteroids also come in different types. Normal asteroids don't contain anything, but red asteroids can contain power-ups in the form of Power Crystals that are released by completely destroying asteroids. Crystals decay over time. Popcorn Asteroids require several hits, which expands their size, and eventually makes them stop spinning. They can't be destroyed, but stopping them is enough to finish each Sector. Egg asteroids contain leeches which home in on the user's ship and suck out its energy. They can be shot and destroyed. Finally there are Seeker asteroids which home in on the player's ship after being shot.
+    The object of the game is to destroy all the asteroids which have a set speed at which they fly through the Sector.
+</div>
+<div class="well well-lg">
+    Asteroids come in varying sizes, and when shot, larger asteroids break into multiple smaller ones. Only shooting the smallest ones will actually remove them from the Sector. Asteroids also come in different types. Normal asteroids don't contain anything, but red asteroids can contain power-ups in the form of Power Crystals that are released by completely destroying asteroids. Crystals decay over time. Popcorn Asteroids require several hits, which expands their size, and eventually makes them stop spinning. They can't be destroyed, but stopping them is enough to finish each Sector. Egg asteroids contain leeches which home in on the user's ship and suck out its energy. They can be shot and destroyed. Finally there are Seeker asteroids which home in on the player's ship after being shot.
+<div class="well well-lg">
     Besides asteroids, there are different enemy ships trying to shoot the player, which leave equipment in the form of power-ups when destroyed.
 </div>
 <p><img src="../images/doc/blasteroids_info_screen.png" alt="Blasteroids Objectives" title="Blasteroids Objectives"><br>
@@ -406,7 +405,6 @@ Hit CTRL-C to stop the server
 <div class="well well-sm">For details on how to play <code>Blasteroids</code>, see <a href="tutorial-HOW_TO_PLAY.html">How to Play</a>.</div>
 <h2>Development and design</h2>
 <div class="well well-sm">This version of <code>Blasteroids</code> is in no way related to or derived from Ed Rotberg's 1987's Blasteroids.</div>
-<div class="well well-sm"><code>Blasteroids</code> uses raster graphics instead of vectors.</div>
 <div class="well well-sm"><code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Both its source code and documentation are <u>FREE</u> to everyone.</div>
 <h5>Reception</h5>
 <div class="well well-sm">To be determined. ;-)</div>
@@ -487,7 +485,17 @@ Overflow</a>.</li>
 <div class="well well-sm">
 	Please note that this project is released with a Contributor <a href="tutorial-CODE_OF_CONDUCT.html">Code of Conduct</a>.  
 	By participating in this project you agree to abide by its terms.
-</div></article>
+</div>
+<style type="text/css">
+	.delayed {
+		animation-delay: 1s;
+	}
+
+	.glyphicon {
+		font-size: 18px;
+
+	}
+</style></article>
     </section>
 
 

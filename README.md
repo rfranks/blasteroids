@@ -1,14 +1,3 @@
-<style type="text/css">
-	.delayed {
-		animation-delay: 1s;
-	}
-
-	.glyphicon {
-		font-size: 18px;
-
-	}
-</style>
-
 [![Build Status](https://travis-ci.org/jsdoc3/jsdoc.svg?branch=master)](http://travis-ci.org/jsdoc3/jsdoc)
 
 About `Blasteroids`
@@ -25,21 +14,31 @@ About `Blasteroids`
 </div>
 
 <div class="well well-lg">
-    [Blasteroids](https://en.wikipedia.org/wiki/Blasteroids) is the third official sequel to the 1979 shoot 'em up video game Asteroids. It was developed by Atari Games and released as a coin-operated game in 1987. Unlike the previous games, Blasteroids uses raster graphics, not vector graphics.  Various computer ports of Blasteroids were released by Image Works.
+    <a href="https://en.wikipedia.org/wiki/Blasteroids">Blasteroids</a> is the third official sequel to the 1979 shoot 'em up video game Asteroids. It was developed by Atari Games and released as a coin-operated game in 1987. Unlike the previous games, Blasteroids uses raster graphics, not vector graphics.  Various computer ports of Blasteroids were released by Image Works.
 </div>
 
 ![Blasteroids Title](../images/doc/blasteroids_title.png "Blasteroids Title Screen")
 ![Blasteroids Title](./images/doc/blasteroids_title.png "Blasteroids Title Screen")
 
 ### Blasteroids Game Play
+
 <div class="well well-lg">
-    The gameplay for Blasteroids is basically the same as for the original; the player controls a spaceship viewed from "above" in a 2D representation of space, by rotating the ship, and using thrust to give the ship momentum. To slow down or completely stop moving, the player has to rotate the ship to face the direction it came from, and generate the right amount of thrust to nullify its momentum. The ship has a limited amount of fuel to generate thrust with. This fuel comes in the form of "Energy" that is also used for the ship's Shields which protect it against collisions and enemy fire. Once all Energy is gone, the player's ship is destroyed. The ship can shoot to destroy asteroids and enemy ships. The ship can also be transformed at will into 3 different versions, namely the "Speeder", the fastest version, the "Fighter", which has the most firepower, and the "Warrior", which has extra armour.
+    The gameplay for Blasteroids is basically the same as for the original; the player controls a spaceship viewed from "above" in a 2D representation of space, by rotating the ship, and using thrust to give the ship momentum. To slow down or completely stop moving, the player has to rotate the ship to face the direction it came from, and generate the right amount of thrust to nullify its momentum. 
 </div>
-Levels
+<div class="well well-lg">
+    The ship has a limited amount of fuel to generate thrust with. This fuel comes in the form of "Energy" that is also used for the ship's Shields which protect it against collisions and enemy fire. Once all Energy is gone, the player's ship is destroyed.
+</div>
+<div class="well well-lg">
+    The ship can shoot to destroy asteroids and enemy ships. The ship can also be transformed at will into 3 different versions, namely the "Speeder", the fastest version, the "Fighter", which has the most firepower, and the "Warrior", which has extra armour.
+</div>
 
 ### Blasteroids Objective
 <div class="well well-lg">
-    The object of the game is to destroy all the asteroids which have a set speed at which they fly through the Sector. Asteroids come in varying sizes, and when shot, larger asteroids break into multiple smaller ones. Only shooting the smallest ones will actually remove them from the Sector. Asteroids also come in different types. Normal asteroids don't contain anything, but red asteroids can contain power-ups in the form of Power Crystals that are released by completely destroying asteroids. Crystals decay over time. Popcorn Asteroids require several hits, which expands their size, and eventually makes them stop spinning. They can't be destroyed, but stopping them is enough to finish each Sector. Egg asteroids contain leeches which home in on the user's ship and suck out its energy. They can be shot and destroyed. Finally there are Seeker asteroids which home in on the player's ship after being shot.
+    The object of the game is to destroy all the asteroids which have a set speed at which they fly through the Sector.
+</div>
+<div class="well well-lg">
+    Asteroids come in varying sizes, and when shot, larger asteroids break into multiple smaller ones. Only shooting the smallest ones will actually remove them from the Sector. Asteroids also come in different types. Normal asteroids don't contain anything, but red asteroids can contain power-ups in the form of Power Crystals that are released by completely destroying asteroids. Crystals decay over time. Popcorn Asteroids require several hits, which expands their size, and eventually makes them stop spinning. They can't be destroyed, but stopping them is enough to finish each Sector. Egg asteroids contain leeches which home in on the user's ship and suck out its energy. They can be shot and destroyed. Finally there are Seeker asteroids which home in on the player's ship after being shot.
+<div class="well well-lg">
     Besides asteroids, there are different enemy ships trying to shoot the player, which leave equipment in the form of power-ups when destroyed.
 </div>
 
@@ -227,8 +226,6 @@ Development and design
 ----------------------
 <div class="well well-sm">This version of <code>Blasteroids</code> is in no way related to or derived from Ed Rotberg's 1987's Blasteroids.</div>
 
-<div class="well well-sm"><code>Blasteroids</code> uses raster graphics instead of vectors.</div>
-
 <div class="well well-sm"><code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Both its source code and documentation are <u>FREE</u> to everyone.</div>
 
 ##### Reception
@@ -302,3 +299,14 @@ Code of Conduct
 	Please note that this project is released with a Contributor {@tutorial CODE_OF_CONDUCT}.  
 	By participating in this project you agree to abide by its terms.
 </div>
+
+<style type="text/css">
+	.delayed {
+		animation-delay: 1s;
+	}
+
+	.glyphicon {
+		font-size: 18px;
+
+	}
+</style>
