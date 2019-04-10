@@ -18,19 +18,61 @@ About `Blasteroids`
 </div>
 
 ![Asteroids 1979 Gameplay](../images/doc/asteroids_1979.png "Asteroids 1979 Gameplay")
+![Asteroids 1979 Gameplay](./images/doc/asteroids_1979.png "Asteroids 1979 Gameplay")
 
 <div class="well well-sm">
 	<a href="https://en.wikipedia.org/wiki/Asteroids_%28video_game%29">Asteroids</a> was one of the first major hits of the golden age of arcade games.
 </div>
 
+<div class="well well-lg">
+    [Blasteroids](https://en.wikipedia.org/wiki/Blasteroids) is the third official sequel to the 1979 shoot 'em up video game Asteroids. It was developed by Atari Games and released as a coin-operated game in 1987. Unlike the previous games, Blasteroids uses raster graphics, not vector graphics.  Various computer ports of Blasteroids were released by Image Works.
+</div>
+
+![Blasteroids Title](../images/doc/blasteroids_title.png "Blasteroids Title Screen")
+![Blasteroids Title](./images/doc/blasteroids_title.png "Blasteroids Title Screen")
+
+### Blasteroids Game Play
+<div class="well well-lg">
+    The gameplay for Blasteroids is basically the same as for the original; the player controls a spaceship viewed from "above" in a 2D representation of space, by rotating the ship, and using thrust to give the ship momentum. To slow down or completely stop moving, the player has to rotate the ship to face the direction it came from, and generate the right amount of thrust to nullify its momentum. The ship has a limited amount of fuel to generate thrust with. This fuel comes in the form of "Energy" that is also used for the ship's Shields which protect it against collisions and enemy fire. Once all Energy is gone, the player's ship is destroyed. The ship can shoot to destroy asteroids and enemy ships. The ship can also be transformed at will into 3 different versions, namely the "Speeder", the fastest version, the "Fighter", which has the most firepower, and the "Warrior", which has extra armour.
+</div>
+Levels
+
+### Blasteroids Objective
+<div class="well well-lg">
+    The object of the game is to destroy all the asteroids which have a set speed at which they fly through the Sector. Asteroids come in varying sizes, and when shot, larger asteroids break into multiple smaller ones. Only shooting the smallest ones will actually remove them from the Sector. Asteroids also come in different types. Normal asteroids don't contain anything, but red asteroids can contain power-ups in the form of Power Crystals that are released by completely destroying asteroids. Crystals decay over time. Popcorn Asteroids require several hits, which expands their size, and eventually makes them stop spinning. They can't be destroyed, but stopping them is enough to finish each Sector. Egg asteroids contain leeches which home in on the user's ship and suck out its energy. They can be shot and destroyed. Finally there are Seeker asteroids which home in on the player's ship after being shot.
+    Besides asteroids, there are different enemy ships trying to shoot the player, which leave equipment in the form of power-ups when destroyed.
+</div>
+
+![Blasteroids Objectives](../images/doc/blasteroids_info_screen.png "Blasteroids Objectives")
+![Blasteroids Objectives](./images/doc/blasteroids_info_screen.png "Blasteroids Objectives")
+
+<!--
+There are different kinds of equipment:
+
+Shields - give limited amount of protection, indicated in HUD.
+Blasters - gives the ship double shots.
+Extra Shot Power - allows shots to penetrate everything.
+Ripstar - when activated, causes the ship to spin furiously, firing in all directions.
+Extra Fuel Capacity - increases fuel capacity, indicated by the HUD. Depleting fuel reserves to critical with this increased capacity will revert the ship to normal fuel capacity.
+Booster - increases movement speed for all ship forms.
+Crystal Magnet - attracts loose Power Crystals to the ship.
+Cloak - ship turns invisible to enemies, preventing them from detecting the ship.
+Boss
+Mukor is the alien boss after all sectors are cleared of asteroids. He will try to ram the player and will send miniature enemy ships to aid him. Mukor has tentacles which all must be shot multiple times to be destroyed. Once all tentacles are gone, Mukor is defeated and he will leave some special equipment. He will reappear in the next Galaxy with a larger number of tentacles, making him harder to defeat. Mukor must be defeated in all Galaxies to be fully conquered and for the player to win the game.
+
+Multiplayer
+A second player can join the game at any time by pressing his Fire button, using up 1 credit and turning Blasteroids into a multiplayer game. Both players can cooperate by covering each other, as well as by docking their ships into the Starlet. Docking is possible if one ship is a Speeder, and the other is a Warrior; flying over each other will turn the Speeder into a stationary Turret with more firepower, on top of the Warrior, which turns into a Spiaret, with less firepower but full control. The ships undock when either player transforms their ship into something else again. The first player to exit through the Exit Portal gets a large bonus and control of the Galactic Map.
+-->
+
 <div class="well well-sm">
-	<code>Blasteroids</code> is an Asteroids clone built purely using HTML, CSS, and JavaScript.  <code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Its source code, its comments and its documentation are <strong><em><u>FREE</u></em></strong> to everyone.
+	This <code>Blasteroids</code> is a Blasteroids clone built purely using HTML, CSS, and JavaScript.  <code>Blasteroids</code> was designed as an entry level introduction into both <strong>Web Programming</strong> and <strong>Game Programming</strong>. Its source code, its comments and its documentation are <strong><em><u>FREE</u></em></strong> to everyone.
 </div>
 
 ![Blasteroids Gameplay](../images/doc/gameplay.png "Blasteroids Gameplay")
+![Blasteroids Gameplay](./images/doc/gameplay.png "Blasteroids Gameplay")
 
-#### Objective
-<div class="well well-sm">The primary objectives of <code>Blasteroids</code> are... 
+#### Our Objective
+<div class="well well-sm">The primary objectives of this <code>Blasteroids</code> are... 
 	<ul class="list-group">
 		<li class="list-group-item">...to avoid blasteroids at all costs,</li>
 		<li class="list-group-item">...to avoid enemy ships at all costs,</li>
@@ -81,7 +123,7 @@ and some utility methods in:
 
 #### Legal Stuff
 
-<div class="well well-sm">This version of <code>Blasteroids</code> is in no way related to or derived from Ed Rotberg's Blasteroids of 1987.</div>
+<div class="well well-sm">This version of <code>Blasteroids</code> is a clone of Ed Rotberg's Blasteroids of 1987.</div>
 
 <div class="well well-sm">
 	<p>
