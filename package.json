@@ -23,12 +23,12 @@
     "build-doc-win": "npm install && clean_jsdoc.bat && .\\node_modules\\.bin\\jsdoc -c jsdoc.conf.json -R README.md --verbose ./js",
     "lint-win": "echo \"Error: no lint configured\" && exit 1",
     "serve": "npm run serve-win",
-    "serve-macosx": "npm run build-doc-macosx && ./node_modules/.bin/http-server ./ -o \\ -c-1",
-    "serve-win": "npm run build-doc-win && start .\\node_modules\\.bin\\http-server ./ -o \\ -c-1",
+    "serve-macosx": "npm run build-doc-macosx && ./node_modules/.bin/http-server ./ -o \\",
+    "serve-win": "npm run build-doc-win && start .\\node_modules\\.bin\\http-server ./ -o \\",
     "test-win": "echo \"Error: no tests implemented\" && exit 1",
     "start": "npm run start-win",
-    "start-macosx": "./node_modules/.bin/http-server ./ -o \\ -c-1",
-    "start-win": ".\\node_modules\\.bin\\http-server ./ -o \\ -c-1"
+    "start-macosx": "./node_modules/.bin/http-server ./ -o \\",
+    "start-win": ".\\node_modules\\.bin\\http-server ./ -o \\"
   },
   "bugs": {
     "url": "https://github.com/rfranks/blasteroids/issues"
@@ -39,8 +39,8 @@
   },
   "main": "./publish.js",
   "dependencies": {
-    "http-server": "^0.11.1",
+    "http-server": "^14.0.0",
     "ink-docstrap": "^1.3.2",
-    "jsdoc": "git://github.com/jsdoc3/jsdoc.git"
+    "jsdoc": "^3.6.6"
   }
 }
