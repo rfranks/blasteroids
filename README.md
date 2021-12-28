@@ -156,6 +156,12 @@ Installation and Usage
 </div>
 
     npm run serve
+    
+<div class="well well-sm">
+	If you are on a Mac, you can use
+</div>
+    
+    npm run serve-macosx
 
 <div class="well well-sm">You should see something similar to the following.</div>
 	
