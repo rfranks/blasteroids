@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Launch via NPM (macosx)",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "serve-macosx"
+            ]
+        },
+        {
+            "name": "Launch via NPM (windows)",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "serve-win"
+            ]
+        }
+    ]
+}
