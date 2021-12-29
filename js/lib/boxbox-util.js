@@ -191,6 +191,28 @@ var BoxBoxUtil = {
     },
 
     /**
+     * Gets other entities that are intersecting the provided entity.
+     * @param {Entity} entity the entity to find intersecting entities for
+     * @returns the entities that intersect with the entity provided
+     */
+    getIntersectingEntities: function (entity) {
+        if (entity == null) {
+            return [];
+        }
+
+        var heightOffset = entity._ops.height / 2.0,
+            widthOffset = entity._ops.width / 2.0,
+            position = entity.position();
+
+        return Blasteroids.world.find(
+            position.x - widthOffset, 
+            position.y - heightOffset, 
+            position.x + widthOffset, 
+            position.y + heightOffset
+        );
+    },
+
+    /**
      * @param {Entity} entity the entity to test
      * @param {World} world the world to check against
      * @returns {boolean} true if entity's position is <em>outside</em> of the world's
@@ -261,7 +283,7 @@ var BoxBoxUtil = {
             y = b * power;
         }
 
-        return {x: x, y: y};
+        return { x: x, y: y };
     },
 
     /**
@@ -281,9 +303,9 @@ var BoxBoxUtil = {
             Log.debug('Position: ' + JSON.stringify(this.position()));
             Log.debug('Canvas Position: ' + JSON.stringify(canvasPosition));
             Log.debug('Canvas Position (scaled): ' + JSON.stringify({
-                    x: (canvasPosition.x / scale),
-                    y: (canvasPosition.y / scale)
-                }));
+                x: (canvasPosition.x / scale),
+                y: (canvasPosition.y / scale)
+            }));
 
         }
 

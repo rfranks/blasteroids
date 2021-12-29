@@ -2,7 +2,8 @@ Blasteroids is <strong>free</strong> software, licensed under the MIT License(th
 
 <div class="well well-sm" style="font-family: monospace;">Copyright (c) 2017-present by Richard Franks Jr richardfranksjr@hotmail.com and the contributors to Blasteroids. All rights reserved.</div>
 
-The source code for Blasteroids is available at: https://github.com/
+The source code for this version of Blasteroids is available at: https://github.com/rfranks/blasteroids
+You can play the game at https://rfranks.github.io/blasteroids
 
 Blasteroids is distributed under a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 

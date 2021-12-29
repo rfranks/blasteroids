@@ -11,9 +11,8 @@ Log.logLevel = Log.LEVELS.TRACE;
  * @property {jQuery} $pointsAdded display for the number of points the player just received
  * @property {jQuery} $scoreAmount display for the player's current score
  * @property {Blasteroids.powerup[]} POWERUP_CONFIGS mixins for powerups that are mixed with {@link Blasteroids.powerup} to create powerups within the game
- * @property {Blasteroids.weaponUpgrade[]} WEAPON_UPGRADE_CONFIGS mixins for weapon upgrades that are mixed with {@link Blasteroids.weaponUpgrade} to create permanent weapon upgrades within the game
  * @property {Blasteroids.powerup} activePowerup the currently active powerup within the field of play (only one powerup is active at a time)
- * @property {Blasteroids.weaponUpgrade} activeWeaponUpgrade the currently active weapon upgrade within the field of play (only one weapon upgrade is active at a time)
+ * @property {Blasteroids.wormhole} activeWormhole the currently active wormhole within the field of play (only one wormhole (with a and b ends) is active at a time)
  * @property {number} blasteroidsRemaining the number of blasteroids currently in the field of play
  * @property {number} currentBlastsToFire the number of blasts the player's ship should fire on each trigger press
  * @property {number} earnedLives the number of lives the player has earned this game
@@ -53,9 +52,9 @@ var Blasteroids = {
             this.spawnPowerup();
         }, this), Math.floor(Math.random() * 20000) + 20000);
 
-        //start spawning weapon upgrades at random time between ~40 and ~60secs
+        //start spawning wormholes at random time between ~40 and ~60secs
         setTimeout($.proxy(function () {
-            this.spawnWeaponUpgrade();
+            this.spawnWormhole();
         }, this), Math.floor(Math.random() * 20000) + 40000);
 
         //start the game
@@ -286,13 +285,13 @@ var Blasteroids = {
 
     /** Initializes global game event listeners. */
     initEvents: function () {
-        $('[data-tab-contents="#tab__game"]').on('click', $.proxy(function (e) {}, this));
+        $('[data-tab-contents="#tab__game"]').on('click', $.proxy(function (e) { }, this));
 
         $('body').keydown(function (e) {
-           if (e.keyCode === 27) {
-               //esc - escape - quickly eject, exiting the game
-               e.preventDefault();
-               window.location.href = "https://www.cnn.com";
+            if (e.keyCode === 27) {
+                //esc - escape - quickly eject, exiting the game
+                e.preventDefault();
+                window.location.href = "https://www.cnn.com";
             }
         });
 
@@ -539,9 +538,9 @@ var Blasteroids = {
      */
     spawnEnemyShip: function (x, y) {
         var position = {
-                x: x || Math.floor(Math.random() > .5 ? 0 : Blasteroids.world.maxX()),
-                y: y || Math.floor(Math.random() > .5 ? 0 : Blasteroids.world.maxY())
-            },
+            x: x || Math.floor(Math.random() > .5 ? 0 : Blasteroids.world.maxX()),
+            y: y || Math.floor(Math.random() > .5 ? 0 : Blasteroids.world.maxY())
+        },
             radiusMultiplier = 3,
             radius = radiusMultiplier * this.options.shipRadius,
             positionEntities = this.world.find(position.x - radius, position.y - radius, position.x + radius, position.y + radius);
@@ -597,9 +596,9 @@ var Blasteroids = {
      */
     spawnPowerup: function (x, y) {
         var position = {
-                x: x || Math.floor(Math.random() * this.world.maxX()),
-                y: y || Math.floor(Math.random() * this.world.maxY())
-            },
+            x: x || Math.floor(Math.random() * this.world.maxX()),
+            y: y || Math.floor(Math.random() * this.world.maxY())
+        },
             heightOffset = this.powerup.height / 2.0,
             widthOffset = this.powerup.width / 2.0,
             positionEntities = this.world.find(position.x - widthOffset, position.y - heightOffset, position.x + widthOffset, position.y + heightOffset);
@@ -645,65 +644,86 @@ var Blasteroids = {
     },
 
     /**
-     * Spawn a random weapon upgrade at the given x and y coordinates, or a random x-y coordinate in the
-     * world's field of play if no x-y coordinate is provided. A weapon upgrade gives the player certain
+     * Spawn a wormhole at the given x1,y1 and x2,y2 coordinates, or a random x-y coordinate pair in the
+     * world's field of play if no x-y coordinate pair is provided. A wormhole allows objects to instantaneously
+     * travel from one point in space, to another point in space.
      * abilities and/or rewards when collected. They remain visible for 10 seconds. Their effects tend to
      * be permanent.
-     * @param {number} [x] x coordinate for power up to spawn at. Defaults to a random x coordinate in the world's field of play.
-     * @param {number} [y] y coordinate for power up to spawn at. Defaults to a random y coordinate in the world's field of play.
-     * @example <caption>Spawning a random weapon upgrade at a random time</caption>
-     *   //spawn weapon upgrade at random time between 40 - 60secs
+     * @param {number} [x1] x coordinate for the wormhole's first endpoint. Defaults to a random x coordinate in the world's field of play.
+     * @param {number} [y1] y coordinate for the wormhole's first endpoint. Defaults to a random y coordinate in the world's field of play.
+     * @param {number} [x2] x coordinate for the wormhole's second endpoint. Defaults to a random x coordinate in the world's field of play.
+     * @param {number} [y2] y coordinate for the wormhole's second endpoint. Defaults to a random y coordinate in the world's field of play.
+     * @example <caption>Spawning a random wormhole at a random time</caption>
+     *   //spawn wormhole at random time between 40 - 60secs
      *   setTimeout(function(){
-    *       Blasteroids.spawnWeaponUpgrade();
+    *       Blasteroids.spawnWormhole();
     *   }, Math.floor(Math.random() * 20000) + 40000);
      */
-    spawnWeaponUpgrade: function (x, y) {
+    spawnWormhole: function (x1, y1, x2, y2) {
         var position = {
-                x: x || Math.floor(Math.random() * this.world.maxX()),
-                y: y || Math.floor(Math.random() * this.world.maxY())
-            },
-            heightOffset = this.powerup.height / 2.0,
-            widthOffset = this.powerup.width / 2.0,
-            positionEntities = this.world.find(position.x - widthOffset, position.y - heightOffset, position.x + widthOffset, position.y + heightOffset);
+            x1: x1 || Math.floor(Math.random() * this.world.maxX()),
+            y1: y1 || Math.floor(Math.random() * this.world.maxY()),
+            x2: x2 || Math.floor(Math.random() * this.world.maxX()),
+            y2: y2 || Math.floor(Math.random() * this.world.maxY())
+        },
+            heightOffset = this.powerup.height / 2.0, // TODO this may not be right
+            widthOffset = this.powerup.width / 2.0, //TODO this may not be right
+            positionEntities1 = this.world.find(position.x1 - widthOffset, position.y1 - heightOffset, position.x1 + widthOffset, position.y1 + heightOffset),
+            positionEntities2 = this.world.find(position.x2 - widthOffset, position.y2 - heightOffset, position.x2 + widthOffset, position.y2 + heightOffset);
 
-        //will we spawn with a blasteroid, enemy, or player too near?
-        if (positionEntities.length > 0) {
+        //will we spawn with a blasteroid, enemy, or player too near to our endpoints?
+        if (positionEntities1.length > 0 || positionEntities2.length > 0) {
             //...if so wait to spawn and try again at same location
             setTimeout($.proxy(function () {
-                this.spawnWeaponUpgrade(position.x, position.y);
+                this.spawnWormhole(position.x1, position.y1, position.x2, position.y2);
             }, this), 300);
             return;
         }
 
-        //destroy active powerup if we have one
-        this.activeWeaponUpgrade && (this.activeWeaponUpgrade.destroyed = true);
+        //destroy active wormhole if we have one
+        this.activeWormhole && (this.activeWormhole.destroyed = this.activeWormhole.a.destroyed = this.activeWormhole.b.destroyed = true);
 
-        ///create a new active powerup
-        this.activeWeaponUpgrade = this.world.createEntity(
-            this.weaponUpgrade,
-            position,
-            this.WEAPON_UPGRADE_CONFIGS[Math.floor(Math.random() * this.WEAPON_UPGRADE_CONFIGS.length)]
+        ///create a new active wormhole with two endpoints, a and b
+        this.activeWormhole == null && (this.activeWormhole = {});
+
+        //a endpoint
+        this.activeWormhole.a = this.world.createEntity(
+            this.wormhole,
+            {
+                x: position.x1,
+                y: position.y1
+            }
         );
 
+        //b endpoint
+        this.activeWormhole.b = this.world.createEntity(
+            this.wormhole,
+            {
+                x: position.x2,
+                y: position.y2
+            }
+        );
 
-        //expire powerup in 20 secs
+        //expire wormhole in 30 secs
         setTimeout($.proxy(function () {
-            if (this.activeWeaponUpgrade) {
-                this.activeWeaponUpgrade.destroyed = true;
-                this.activeWeaponUpgrade = null;
+            if (this.activeWormhole) {
+                this.activeWormhole.destroyed = true;
+                this.activeWormhole.a.destroyed = true;
+                this.activeWormhole.b.destroyed = true;
+                this.activeWormhole = null;
             }
 
             //spawn powerup at random time between 40 - 60secs
             setTimeout($.proxy(function () {
-                this.spawnWeaponUpgrade();
+                this.spawnWormhole();
             }, this), Math.floor(Math.random() * 20000) + 40000);
-        }, this), 20000);
+        }, this), 30000);
 
 
-        Log.info('WEAPON UPGRADE initialized...');
+        Log.info('Wormhole initialized...');
 
         //alert the user
-        Log.msg('A WEAPON UPGRADE has appeared!');
+        Log.msg('DANGER! A WORMHOLE has appeared!');
     },
 
     /**

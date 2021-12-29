@@ -475,16 +475,14 @@ Blasteroids.initEntities = function () {
             onTick: function () {
                 if (!this.destroyed) {
                     var i = 0,
-                        heightOffset = this._ops.height / 2.0,
-                        widthOffset = this._ops.width / 2.0,
-                        position = this.position(),
-                        positionEntities = Blasteroids.world.find(position.x - widthOffset, position.y - heightOffset, position.x + widthOffset, position.y + heightOffset);
+                        intersectingEntities = BoxBoxUtil.getIntersectingEntities(this);
 
                     //did someone touch us?
-                    if (positionEntities.length > 0) {
-                        for (; i < positionEntities.length; i++) {
-                            var entity = positionEntities[i];
+                    if (intersectingEntities.length > 0) {
+                        for (; i < intersectingEntities.length; i++) {
+                            var entity = intersectingEntities[i];
 
+                            //did the player touch us?
                             if (entity.name() === 'player') {
                                 //play an alert sound
                                 Audio.play('sounds/NFF-powerup.wav');
@@ -602,7 +600,7 @@ Blasteroids.initEntities = function () {
 
                 var position = this.position(),
                     rads = this.$polarRadians(),
-                    shipThrust = Blasteroids.world.createEntity(Blasteroids.shipThrust, {$sourceName: this.name()}),
+                    shipThrust = Blasteroids.world.createEntity(Blasteroids.shipThrust, { $sourceName: this.name() }),
                     heightOffset = shipThrust._ops.height * .75,
                     offsetX = (this._ops.radius + heightOffset) * Math.cos(rads),
                     offsetY = (this._ops.radius + heightOffset) * Math.sin(rads);
@@ -709,9 +707,9 @@ Blasteroids.initEntities = function () {
                             }, 100 * i);
 
                             setBlastTimeout &&
-                            (ship.canFireBlastTO = setTimeout(function () {
-                                ship.canFireBlast = true;
-                            }, (100 * i) + ship.fireRate));
+                                (ship.canFireBlastTO = setTimeout(function () {
+                                    ship.canFireBlast = true;
+                                }, (100 * i) + ship.fireRate));
                         }
                     } else if (e.keyCode == 68) {
                         var position = this.position();
@@ -791,78 +789,99 @@ Blasteroids.initEntities = function () {
         });
 
     /**
-     * @mixin Blasteroids.weaponUpgrade
+     * @mixin Blasteroids.wormhole
      * @mixes boxbox.entityEvents
-     * @desc A mixin that bestows the characteristics of a weapon upgrade to an {@link Entity entity}.
-     * @property {string} name <code>'weaponUpgrade'</code>
+     * @desc A mixin that bestows the characteristics of a wormhole to an {@link Entity entity}.
+     * @property {string} name <code>'wormhole'</code>
      * @property {string} shape <code>'square'</code>
      * @property {string} type <code>'static'</code>
      * @property {boolean} active <code>false</code>
+     * @property {string} image <code>'images/effects/spacewarp.png'</code> 
      * @property {boolean} imageStretchToFit <code>true</code>
      * @property {number} height <code>1.5</code>
      * @property {number} width <code>1.5</code>
      */
-    Blasteroids.weaponUpgrade = $.extend({},
+    Blasteroids.wormhole = $.extend({},
         BoxBoxUtil.angleImpulse,
         {
-            name: 'weaponUpgrade',
-            shape: 'square',
+            name: 'wormhole',
+            shape: 'circle',
             type: 'static',
             active: false,
+            image: 'images/effects/spacewarp.png',
             imageStretchToFit: true,
             height: 1.5,
             width: 1.5,
 
+            $onNewGame: function () {
+                //noop
+                //it is currently unknown whether or not wormholes can be destroyed ;-)
+            },
+
             /**
-             * Called when the powerup is "collected."  Default behavior is a <code>no-op</code>.
-             * @function $onCollect
-             * @memberOf! Blasteroids.powerup
+             * Called when the wormhole is "traversed."  Transports the entity to the opposite wormhole.
+             * @function $transport
+             * @memberOf! Blasteroids.wormhole
              * @instance
-             * @param {Entity} entity the entity that is doing the "collecting"
+             * @param {Entity} entity the entity that is doing the "traversing"
              */
-            $onCollect: $.noop,
+            $transport: function (entity) {
+                debugger;
+
+                if (!entity.destroyed && !entity._ops.createdByWormhole) {
+                    entity.destroy();
+
+                    if (this === Blasteroids.activeWormhole.a) {
+                        entity = Blasteroids.world.createEntity(
+                            entity._ops,
+                            {
+                                destroyed: false,
+                                createdByWormhole: true,
+                                x: Blasteroids.activeWormhole.b._ops.x,
+                                y: Blasteroids.activeWormhole.b._ops.y
+                            }
+                        );
+                    } else {
+                        entity = Blasteroids.world.createEntity(
+                            entity._ops,
+                            {
+                                createdByWormhole: true,
+                                destroyed: false,
+                                x: Blasteroids.activeWormhole.a._ops.x,
+                                y: Blasteroids.activeWormhole.a._ops.y
+                            }
+                        );
+                    }
+
+                    setTimeout($.proxy(function () {
+                        this._ops.createdByWormhole = false;
+                    }, entity), 1500);
+                }
+            },
 
             /**
              * @see {@link boxbox.entityEvents#onTick}
-             * @memberOf! Blasteroids.powerup
+             * @memberOf! Blasteroids.wormhole
              * @instance
              */
             onTick: function () {
-                //rotate us
+                //rotate us, we are a spinning wormhole
                 this.$angle((this.$angle() + 5) % 360);
 
                 if (!this.destroyed) {
                     var i = 0,
-                        heightOffset = this._ops.height / 2.0,
-                        widthOffset = this._ops.width / 2.0,
-                        position = this.position(),
-                        positionEntities = Blasteroids.world.find(
-                            position.x - widthOffset,
-                            position.y - heightOffset,
-                            position.x + widthOffset,
-                            position.y + heightOffset
-                        );
+                        intersectingEntities = BoxBoxUtil.getIntersectingEntities(this);
 
                     //did someone touch us?
-                    if (positionEntities.length > 0) {
-                        for (; i < positionEntities.length; i++) {
-                            var entity = positionEntities[i];
+                    if (intersectingEntities.length > 0) {
+                        for (; i < intersectingEntities.length; i++) {
+                            var entity = intersectingEntities[i];
 
-                            if (entity.name() === 'player') {
-                                //play an alert sound
-                                Audio.play('sounds/NFF-weapon-upgrade.wav');
+                            //play an alert sound
+                            Audio.play('sounds/NFF-space-warp.wav');
 
-                                //collect the power up
-                                this.$onCollect && this.$onCollect(entity);
-
-                                //destroy the powerup
-                                this.destroyed = true;
-
-                                //spawn powerup at random time between 20 - 40secs
-                                setTimeout(function () {
-                                    Blasteroids.spawnWeaponUpgrade();
-                                }, Math.floor(Math.random() * 20000) + 40000);
-                            }
+                            //traverse the wormhole
+                            this.$transport && this.$transport(entity);
                         }
                     }
                 }
@@ -870,5 +889,4 @@ Blasteroids.initEntities = function () {
                 (this.destroyed || BoxBoxUtil.isOffCanvas(this, Blasteroids.world)) && this.destroy();
             }
         });
-
 };
