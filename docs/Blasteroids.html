@@ -70,7 +70,7 @@
 					<span>Mixins<b class="caret"></b></span>
 				</a>
 				<ul class="dropdown-menu ">
-					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
+					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.wormhole.html">Blasteroids.wormhole</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
 				</ul>
 			</li>
 			
@@ -371,30 +371,6 @@
 
         <tr>
             
-                <td class="name"><code>WEAPON_UPGRADE_CONFIGS</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>mixins for weapon upgrades that are mixed with <a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a> to create permanent weapon upgrades within the game</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>activePowerup</code></td>
             
 
@@ -419,13 +395,13 @@
 
         <tr>
             
-                <td class="name"><code>activeWeaponUpgrade</code></td>
+                <td class="name"><code>activeWormhole</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Blasteroids.weaponUpgrade.html">Blasteroids.weaponUpgrade</a></span>
+<span class="param-type"><a href="Blasteroids.wormhole.html">Blasteroids.wormhole</a></span>
 
 
 
@@ -436,7 +412,7 @@
 
             
 
-            <td class="description last"><p>the currently active weapon upgrade within the field of play (only one weapon upgrade is active at a time)</p></td>
+            <td class="description last"><p>the currently active wormhole within the field of play (only one wormhole (with a and b ends) is active at a time)</p></td>
         </tr>
 
     
@@ -761,7 +737,7 @@
             <dt><a href="Blasteroids.ship.html">ship</a></dt>
             <dd></dd>
         
-            <dt><a href="Blasteroids.weaponUpgrade.html">weaponUpgrade</a></dt>
+            <dt><a href="Blasteroids.wormhole.html">wormhole</a></dt>
             <dd></dd>
         </dl>
     
@@ -1764,7 +1740,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-80">line 80</a>
+				 <a href="game_game.js.html#sunlight-1-line-79">line 79</a>
 			</li>
 		</ul>
 	</dd>
@@ -1961,7 +1937,7 @@ false if it was given to the player, i.e. during initialization</p></td>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-127">line 127</a>
+				 <a href="game_game.js.html#sunlight-1-line-126">line 126</a>
 			</li>
 		</ul>
 	</dd>
@@ -2133,7 +2109,7 @@ false if it was given to the player, i.e. during initialization</p></td>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-163">line 163</a>
+				 <a href="game_game.js.html#sunlight-1-line-162">line 162</a>
 			</li>
 		</ul>
 	</dd>
@@ -2239,7 +2215,7 @@ the player's current number of lives and score both to 0.</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-211">line 211</a>
+				 <a href="game_game.js.html#sunlight-1-line-210">line 210</a>
 			</li>
 		</ul>
 	</dd>
@@ -2454,7 +2430,7 @@ the player's current number of lives and score both to 0.</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-245">line 245</a>
+				 <a href="game_game.js.html#sunlight-1-line-244">line 244</a>
 			</li>
 		</ul>
 	</dd>
@@ -2556,7 +2532,7 @@ this.incrementScore(Math.round((this.score || 0) + amount), 50);</pre>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-258">line 258</a>
+				 <a href="game_game.js.html#sunlight-1-line-257">line 257</a>
 			</li>
 		</ul>
 	</dd>
@@ -2649,7 +2625,7 @@ this.incrementScore(Math.round((this.score || 0) + amount), 50);</pre>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-263">line 263</a>
+				 <a href="game_game.js.html#sunlight-1-line-262">line 262</a>
 			</li>
 		</ul>
 	</dd>
@@ -2742,7 +2718,7 @@ this.incrementScore(Math.round((this.score || 0) + amount), 50);</pre>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-269">line 269</a>
+				 <a href="game_game.js.html#sunlight-1-line-268">line 268</a>
 			</li>
 		</ul>
 	</dd>
@@ -2836,7 +2812,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-285">line 285</a>
+				 <a href="game_game.js.html#sunlight-1-line-284">line 284</a>
 			</li>
 		</ul>
 	</dd>
@@ -2929,7 +2905,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-288">line 288</a>
+				 <a href="game_game.js.html#sunlight-1-line-287">line 287</a>
 			</li>
 		</ul>
 	</dd>
@@ -3022,7 +2998,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-344">line 344</a>
+				 <a href="game_game.js.html#sunlight-1-line-343">line 343</a>
 			</li>
 		</ul>
 	</dd>
@@ -3115,7 +3091,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-360">line 360</a>
+				 <a href="game_game.js.html#sunlight-1-line-359">line 359</a>
 			</li>
 		</ul>
 	</dd>
@@ -3208,7 +3184,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-386">line 386</a>
+				 <a href="game_game.js.html#sunlight-1-line-385">line 385</a>
 			</li>
 		</ul>
 	</dd>
@@ -3301,7 +3277,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-396">line 396</a>
+				 <a href="game_game.js.html#sunlight-1-line-395">line 395</a>
 			</li>
 		</ul>
 	</dd>
@@ -3394,7 +3370,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-438">line 438</a>
+				 <a href="game_game.js.html#sunlight-1-line-437">line 437</a>
 			</li>
 		</ul>
 	</dd>
@@ -3517,7 +3493,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-474">line 474</a>
+				 <a href="game_game.js.html#sunlight-1-line-473">line 473</a>
 			</li>
 		</ul>
 	</dd>
@@ -3619,7 +3595,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-500">line 500</a>
+				 <a href="game_game.js.html#sunlight-1-line-499">line 499</a>
 			</li>
 		</ul>
 	</dd>
@@ -3786,7 +3762,7 @@ Defaults to a no-op (see /js/entities.js)</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-540">line 540</a>
+				 <a href="game_game.js.html#sunlight-1-line-539">line 539</a>
 			</li>
 		</ul>
 	</dd>
@@ -3997,7 +3973,7 @@ abilities and/or rewards when collected. They remain visible for 10 seconds.</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-598">line 598</a>
+				 <a href="game_game.js.html#sunlight-1-line-597">line 597</a>
 			</li>
 		</ul>
 	</dd>
@@ -4043,8 +4019,8 @@ abilities and/or rewards when collected. They remain visible for 10 seconds.</p>
                 
 <dt>
     
-    <h4 class="name" id=".spawnWeaponUpgrade">
-        <span class="type-signature">&lt;static> </span>spawnWeaponUpgrade<span class="method-signature">( [x] [, y])</span>
+    <h4 class="name" id=".spawnWormhole">
+        <span class="type-signature">&lt;static> </span>spawnWormhole<span class="method-signature">( [x1] [, y1] [, x2] [, y2])</span>
     </h4>
     
 
@@ -4054,8 +4030,9 @@ abilities and/or rewards when collected. They remain visible for 10 seconds.</p>
 
     
     <div class="description">
-        <p>Spawn a random weapon upgrade at the given x and y coordinates, or a random x-y coordinate in the<br>
-world's field of play if no x-y coordinate is provided. A weapon upgrade gives the player certain<br>
+        <p>Spawn a wormhole at the given x1,y1 and x2,y2 coordinates, or a random x-y coordinate pair in the<br>
+world's field of play if no x-y coordinate pair is provided. A wormhole allows objects to instantaneously<br>
+travel from one point in space, to another point in space.<br>
 abilities and/or rewards when collected. They remain visible for 10 seconds. Their effects tend to<br>
 be permanent.</p>
     </div>
@@ -4094,7 +4071,7 @@ be permanent.</p>
 
         <tr>
             
-                <td class="name"><code>x</code></td>
+                <td class="name"><code>x1</code></td>
             
 
             <td class="type">
@@ -4121,14 +4098,14 @@ be permanent.</p>
 
             
 
-            <td class="description last"><p>x coordinate for power up to spawn at. Defaults to a random x coordinate in the world's field of play.</p></td>
+            <td class="description last"><p>x coordinate for the wormhole's first endpoint. Defaults to a random x coordinate in the world's field of play.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>y</code></td>
+                <td class="name"><code>y1</code></td>
             
 
             <td class="type">
@@ -4155,7 +4132,75 @@ be permanent.</p>
 
             
 
-            <td class="description last"><p>y coordinate for power up to spawn at. Defaults to a random y coordinate in the world's field of play.</p></td>
+            <td class="description last"><p>y coordinate for the wormhole's first endpoint. Defaults to a random y coordinate in the world's field of play.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>x coordinate for the wormhole's second endpoint. Defaults to a random x coordinate in the world's field of play.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>y coordinate for the wormhole's second endpoint. Defaults to a random y coordinate in the world's field of play.</p></td>
         </tr>
 
     
@@ -4200,7 +4245,7 @@ be permanent.</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-660">line 660</a>
+				 <a href="game_game.js.html#sunlight-1-line-662">line 662</a>
 			</li>
 		</ul>
 	</dd>
@@ -4229,11 +4274,11 @@ be permanent.</p>
     
         <h5 class="method-subtitle"><i class="glyphicon glyphicon-wrench"></i>Examples</h5>
         
-        <p class="code-caption">Spawning a random weapon upgrade at a random time</p>
+        <p class="code-caption">Spawning a random wormhole at a random time</p>
     
-    <pre class="sunlight-highlight-javascript">//spawn weapon upgrade at random time between 40 - 60secs
+    <pre class="sunlight-highlight-javascript">//spawn wormhole at random time between 40 - 60secs
   setTimeout(function(){
-      Blasteroids.spawnWeaponUpgrade();
+      Blasteroids.spawnWormhole();
   }, Math.floor(Math.random() * 20000) + 40000);</pre>
 
 
@@ -4304,7 +4349,7 @@ be permanent.</p>
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-36">line 36</a>
+				 <a href="game_game.js.html#sunlight-1-line-35">line 35</a>
 			</li>
 		</ul>
 	</dd>
@@ -4409,7 +4454,7 @@ has no lives remaining.  Otherwise, a new player ship is initialized within 3 se
 		<ul class="dummy">
 			<li>
 				<a href="game_game.js.html">game/game.js</a>,
-				 <a href="game_game.js.html#sunlight-1-line-725">line 725</a>
+				 <a href="game_game.js.html#sunlight-1-line-745">line 745</a>
 			</li>
 		</ul>
 	</dd>
@@ -4496,9 +4541,9 @@ has no lives remaining.  Otherwise, a new player ship is initialized within 3 se
 				</span>
 			
 			<span class="jsdoc-message">
-				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a>
+				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
 				
-					on Tue Apr 9th 2019
+					on Wed Dec 29th 2021
 				
 				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 			</span>
