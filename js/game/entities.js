@@ -591,6 +591,7 @@ Blasteroids.initEntities = function () {
              */
             $fireThrust: function () {
                 this.$force(this.$force() + Blasteroids.options.velocityStep);
+
                 setTimeout($.proxy(function () {
                     //remove the force being applied to the ship
                     this.$force(0);
@@ -827,37 +828,23 @@ Blasteroids.initEntities = function () {
              * @param {Entity} entity the entity that is doing the "traversing"
              */
             $transport: function (entity) {
-                debugger;
-
-                var targetPoint;
-
-                entity.destroy();
-
                 if (this === Blasteroids.activeWormhole.a) {
-                    targetPoint = {
+                    entity.position({
                         x: Blasteroids.activeWormhole.b._ops.x,
                         y: Blasteroids.activeWormhole.b._ops.y
-                    };
+                    });
                 } else {
-                    targetPoint = {
+                    entity.position({
                         x: Blasteroids.activeWormhole.a._ops.x,
                         y: Blasteroids.activeWormhole.a._ops.y
-                    };
+                    });
                 }
 
-                entity = Blasteroids.world.createEntity(
-                    entity._ops,
-                    {
-                        destroyed: false,
-                        createdByWormhole: true,
-                        x: targetPoint.x,
-                        y: targetPoint.y
-                    }
-                );
+                entity._ops.traversedWormhole = true;
 
                 setTimeout($.proxy(function () {
-                    this._ops.createdByWormhole = false;
-                }, entity), 1500);
+                    this._ops.traversedWormhole = false;
+                }, entity), 1200);
             },
 
             /**
@@ -878,16 +865,14 @@ Blasteroids.initEntities = function () {
                         for (; i < intersectingEntities.length; i++) {
                             var entity = intersectingEntities[i];
 
-                            if (entity._ops.name === 'blast') {
-                                entity.destroy();
-                            } else {
-                                if (!entity.destroyed && !entity._destroyed && !entity._ops.createdByWormhole) {
-                                    //play an alert sound
-                                    Audio.play('sounds/NFF-space-warp.wav');
+                            if (!entity.destroyed &&
+                                !entity._destroyed &&
+                                !entity._ops.traversedWormhole) {
+                                //play an alert sound
+                                Audio.play('sounds/NFF-space-warp.wav');
 
-                                    //traverse the wormhole
-                                    this.$transport && this.$transport(entity);
-                                }
+                                //traverse the wormhole
+                                this.$transport && this.$transport(entity);
                             }
                         }
                     }
