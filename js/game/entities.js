@@ -798,8 +798,8 @@ Blasteroids.initEntities = function () {
      * @property {boolean} active <code>false</code>
      * @property {string} image <code>'images/effects/spacewarp.png'</code> 
      * @property {boolean} imageStretchToFit <code>true</code>
-     * @property {number} height <code>1.5</code>
-     * @property {number} width <code>1.5</code>
+     * @property {number} height <code>3</code>
+     * @property {number} width <code>3</code>
      */
     Blasteroids.wormhole = $.extend({},
         BoxBoxUtil.angleImpulse,
@@ -810,8 +810,9 @@ Blasteroids.initEntities = function () {
             active: false,
             image: 'images/effects/spacewarp.png',
             imageStretchToFit: true,
-            height: 1.5,
-            width: 1.5,
+            height: 3,
+            width: 3,
+            radius: 1.5,
 
             $onNewGame: function () {
                 //noop
@@ -828,35 +829,35 @@ Blasteroids.initEntities = function () {
             $transport: function (entity) {
                 debugger;
 
-                if (!entity.destroyed && !entity._ops.createdByWormhole) {
-                    entity.destroy();
+                var targetPoint;
 
-                    if (this === Blasteroids.activeWormhole.a) {
-                        entity = Blasteroids.world.createEntity(
-                            entity._ops,
-                            {
-                                destroyed: false,
-                                createdByWormhole: true,
-                                x: Blasteroids.activeWormhole.b._ops.x,
-                                y: Blasteroids.activeWormhole.b._ops.y
-                            }
-                        );
-                    } else {
-                        entity = Blasteroids.world.createEntity(
-                            entity._ops,
-                            {
-                                createdByWormhole: true,
-                                destroyed: false,
-                                x: Blasteroids.activeWormhole.a._ops.x,
-                                y: Blasteroids.activeWormhole.a._ops.y
-                            }
-                        );
-                    }
+                entity.destroy();
 
-                    setTimeout($.proxy(function () {
-                        this._ops.createdByWormhole = false;
-                    }, entity), 1500);
+                if (this === Blasteroids.activeWormhole.a) {
+                    targetPoint = {
+                        x: Blasteroids.activeWormhole.b._ops.x,
+                        y: Blasteroids.activeWormhole.b._ops.y
+                    };
+                } else {
+                    targetPoint = {
+                        x: Blasteroids.activeWormhole.a._ops.x,
+                        y: Blasteroids.activeWormhole.a._ops.y
+                    };
                 }
+
+                entity = Blasteroids.world.createEntity(
+                    entity._ops,
+                    {
+                        destroyed: false,
+                        createdByWormhole: true,
+                        x: targetPoint.x,
+                        y: targetPoint.y
+                    }
+                );
+
+                setTimeout($.proxy(function () {
+                    this._ops.createdByWormhole = false;
+                }, entity), 1500);
             },
 
             /**
@@ -877,11 +878,17 @@ Blasteroids.initEntities = function () {
                         for (; i < intersectingEntities.length; i++) {
                             var entity = intersectingEntities[i];
 
-                            //play an alert sound
-                            Audio.play('sounds/NFF-space-warp.wav');
+                            if (entity._ops.name === 'blast') {
+                                entity.destroy();
+                            } else {
+                                if (!entity.destroyed && !entity._destroyed && !entity._ops.createdByWormhole) {
+                                    //play an alert sound
+                                    Audio.play('sounds/NFF-space-warp.wav');
 
-                            //traverse the wormhole
-                            this.$transport && this.$transport(entity);
+                                    //traverse the wormhole
+                                    this.$transport && this.$transport(entity);
+                                }
+                            }
                         }
                     }
                 }
