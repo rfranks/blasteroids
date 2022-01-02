@@ -794,13 +794,14 @@ Blasteroids.initEntities = function () {
      * @mixes boxbox.entityEvents
      * @desc A mixin that bestows the characteristics of a wormhole to an {@link Entity entity}.
      * @property {string} name <code>'wormhole'</code>
-     * @property {string} shape <code>'square'</code>
+     * @property {string} shape <code>'circle'</code>
      * @property {string} type <code>'static'</code>
      * @property {boolean} active <code>false</code>
      * @property {string} image <code>'images/effects/spacewarp.png'</code> 
      * @property {boolean} imageStretchToFit <code>true</code>
      * @property {number} height <code>3</code>
      * @property {number} width <code>3</code>
+     * @property {number} radius <code>1.5</code>
      */
     Blasteroids.wormhole = $.extend({},
         BoxBoxUtil.angleImpulse,
