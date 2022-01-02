@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Simple Event Testing Sample</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='../js/lib/azure.eventing.js'></script>
+</head>
+
+<body>
+    <input type="button" onclick="publishMyEvent(true);" value="Click me to publish an event to server" />
+    <input type="button" onclick="publishMyEvent(false);" value="Click me to publish a local event" />
+    <input type="button" onclick="unsubscribable();" value="Click me to unsubscribe" />
+
+    <h2>Events Received</h2>
+    <div id="events"></div>
+
+    <script type="text/javascript">
+        var unsubscribable = function () { };
+
+        var eventingExample = function () {
+            if (AzureEventing.isReady()) {
+                unsubscribable = AzureEventing.subscribeToEvent('blasteroids.azure.test', function (event) {
+                    var eventsDiv = document.getElementById('events');
+                    eventsDiv.innerHTML = eventsDiv.innerHTML + '<br/>testId: ' + event.context.testId + ', time: ' + event.time;
+                });
+            } else {
+                // if eventing is not ready, wait and try again
+                // it is usually not ready if it is still fetching the WSS token url
+                setTimeout(eventingExample, 250);
+            }
+        }
+
+        var publishMyEvent = function (toServer) {
+            var now = new Date();
+
+            var event = AzureEventing.createEvent({
+                testId: 'testId_' + now.getTime()
+            }, {}, 'blasteroids.azure.test');
+
+            AzureEventing.publishEvent(event, toServer ? event.type : null);
+        };
+
+        eventingExample();
+    </script>
+</body>
+
+</html>
