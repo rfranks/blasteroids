@@ -335,6 +335,9 @@ var Blasteroids = {
             } else if (e.keyCode === 83) {
                 //s - toggle sound on/off
                 Log.msg('Sound is ' + (Audio.toggleSound() ? 'ON!' : 'OFF!'));
+            } else if (e.keyCode === 72) {
+                //h - create a wormhole
+                Blasteroids.spawnWormhole();
             }
         });
     },

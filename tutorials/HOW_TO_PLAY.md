@@ -246,6 +246,10 @@ var getRotationDegrees = function(obj) {
 	  		<td>`E`</td>
 	  		<td>Add an enemy to the field of play.</td>
 	  	</tr>
+		<tr>
+	  		<td>`H`</td>
+	  		<td>Spawn a wormhole, if one does not already exist.</td>
+	  	</tr>
 	  	<tr>
 	  		<td>`N`</td>
 	  		<td>Starts a new game, if the player has no lives remaining.</td>
