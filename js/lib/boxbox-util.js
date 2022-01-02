@@ -205,9 +205,9 @@ var BoxBoxUtil = {
             position = entity.position();
 
         return Blasteroids.world.find(
-            position.x - widthOffset, 
-            position.y - heightOffset, 
-            position.x + widthOffset, 
+            position.x - widthOffset,
+            position.y - heightOffset,
+            position.x + widthOffset,
             position.y + heightOffset
         );
     },
@@ -266,7 +266,11 @@ var BoxBoxUtil = {
 
     /** Combines a magnitude and direction into a {@link Vector} of x and y components.
      * @param {number} power magnitude to apply to the vector
-     * @param {number} a May be one of  <ol><li>the angle of orientation (in <code>degrees</code>) of the vector, or</li><li>if <code>b</code> is also provided, this is interpreted as the x component of a vector</li></ol>
+     * @param {number} a May be one of  
+     * <ol>
+     *      <li>the angle of orientation (in <code>degrees</code>) of the vector, or</li>
+     *      <li>if <code>b</code> is also provided, this is interpreted as the x component of a vector</li>
+     * </ol>
      * @param {number} [b] y component of the vector
      * @returns {Vector} the resulting vector
      */
