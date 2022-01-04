@@ -152,3 +152,14 @@ body {
     text-align: center;
     width: 100%;
 }
+
+#logo {
+    animation-delay: 2s;
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
+}
+
+#tab__game {
+    position: relative;
+}
