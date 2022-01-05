@@ -287,6 +287,22 @@ var Blasteroids = {
     initEvents: function () {
         $('[data-tab-contents="#tab__game"]').on('click', $.proxy(function (e) { }, this));
 
+        $('#controlpanel #left__btn').on('click', function (e) {
+            Blasteroids.player && Blasteroids.player.$angle(Blasteroids.player.$angle() - Blasteroids.options.angleStep);
+        });
+
+        $('#controlpanel #right__btn').bind('click', function (e) {
+            Blasteroids.player && Blasteroids.player.$angle(Blasteroids.player.$angle() + Blasteroids.options.angleStep);
+        });
+
+        $('#controlpanel #green__btn').bind('click', function (e) {
+            Blasteroids.player && Blasteroids.player.$fireThrust();
+        });
+
+        $('#controlpanel #red__btn').bind('click', function (e) {
+            Blasteroids.player && Blasteroids.player.$fireBlast();
+        });
+
         $('body').keydown(function (e) {
             if (e.keyCode === 27) {
                 //esc - escape - quickly eject, exiting the game
