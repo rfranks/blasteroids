@@ -184,4 +184,5 @@ body {
 
 * {
     touch-action: manipulation;
+    user-select: none;
 }
