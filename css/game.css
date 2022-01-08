@@ -167,7 +167,7 @@ body {
 #controlpanel {
     position: relative;
     top: -101px;
-    width: 1380px;
+    width: 100%;
 }
 
 #controlpanel > img {
@@ -180,4 +180,8 @@ body {
 
 .right {
     float: right;
+}
+
+* {
+    touch-action: manipulation;
 }
