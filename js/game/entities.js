@@ -556,13 +556,15 @@ Blasteroids.initEntities = function () {
 
             /**
              * Fires this ship's laser, if it is able to be fired.
-             * @param {boolean} [ignoreRateLimits] flag indicating whether or not to remove firing limits (enabled by default)
+             * @param {number} radians, the radians (around the ship), 
+             * from where the blast should originate. 
+             * Defaults to the direction that the ship is facing.
              * @memberOf! Blasteroids.ship
              */
-            $fireBlast: function () {
+            $fireBlast: function (radians) {
                 if (this.canFireBlast) {
                     var position = this.position(),
-                        rads = this.$polarRadians(),
+                        rads = radians == undefined ? this.$polarRadians() : radians,
                         blast = Blasteroids.world.createEntity(Blasteroids.blast, {
                             image: 'images/lasers/' + Blasteroids.options.lasers[Blasteroids.laserIndex || 0],
                             $sourceName: this.name()
@@ -583,7 +585,6 @@ Blasteroids.initEntities = function () {
                     Audio.play('sounds/NFF-laser.wav');
                 }
             },
-
 
             /**
              * Fires the ship's thruster and increases the ship's velocity by <code>Blasteroids.options.velocityStep</code>.
@@ -636,6 +637,24 @@ Blasteroids.initEntities = function () {
              */
             $stopThrust: function () {
                 this.shipThrust && (this.shipThrust.destroyed = true);
+            },
+
+            /**
+            * Fires this ship's twin laser blast.
+            * @memberOf! Blasteroids.ship
+            */
+            $twinBlast: function () {
+                var rads = this.$polarRadians();
+
+                setTimeout($.proxy(function () {
+                    this.canFireBlast = true;
+                    this.$fireBlast(rads + BoxBoxUtil.polarAngleRads(30));
+                }, this), 50);
+
+                setTimeout($.proxy(function () {
+                    this.canFireBlast = true;
+                    this.$fireBlast(rads + BoxBoxUtil.polarAngleRads(-30));
+                }, this), 50);
             },
 
             /**
@@ -697,21 +716,12 @@ Blasteroids.initEntities = function () {
                         //space - fire modified blast
                         var ship = this;
 
-                        for (var i = 0; i < this.$blastsToFire(); i++) {
-                            var setBlastTimeout = (i === (ship.$blastsToFire() - 1));
-
-                            //timeout so that there is a delay between each blast
-                            setTimeout(function () {
-                                ship.$fireBlast();
-
-                                setBlastTimeout && (ship.canFireBlast = false);
-                            }, 100 * i);
-
-                            setBlastTimeout &&
-                                (ship.canFireBlastTO = setTimeout(function () {
-                                    ship.canFireBlast = true;
-                                }, (100 * i) + ship.fireRate));
+                        if (this.$blastsToFire() == 2) {
+                            this.$twinBlast();
+                        } else {
+                            this.$fireBlast();
                         }
+
                     } else if (e.keyCode == 68) {
                         var position = this.position();
                         if (Log.isDebugEnabled()) {

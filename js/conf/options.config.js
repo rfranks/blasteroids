@@ -19,7 +19,7 @@
  *   @property {string[]} defaultOptions.ships list of image filenames in <code>/images/</code> folder to use for player ships
  *   @property {number} defaultOptions.enemyShipBonus number of bonus points awarded when an enemy ship is destroyed by the player<br/>Default: <code>1500</code>
  *   @property {number} defaultOptions.extraLifeScore number of points required to earn an extra life/ship<br/>Default: <code>5000</code>
- *   @property {number} defaultOptions.playerBlastsToFire the number of blasts the player ship fires each time the spacebar is pressed (max of 3)<br/>Default: <code>1</code>
+ *   @property {number} defaultOptions.playerBlastsToFire the number of blasts the player ship fires each time the spacebar is pressed (can be one or two for single or twin laser, respectively)<br/>Default: <code>1</code>
  *   @property {Vector} defaultOptions.gravity x and y components of the force of gravity within the game world<br/>Default: <code>{ x: 0, y: 0 }</code>
  *   @property {boolean} defaultOptions.collisionOutlines flag indicating whether or not to show the outlines used during collision detection which can be useful for debugging<br/>Default: <code>false</code>
  *   @property {string} defaultOptions.el CSS selector for the main game <code>canvas</code> DOM element<br/>Default: <code>'#game'</code>
