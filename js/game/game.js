@@ -180,16 +180,6 @@ var Blasteroids = {
             }, this), 6000);
 
             Log.info('PLAYER scored ' + amount + '! New Score: ' + this.score + '!');
-
-            //did we score enough to earn an extra life?
-            while (this.score >= ((this.earnedLives + 1) * Blasteroids.options.extraLifeScore)) {
-                //if so, add a life
-                this.addLife(true);
-                Log.info('PLAYER scored another ' + Blasteroids.options.extraLifeScore + ' and earned extra life number ' + this.earnedLives + '!');
-
-                //alert the user
-                Log.msg('EXTRA LIFE!');
-            }
         }
     },
 
@@ -221,9 +211,6 @@ var Blasteroids = {
         this.lives = 0;
         this.score = 0;
 
-        //reset number of blasts the player can fire
-        this.currentBlastsToFire = this.options.playerBlastsToFire;
-
         //play a nifty sound
         Audio.play('sounds/NFF-gameover.wav');
     },
@@ -251,6 +238,16 @@ var Blasteroids = {
         }
 
         this.$scoreAmount.html(this.score);
+
+        //did we score enough to earn an extra life?
+        while (this.score >= ((this.earnedLives + 1) * Blasteroids.options.extraLifeScore)) {
+            //if so, add a life
+            this.addLife(true);
+            Log.info('PLAYER scored another ' + Blasteroids.options.extraLifeScore + ' and earned extra life number ' + this.earnedLives + '!');
+
+            //alert the user
+            Log.msg('EXTRA LIFE!');
+        }
     },
 
     /** Initializes Audio aspects of the game, like whether or not sound is on/off. */
@@ -578,7 +575,8 @@ var Blasteroids = {
             Math.floor((Math.random() * (this.options.enemies.length - 1)) + 1));
 
 
-        this.enemyShip = this.world.createEntity(this.enemy, {
+        this.enemyShip = this.world.createEntity(this.enemy,
+            position, {
             image: 'images/effects/spacewarp.png'
         });
 
@@ -614,6 +612,10 @@ var Blasteroids = {
     *   }, Math.floor(Math.random() * 20000) + 20000);
      */
     spawnPowerup: function (x, y) {
+        if (this.activePowerup) {
+            return;
+        }
+
         var position = {
             x: x || Math.floor(Math.random() * this.world.maxX()),
             y: y || Math.floor(Math.random() * this.world.maxY())

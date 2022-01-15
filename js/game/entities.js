@@ -631,6 +631,19 @@ Blasteroids.initEntities = function () {
                 Audio.play('sounds/NFF-thrust-3.wav');
             },
 
+            /** 
+             * Shows a temporary shield around the ship. 
+             */
+            $showShield: function () {
+                setTimeout($.proxy(function() {
+                    var shield = Blasteroids.world.createEntity(Blasteroids.shield, this.position());
+
+                    setTimeout(function() {
+                        shield.destroyed = true;
+                    }, 125);
+                }, this), 0); 
+            },
+
             /**
              * Destroys the currently firing ship thrust entity.
              * @memberOf! Blasteroids.ship
@@ -665,6 +678,8 @@ Blasteroids.initEntities = function () {
             $onBlastImpact: function (blast) {
                 if (blast.$sourceName !== this.name()) {
                     !this.shielded && (this.destroyed = true);
+
+                    this.shielded && this.$showShield();
                 } else {
                     blast.destroyed = true;
                 }
@@ -678,6 +693,8 @@ Blasteroids.initEntities = function () {
              */
             $onBlasteroidImpact: function (blasteroid) {
                 !this.shielded && (this.destroyed = true);
+
+                this.shielded && this.$showShield();
             },
 
             /**
@@ -772,6 +789,34 @@ Blasteroids.initEntities = function () {
              */
             onRender: function () {
                 BoxBoxUtil.wrapPosition(this, Blasteroids.world);
+            }
+        });
+
+    Blasteroids.shield = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'shipShield',
+            shape: 'square',
+            image: 'images/effects/shield.png',
+            width: 7,
+            height: 5,
+            active: false,
+            bullet: true,
+            imageStretchToFit: true,
+            fixedRotation: true,
+
+            /**
+             * @see {@link boxbox.entityEvents#onTick}
+             * @memberOf! Blasteroids.shield
+             * @instance
+             */
+            onRender: function () {
+                if (this.destroyed) {
+                    this.destroy();
+                } else {
+                    this.position(Blasteroids.player.position());
+                    this.$angle(Blasteroids.player.$angle());
+                }
             }
         });
 
