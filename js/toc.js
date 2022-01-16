@@ -60,7 +60,7 @@
 
     var container = $(opts.container);
     var tocs = [];
-    var headings = $(opts.selectors, container);
+    var headings = $(container).find(opts.selectors);
     var headingOffsets = [];
     var activeClassName = 'active';
     var ANCHOR_PREFIX = "__anchor";

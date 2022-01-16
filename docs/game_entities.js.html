@@ -70,7 +70,7 @@
 					<span>Mixins<b class="caret"></b></span>
 				</a>
 				<ul class="dropdown-menu ">
-					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.wormhole.html">Blasteroids.wormhole</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
+					<li><a href="Blasteroids.blast.html">Blasteroids.blast</a></li><li><a href="Blasteroids.blasteroid.html">Blasteroids.blasteroid</a></li><li><a href="Blasteroids.enemy.html">Blasteroids.enemy</a></li><li><a href="Blasteroids.powerup.html">Blasteroids.powerup</a></li><li><a href="Blasteroids.shield.html">Blasteroids.shield</a></li><li><a href="Blasteroids.ship.html">Blasteroids.ship</a></li><li><a href="Blasteroids.wormhole.html">Blasteroids.wormhole</a></li><li><a href="boxbox.entityEvents.html">boxbox.entityEvents</a></li><li><a href="BoxBoxUtil.angleImpulse.html">BoxBoxUtil.angleImpulse</a></li><li><a href="BoxBoxUtil.enhancedWorld.html">BoxBoxUtil.enhancedWorld</a></li>
 				</ul>
 			</li>
 			
@@ -88,7 +88,7 @@
 					<span>Global<b class="caret"></b></span>
 				</a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html">Global</a></li>
+					<li><a href="global.html#$showShield">$showShield</a></li>
 				</ul>
 			</li>
 			
@@ -619,6 +619,50 @@
         });
 
     /**
+    * @mixin Blasteroids.shield
+    * @mixes boxbox.entityEvents
+    * @desc A mixin that bestows the characteristics of a player's ship's shield to an {@link Entity entity}.
+    * @property {string} name &lt;code>'shipShield'&lt;/code>
+    * @property {string} shape &lt;code>'square'&lt;/code>
+    * @property {string} image &lt;code>'images/effects/shield.png'&lt;/code>
+    * @property {number} height &lt;code>5&lt;/code>
+    * @property {number} width &lt;code>7&lt;/code>
+    * @property {boolean} active &lt;code>false&lt;/code>
+    * @property {boolean} bullet &lt;code>true&lt;/code>
+    * @property {boolean} imageStretchToFit &lt;code>true&lt;/code>
+    * @property {boolean} fixedRotation &lt;code>true&lt;/code>
+    */
+    Blasteroids.shield = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'shipShield',
+            shape: 'square',
+            image: 'images/effects/shield.png',
+            height: 5,
+            width: 7,
+            active: false,
+            bullet: true,
+            imageStretchToFit: true,
+            fixedRotation: true,
+
+            /**
+             * @see {@link boxbox.entityEvents#onRender}
+             * @memberOf! Blasteroids.shield
+             * @instance
+             */
+            onRender: function () {
+                if (this.destroyed) {
+                    window.localStorage.removeItem(this.name());
+                    this.destroy();
+                } else {
+                    window.localStorage.setItem(this.name(), JSON.stringify(this._ops));
+                    this.position(Blasteroids.player.position());
+                    this.$angle(Blasteroids.player.$angle());
+                }
+            }
+        });
+
+    /**
      * @mixin Blasteroids.ship
      * @mixes boxbox.entityEvents
      * @desc A mixin that bestows the characteristics of a player's ship to an {@link Entity entity}.
@@ -745,6 +789,19 @@
                 Audio.play('sounds/NFF-thrust-3.wav');
             },
 
+            /** 
+             * Shows a temporary shield around the ship. 
+             */
+            $showShield: function () {
+                setTimeout($.proxy(function () {
+                    var shield = Blasteroids.world.createEntity(Blasteroids.shield, this.position());
+
+                    setTimeout(function () {
+                        shield.destroyed = true;
+                    }, 125);
+                }, this), 0);
+            },
+
             /**
              * Destroys the currently firing ship thrust entity.
              * @memberOf! Blasteroids.ship
@@ -779,6 +836,8 @@
             $onBlastImpact: function (blast) {
                 if (blast.$sourceName !== this.name()) {
                     !this.shielded &amp;&amp; (this.destroyed = true);
+
+                    this.shielded &amp;&amp; this.$showShield();
                 } else {
                     blast.destroyed = true;
                 }
@@ -792,6 +851,8 @@
              */
             $onBlasteroidImpact: function (blasteroid) {
                 !this.shielded &amp;&amp; (this.destroyed = true);
+
+                this.shielded &amp;&amp; this.$showShield();
             },
 
             /**
@@ -886,6 +947,7 @@
              */
             onRender: function () {
                 BoxBoxUtil.wrapPosition(this, Blasteroids.world);
+                window.localStorage.setItem(this.name(), JSON.stringify(this._ops));
             }
         });
 
@@ -1026,7 +1088,7 @@
 			<span class="jsdoc-message">
 				Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
 				
-					on Wed Jan 12th 2022
+					on Sat Jan 15th 2022
 				
 				using a customized <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 			</span>

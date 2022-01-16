@@ -505,6 +505,48 @@ Blasteroids.initEntities = function () {
         });
 
     /**
+    * @mixin Blasteroids.shield
+    * @mixes boxbox.entityEvents
+    * @desc A mixin that bestows the characteristics of a player's ship's shield to an {@link Entity entity}.
+    * @property {string} name <code>'shipShield'</code>
+    * @property {string} shape <code>'square'</code>
+    * @property {string} image <code>'images/effects/shield.png'</code>
+    * @property {number} height <code>5</code>
+    * @property {number} width <code>7</code>
+    * @property {boolean} active <code>false</code>
+    * @property {boolean} bullet <code>true</code>
+    * @property {boolean} imageStretchToFit <code>true</code>
+    * @property {boolean} fixedRotation <code>true</code>
+    */
+    Blasteroids.shield = $.extend({},
+        BoxBoxUtil.angleImpulse,
+        {
+            name: 'shipShield',
+            shape: 'square',
+            image: 'images/effects/shield.png',
+            height: 5,
+            width: 7,
+            active: false,
+            bullet: true,
+            imageStretchToFit: true,
+            fixedRotation: true,
+
+            /**
+             * @see {@link boxbox.entityEvents#onRender}
+             * @memberOf! Blasteroids.shield
+             * @instance
+             */
+            onRender: function () {
+                if (this.destroyed) {
+                    this.destroy();
+                } else {
+                    this.position(Blasteroids.player.position());
+                    this.$angle(Blasteroids.player.$angle());
+                }
+            }
+        });
+
+    /**
      * @mixin Blasteroids.ship
      * @mixes boxbox.entityEvents
      * @desc A mixin that bestows the characteristics of a player's ship to an {@link Entity entity}.
@@ -633,15 +675,16 @@ Blasteroids.initEntities = function () {
 
             /** 
              * Shows a temporary shield around the ship. 
+             * @memberOf! Blasteroids.ship
              */
             $showShield: function () {
-                setTimeout($.proxy(function() {
+                setTimeout($.proxy(function () {
                     var shield = Blasteroids.world.createEntity(Blasteroids.shield, this.position());
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         shield.destroyed = true;
                     }, 125);
-                }, this), 0); 
+                }, this), 0);
             },
 
             /**
@@ -789,34 +832,6 @@ Blasteroids.initEntities = function () {
              */
             onRender: function () {
                 BoxBoxUtil.wrapPosition(this, Blasteroids.world);
-            }
-        });
-
-    Blasteroids.shield = $.extend({},
-        BoxBoxUtil.angleImpulse,
-        {
-            name: 'shipShield',
-            shape: 'square',
-            image: 'images/effects/shield.png',
-            width: 7,
-            height: 5,
-            active: false,
-            bullet: true,
-            imageStretchToFit: true,
-            fixedRotation: true,
-
-            /**
-             * @see {@link boxbox.entityEvents#onTick}
-             * @memberOf! Blasteroids.shield
-             * @instance
-             */
-            onRender: function () {
-                if (this.destroyed) {
-                    this.destroy();
-                } else {
-                    this.position(Blasteroids.player.position());
-                    this.$angle(Blasteroids.player.$angle());
-                }
             }
         });
 
