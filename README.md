@@ -1,4 +1,5 @@
 [![CodeQL](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml)
+[![CodeSize](https://img.shields.io/github/languages/code-size/rfranks/blasteroids?style=for-the-badge)](https://github.com/rfranks/blasteroids/)
 
 About `Blasteroids`
 -------------------
