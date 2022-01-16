@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jsdoc3/jsdoc.svg?branch=master)](http://travis-ci.org/jsdoc3/jsdoc)
+[![CodeQL](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml)
 
 About `Blasteroids`
 -------------------
