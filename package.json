@@ -1,6 +1,6 @@
 {
   "name": "blasteroids",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "decription": "A basic Asteroids clone that demonstrates the use of the Box2DWeb JS library.",
   "license": "MIT",
   "keywords": [
