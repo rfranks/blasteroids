@@ -1,5 +1,7 @@
-[![CodeQL](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml)
-[![CodeSize](https://img.shields.io/github/languages/code-size/rfranks/blasteroids?style=for-the-badge)](https://github.com/rfranks/blasteroids/)
+| [![CodeQL](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rfranks/blasteroids/actions/workflows/codeql-analysis.yml) | [![CodeSize](https://img.shields.io/github/languages/code-size/rfranks/blasteroids?style=for-the-badge)](https://github.com/rfranks/blasteroids/) | [![Version](https://img.shields.io/github/package-json/v/rfranks/blasteroids?style=for-the-badge)](https://github.com/rfranks/blasteroids/package.json) | 
+[![Issues](https://img.shields.io/github/issues/rfranks/blasteroids?style=for-the-badge)](https://github.com/rfranks/blasteroids/issues) |
+[![Status](https://img.shields.io/website?down_color=RED&down_message=DOWN&label=STATUS&style=for-the-badge&up_color=GREEN&up_message=UP&url=https%3A%2F%2Frfranks.github.io%2Fblasteroids%2F)](https://rfranks.github.io/blasteroids/) |
+[![License](https://img.shields.io/github/license/rfranks/blasteroids?style=for-the-badge)](https://github.com/rfranks/blasteroids#license) |
 
 About `Blasteroids`
 -------------------
