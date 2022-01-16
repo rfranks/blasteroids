@@ -216,9 +216,7 @@ var Blasteroids = {
     },
 
     focusGame: function (e) {
-        setTimeout($.proxy(function () {
-            this.$game.focus();
-        }, this), 500);
+        setTimeout(Blasteroids.$game.focus, 500);
     },
 
     /** Increments the player's current score by an amount, up until a target score, updating the display every so often.
