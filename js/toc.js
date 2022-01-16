@@ -58,7 +58,7 @@
     var self = this;
     var opts = $.extend({}, jQuery.fn.toc.defaults, options);
 
-    var container = $(opts.container);
+    var container = $.find(opts.container);
     var tocs = [];
     var headings = $(container).find(opts.selectors);
     var headingOffsets = [];
