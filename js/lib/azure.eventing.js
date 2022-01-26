@@ -5,7 +5,6 @@
 
     // we need to fetch a valid wss url to the blasteroids eventing Pub Sub    
     fetch('https://blasteroids.azurewebsites.net/api/tokenservice?id=1234&hubname=reptar', {
-        mode: 'no-cors'
     })
         .then(response => {
             if (!response.ok) {
