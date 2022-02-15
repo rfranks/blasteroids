@@ -45,7 +45,7 @@
     "jsdoc": "^3.6.7",
     "marked": "^4.0.10",
     "markdown-it": "^12.3.2",
-    "nanoid": "^3.2.0",
+    "nanoid": "^3.3.0",
     "sanitize-html": "^2.6.1"
   }
 }
